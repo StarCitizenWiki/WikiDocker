@@ -49,7 +49,7 @@ elif [ "$role" = "rebuild-smw" ]; then
 
     while [ true ]
     do
-      php $IP/extensions/SemanticMediaWiki/maintenance/rebuildData.php --shallow-update -d 25 -q
+      php $IP/extensions/SemanticMediaWiki/maintenance/rebuildData.php --shallow-update -d 25
       # Run Weekly
       sleep 604800‬
     done
