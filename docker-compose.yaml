@@ -1,0 +1,123 @@
+version: '3'
+
+services:
+  star-citizen.wiki:
+    image: scw-wiki:1.33
+    container_name: star-citizen.wiki
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    depends_on:
+      - db
+      - elasticsearch
+    links:
+      - db
+      - parsoid
+    expose:
+      - 80
+    environment:
+      CONTAINER_ROLE: app
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      - /etc/star-citizen.wiki/config:/var/www/config
+      - /srv/star-citizen.wiki/extensions:/var/www/html/extensions
+    networks:
+      - wikinet
+      - internal
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.star-citizen.rule=Host(`star-citizen.wiki`)"
+      - "traefik.http.routers.star-citizen.entryPoints=https"
+      - "traefik.http.routers.star-citizen.middlewares=default@file"
+      - "traefik.http.routers.star-citizen.tls=true"
+      - "traefik.http.routers.star-citizen.tls.options=default"
+
+  queue:
+    image: scw-wiki:1.33
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    depends_on:
+      - db
+      - elasticsearch
+    environment:
+      CONTAINER_ROLE: queue
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      - /etc/star-citizen.wiki/config:/var/www/config
+      - /srv/star-citizen.wiki/extensions:/var/www/html/extensions
+    networks:
+      - internal
+
+  rebuild-smw:
+    image: scw-wiki:1.33
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    depends_on:
+      - star-citizen.wiki
+      - db
+    environment:
+      CONTAINER_ROLE: rebuild-smw
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      - /etc/star-citizen.wiki/config:/var/www/config
+      - /srv/star-citizen.wiki/extensions:/var/www/html/extensions
+    networks:
+      - internal
+
+  db:
+    image: mariadb:latest
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      MYSQL_DATABASE: 
+      MYSQL_USER: 
+      MYSQL_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: 
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/lib/star-citizen.wiki/db:/var/lib/mysql
+    networks:
+      - internal
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  elasticsearch:
+    image: elasticsearch:6.5.4
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"      
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    expose:
+      - 9200
+      - 9300
+    networks:
+      - internal
+
+  parsoid:
+    image: thenets/parsoid:0.10
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - PARSOID_DOMAIN_live=http://star-citizen.wiki/api.php
+    expose:
+      - 8000
+    networks:
+      - internal
+
+networks:
+  wikinet:
+    external: true
+  internal:

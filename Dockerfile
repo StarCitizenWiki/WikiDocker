@@ -1,0 +1,57 @@
+FROM mediawiki:stable
+
+# Install the PHP extensions we need
+RUN set -eux; \
+        \
+        savedAptMark="$(apt-mark showmanual)"; \
+        \
+        apt-get update; \
+        apt-get install -y --no-install-recommends \
+                libcurl4-gnutls-dev \
+                libxml2-dev \
+                libzip-dev \
+                zip \
+                unzip \
+        ; \
+        \
+        docker-php-ext-install -j "$(nproc)" \
+                curl \
+                dom \
+                json \
+                zip \
+        ; \
+        \
+        # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
+        apt-mark auto '.*' > /dev/null; \
+        apt-mark manual $savedAptMark; \
+        ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
+                | awk '/=>/ { print $3 }' \
+                | sort -u \
+                | xargs -r dpkg-query -S \
+                | cut -d: -f1 \
+                | sort -u \
+                | xargs -rt apt-mark manual; \
+        \
+        apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+        rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+COPY composer.local.json /var/www/html
+
+WORKDIR /var/www/html
+
+RUN /usr/bin/composer install --no-dev \
+   --ignore-platform-reqs \
+   --no-ansi \
+   --no-interaction \
+   --no-scripts
+
+COPY ./start.sh /usr/local/bin/start
+
+RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini && \
+    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini
+
+RUN chmod u+x /usr/local/bin/start
+
+CMD ["/usr/local/bin/start"]
