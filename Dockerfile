@@ -8,11 +8,13 @@ RUN set -eux; \
         apt-get update; \
         apt-get install -y --no-install-recommends \
                 ffmpeg \
+                ghostscript \
                 libcurl4-gnutls-dev \
                 libxml2-dev \
                 libzip-dev \
-                zip \
+                poppler-utils \
                 unzip \
+                zip \
         ; \
         \
         docker-php-ext-install -j "$(nproc)" \
@@ -25,7 +27,7 @@ RUN set -eux; \
         # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
         apt-mark auto '.*' > /dev/null; \
         apt-mark manual $savedAptMark; \
-        apt-mark manual ffmpeg; \
+        apt-mark manual ffmpeg ghostscript poppler-utils; \
         ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
                 | awk '/=>/ { print $3 }' \
                 | sort -u \
