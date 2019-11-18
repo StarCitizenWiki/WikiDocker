@@ -7,6 +7,7 @@ RUN set -eux; \
         \
         apt-get update; \
         apt-get install -y --no-install-recommends \
+                ffmpeg \
                 libcurl4-gnutls-dev \
                 libxml2-dev \
                 libzip-dev \
