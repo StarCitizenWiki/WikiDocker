@@ -27,7 +27,7 @@ RUN set -eux; \
         # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
         apt-mark auto '.*' > /dev/null; \
         apt-mark manual $savedAptMark; \
-        apt-mark manual ffmpeg ghostscript poppler-utils; \
+        apt-mark manual zip unzip ffmpeg ghostscript poppler-utils; \
         ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
                 | awk '/=>/ { print $3 }' \
                 | sort -u \
