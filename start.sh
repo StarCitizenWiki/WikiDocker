@@ -30,30 +30,6 @@ elif [ "$role" = "queue" ]; then
             sleep 10
     done
 
-
-elif [ "$role" = "sitemap" ]; then
-
-    while [ true ]
-    do
-      php $IP/maintenance/generateSitemap.php --fspath /var/www/html/sitemap --server https://star-citizen.wiki --identifier=scw --urlpath=/sitemap/
-      # Run Daily
-      sleep 86400
-    done
-
-
-elif [ "$role" = "rebuild-smw" ]; then
-
-    echo "Starting rebuild-smw service..."
-    sleep 60
-    echo "Rebuild-smw service started."
-
-    while [ true ]
-    do
-      php $IP/extensions/SemanticMediaWiki/maintenance/rebuildData.php --shallow-update -d 25
-      # Run Weekly
-      sleep 604800‬
-    done
-
 else
     echo "Could not match the container role \"$role\""
     exit 1
