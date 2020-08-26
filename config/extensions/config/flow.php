@@ -1,0 +1,15 @@
+<?php
+
+$wgNamespaceContentModels[NS_PROJECT_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_USER_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_CATEGORY_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_FILE_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_MEDIAWIKI_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_TEMPLATE_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_HELP_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_TRANSCRIPT_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_ORGANISATION_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_COMMUNITY_CONTENT_TALK] = CONTENT_MODEL_FLOW_BOARD;
+
+$wgFlowContentFormat = 'html';

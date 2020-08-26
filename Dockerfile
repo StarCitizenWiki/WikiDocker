@@ -1,4 +1,4 @@
-FROM mediawiki:1.33
+FROM mediawiki:1.35.0
 
 # Install the PHP extensions we need
 RUN set -eux; \
@@ -51,11 +51,7 @@ RUN /usr/bin/composer install --no-dev \
    --no-interaction \
    --no-scripts
 
-COPY ./start.sh /usr/local/bin/start
+COPY ./queue.sh /usr/local/bin/queue
 
 RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini && \
     echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini
-
-RUN chmod u+x /usr/local/bin/start
-
-CMD ["/usr/local/bin/start"]

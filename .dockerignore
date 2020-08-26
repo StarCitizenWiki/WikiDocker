@@ -1,3 +1,8 @@
-Dockerfile
-docker-compose.yaml
+.git
+config
+container-settings
+includes
 docker-build.sh
+docker-compose.yaml
+LocalSettings.php
+README.md
