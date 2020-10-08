@@ -21,6 +21,7 @@ RUN set -eux; \
                 curl \
                 dom \
                 json \
+                redis \
                 zip \
         ; \
         \
@@ -50,6 +51,8 @@ RUN /usr/bin/composer install --no-dev \
    --no-ansi \
    --no-interaction \
    --no-scripts
+
+RUN mv skins/citizen skins/Citizen
 
 COPY ./queue.sh /usr/local/bin/queue
 
