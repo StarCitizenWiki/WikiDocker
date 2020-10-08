@@ -1,5 +1,5 @@
 <?php
-wfLoadExtension( [
+wfLoadExtensions( [
     'Elastica',
     'CirrusSearch',
 ] );
@@ -13,7 +13,7 @@ wfLoadExtension( 'Capiunto' );
 wfLoadExtension( 'Cite' );
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'CookieWarning' );
-wfLoadExtension( 'CommonsMetadata' );
+#wfLoadExtension( 'CommonsMetadata' );
 wfLoadExtension( 'ConfirmEdit' );
 wfLoadExtension( 'ConfirmEdit/QuestyCaptcha' );
 wfLoadExtension( 'Disambiguator' );
@@ -47,7 +47,7 @@ wfLoadExtension( 'Wiki3d' ); // Wiki3D
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'WikiSEO' );
 
-wfLoadExtension( [
+wfLoadExtensions( [
     'TextExtracts',
     'PageImages',
     'Popups',
