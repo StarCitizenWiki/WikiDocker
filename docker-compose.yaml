@@ -27,6 +27,8 @@ services:
         ipv4_address: 172.16.0.3
       internal:
     labels:
+      - "ofelia.enabled=true"
+
       - "traefik.enable=true"
       - "traefik.docker.network=star-citizen.wiki"
       - "traefik.http.routers.star-citizen.rule=Host(`star-citizen.wiki`)"
@@ -95,7 +97,7 @@ services:
       - db
       - elasticsearch
     command:
-      daemon --docker
+      daemon
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro
