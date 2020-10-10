@@ -1,8 +1,10 @@
 .git
 config
-container-settings
+container-config
 includes
 docker-build.sh
 docker-compose.yaml
 LocalSettings.php
 README.md
+var
+etc

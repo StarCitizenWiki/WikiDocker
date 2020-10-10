@@ -58,4 +58,10 @@ RUN /usr/bin/composer install --no-dev \
 COPY ./queue.sh /usr/local/bin/queue
 
 RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini && \
-    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini
+    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini && \
+    chown www-data:www-data /var/www/html/extensions && \
+    chown www-data:www-data /var/www/html/skins && \
+    chown www-data:www-data /usr/local/bin/queue && \
+    chmod +x /usr/local/bin/queue
+
+USER www-data
