@@ -63,5 +63,3 @@ RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.
     chown www-data:www-data /var/www/html/skins && \
     chown www-data:www-data /usr/local/bin/queue && \
     chmod +x /usr/local/bin/queue
-
-USER www-data
