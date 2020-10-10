@@ -21,7 +21,6 @@ RUN set -eux; \
                 curl \
                 dom \
                 json \
-                redis \
                 zip \
         ; \
         \
@@ -38,7 +37,9 @@ RUN set -eux; \
                 | xargs -rt apt-mark manual; \
         \
         apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
-        rm -rf /var/lib/apt/lists/*
+        rm -rf /var/lib/apt/lists/* ;\
+        git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis ;\
+        docker-php-ext-install redis
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -50,9 +51,9 @@ RUN /usr/bin/composer install --no-dev \
    --ignore-platform-reqs \
    --no-ansi \
    --no-interaction \
-   --no-scripts
-
-RUN mv skins/citizen skins/Citizen
+   --no-scripts ;\
+   \
+   mv skins/citizen skins/Citizen
 
 COPY ./queue.sh /usr/local/bin/queue
 
