@@ -96,8 +96,6 @@ services:
       - star-citizen.wiki
       - db
       - elasticsearch
-    command:
-      daemon
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro
