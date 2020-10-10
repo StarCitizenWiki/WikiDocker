@@ -1,15 +1,15 @@
 <?php
 
-$wgNamespaceContentModels[NS_PROJECT_TALK] = CONTENT_MODEL_FLOW_BOARD;
-$wgNamespaceContentModels[NS_USER_TALK] = CONTENT_MODEL_FLOW_BOARD;
-$wgNamespaceContentModels[NS_CATEGORY_TALK] = CONTENT_MODEL_FLOW_BOARD;
-$wgNamespaceContentModels[NS_TALK] = CONTENT_MODEL_FLOW_BOARD;
-$wgNamespaceContentModels[NS_FILE_TALK] = CONTENT_MODEL_FLOW_BOARD;
-$wgNamespaceContentModels[NS_MEDIAWIKI_TALK] = CONTENT_MODEL_FLOW_BOARD;
-$wgNamespaceContentModels[NS_TEMPLATE_TALK] = CONTENT_MODEL_FLOW_BOARD;
-$wgNamespaceContentModels[NS_HELP_TALK] = CONTENT_MODEL_FLOW_BOARD;
-$wgNamespaceContentModels[NS_TRANSCRIPT_TALK] = CONTENT_MODEL_FLOW_BOARD;
-$wgNamespaceContentModels[NS_ORGANISATION_TALK] = CONTENT_MODEL_FLOW_BOARD;
-$wgNamespaceContentModels[NS_COMMUNITY_CONTENT_TALK] = CONTENT_MODEL_FLOW_BOARD;
+$wgNamespaceContentModels[NS_PROJECT_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_USER_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_CATEGORY_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_FILE_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_MEDIAWIKI_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_TEMPLATE_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_HELP_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_TRANSCRIPT_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_ORGANISATION_TALK] = 'flow-board';
+$wgNamespaceContentModels[NS_COMMUNITY_CONTENT_TALK] = 'flow-board';
 
 $wgFlowContentFormat = 'html';
