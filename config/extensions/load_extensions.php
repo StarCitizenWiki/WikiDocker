@@ -1,8 +1,6 @@
 <?php
-wfLoadExtensions( [
-    'Elastica',
-    'CirrusSearch',
-] );
+wfLoadExtension( 'Elastica' );
+wfLoadExtension( 'CirrusSearch' );
 
 wfLoadExtension( 'AdvancedSearch' );
 #wfLoadExtension('AntiSpoof');
@@ -21,7 +19,7 @@ wfLoadExtension( 'Echo' );
 wfLoadExtension( 'Flow' );
 wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'LabeledSectionTransclusion' );
-wfLoadExtension( 'Lingo' );
+#wfLoadExtension( 'Lingo' );
 wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'MultimediaViewer' );
 wfLoadExtension( 'OATHAuth' );
@@ -43,12 +41,10 @@ wfLoadExtension( 'TimedMediaHandler' );
 wfLoadExtension( 'UploadWizard' );
 wfLoadExtension( 'Variables' );
 wfLoadExtension( 'VisualEditor' );
-wfLoadExtension( 'Wiki3d' ); // Wiki3D
+#wfLoadExtension( 'Wiki3d' ); // Wiki3D
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'WikiSEO' );
 
-wfLoadExtensions( [
-    'TextExtracts',
-    'PageImages',
-    'Popups',
-] );
+wfLoadExtension( 'TextExtracts' );
+wfLoadExtension( 'PageImages' );
+wfLoadExtension( 'Popups' );

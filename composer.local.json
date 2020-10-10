@@ -7,7 +7,6 @@
                 "mediawiki/native-svg-handler": "1.0.0",
                 "mediawiki/echo": "1.35.0",
                 "mediawiki/labeled-section-transclusion": "1.35.0",
-                "mediawiki/lingo": "^3.1.1",
                 "mediawiki/template-styles": "1.35.0",
                 "mediawiki/variables": "1.35.0",
                 "mediawiki/timed-media-handler": "1.35.0",
@@ -27,7 +26,6 @@
                 "mediawiki/thanks": "1.35.0",
                 "mediawiki/upload-wizard": "1.35.0",
                 "mediawiki/apiunto": "1.35.0",
-                "mediawiki/wiki-3d": "1.35.0",
                 "mediawiki/citizen-skin": "1.35.0",
 
                 "ruflin/elastica": "6.1.1",
