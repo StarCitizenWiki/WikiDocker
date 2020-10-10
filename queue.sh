@@ -12,4 +12,4 @@ RJ=$IP/maintenance/runJobs.php
 # Everything else, limit the number of jobs on each batch
 # The --wait parameter will pause the execution here until new jobs are added,
 # to avoid running the loop without anything to do
-/usr/local/bin/php $RJ --wait --maxjobs=25
+/usr/local/bin/php $RJ --wait --maxjobs=25 --maxtime=300 --memory-limit=256M
