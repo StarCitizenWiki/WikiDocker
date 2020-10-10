@@ -42,3 +42,9 @@ Start the container:
 ```shell script
 docker-compose up -d
 ```
+
+## Installation
+```shell script
+php maintenance/update.php --quick
+```
+Copy the content of `/var/www/html/extensions/SemanticMediaWiki/.smw.json` into `.smw.json` and un-comment the mapping. 
