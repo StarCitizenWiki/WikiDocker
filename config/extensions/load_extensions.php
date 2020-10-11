@@ -29,7 +29,7 @@ wfLoadExtension( 'PdfHandler' );
 wfLoadExtension( 'RelatedArticles' );
 wfLoadExtension( 'SandboxLink' );
 wfLoadExtension( 'Scribunto' );
-wfLoadExtension( 'SemanticMediaWiki' );
+enableSemantics('star-citizen.wiki');
 wfLoadExtension( 'SemanticResultFormats' );
 wfLoadExtension( 'SemanticScribunto' );
 wfLoadExtension( 'SwiftMailer' );

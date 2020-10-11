@@ -1,7 +1,6 @@
 <?php
 
 $smwgSearchByPropertyFuzzy = false;
-enableSemantics('star-citizen.wiki');
 
 $smwgNamespacesWithSemanticLinks[NS_COMMLINK] = true;
 $smwgNamespacesWithSemanticLinks[NS_TRANSCRIPT] = true;
