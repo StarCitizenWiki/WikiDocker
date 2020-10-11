@@ -5,7 +5,7 @@ The Docker configuration powering https://star-citizen.wiki.
 Replace `$wgSecretKey` in `LocalSettings.php`.
 ```shell script
 # Generates a 64 character long hex string 
-echo "$(openssl rand -hex 64)"
+echo "$(openssl rand -hex 32)"
 # Or
 php -r echo(bin2hex(openssl_random_pseudo_bytes(32)));
 ```
