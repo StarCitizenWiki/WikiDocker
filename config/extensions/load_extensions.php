@@ -19,7 +19,7 @@ wfLoadExtension( 'Echo' );
 wfLoadExtension( 'Flow' );
 wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'LabeledSectionTransclusion' );
-wfLoadExtension( 'Lingo' );
+#wfLoadExtension( 'Lingo' );
 wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'MultimediaViewer' );
 wfLoadExtension( 'OATHAuth' );
