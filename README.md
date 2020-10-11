@@ -38,6 +38,10 @@ Build the image:
 ./docker-build.sh
 ```
 
+_Note:_  
+Elasticsearch requires `vm.max_map_count` to be at least `262144`.  
+Run: `sysctl -w vm.max_map_count=262144`
+
 Start the container:
 ```shell script
 docker-compose up -d
