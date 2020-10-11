@@ -27,14 +27,14 @@ $wgDefaultUserOptions['srf-prefs-datatables-options-cache-default'] = true;
 $wgAutoConfirmCount = 250;
 $wgAutoConfirmAge = 86400 * 30;
 
-$wgAutopromote = [
+/*$wgAutopromote = [
     "Mitarbeiter" => ["&",
         APCOND_EMAILCONFIRMED,
         [APCOND_EDITCOUNT, &$wgAutoConfirmCount],
         [APCOND_AGE, &$wgAutoConfirmAge],
         ['!', APCOND_BLOCKED]
     ]
-];
+];*/
 
 # Hidden Groups
 $wgImplicitGroups = [
