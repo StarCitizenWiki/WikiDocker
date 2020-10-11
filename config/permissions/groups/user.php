@@ -1,6 +1,7 @@
 <?php
 
 ### registrierter Account
+$wgGroupPermissions['user']['writeapi'] = true;
 $wgGroupPermissions['user']['createpage'] = true;
 $wgGroupPermissions['user']['upload'] = true;
 $wgGroupPermissions['user']['reupload'] = true;
