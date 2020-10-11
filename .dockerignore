@@ -6,5 +6,8 @@ docker-build.sh
 docker-compose.yaml
 LocalSettings.php
 README.md
+# Folders if docker-compose paths are local
 var
 etc
+db
+esdata
