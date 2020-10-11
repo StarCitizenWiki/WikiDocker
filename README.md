@@ -134,7 +134,7 @@ The Wiki stack consists of the following services:
     * [mediawiki/template-styles](https://www.mediawiki.org/wiki/Extension:TemplateStyles)
     * [mediawiki/timed-media-handler](https://www.mediawiki.org/wiki/Extension:TimedMediaHandler)
     * [mediawiki/thanks](https://www.mediawiki.org/wiki/Extension:Thanks)
-    * [mediawiki/upload-wizard](https://www.mediawiki.org/wiki/UploadWizard)
+    * [mediawiki/upload-wizard](https://www.mediawiki.org/wiki/Extension:UploadWizard)
     * [mediawiki/variables](https://www.mediawiki.org/wiki/Extension:Variables)
 * db
   * MariaDB Server
