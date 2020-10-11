@@ -2,7 +2,7 @@ version: '3'
 
 services:
   star-citizen.wiki:
-    image: scw-wiki:1.33
+    image: scw-wiki:1.35.0
     container_name: star-citizen.wiki
     restart: unless-stopped
     security_opt:
@@ -12,21 +12,16 @@ services:
       - elasticsearch
     links:
       - db
-      - parsoid
     expose:
       - 80
-    environment:
-      CONTAINER_ROLE: app
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      #- /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
       - /etc/star-citizen.wiki/config:/var/www/config
-      - /etc/star-citizen.wiki/mime.types:/var/www/html/includes/libs/mime/mime.types:ro
-      - /etc/star-citizen.wiki/mime.info:/var/www/html/includes/libs/mime/mime.info:ro
-      - /etc/star-citizen.wiki/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
-      - /srv/star-citizen.wiki/extensions:/var/www/html/extensions
+      #- /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
+      - /etc/star-citizen.wiki/includes/libs/mime/MimeMap.php:/var/www/html/includes/libs/mime/MimeMap.php:ro
+      - /etc/star-citizen.wiki/container-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
       - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
-      - /srv/star-citizen.wiki/skins/Citizen:/var/www/html/skins/Citizen
       - /srv/cdn.star-citizen.wiki/images:/var/www/html/images
     networks:
       star-citizen.wiki:
@@ -38,57 +33,11 @@ services:
       - "traefik.http.routers.star-citizen.rule=Host(`star-citizen.wiki`)"
       - "traefik.http.routers.star-citizen.entryPoints=https"
       - "traefik.http.routers.star-citizen.middlewares=default@file,star-citizen-csp@file"
-      - "traefik.http.routers.star-citizen.tls.certresolver=http"
+      - "traefik.http.routers.star-citizen.tls=true"
+      - "traefik.http.routers.star-citizen.tls.certresolver=dns"
       - "traefik.http.routers.star-citizen.tls.options=default"
       - "traefik.http.routers.star-citizen.tls.domains[0].main=star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=www.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=cdn.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=archiv.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=cdn.archiv.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=api.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=test.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=cdn.test.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=docs.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=scripts.star-citizen.wiki"
-
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=starcitizen-wiki.de"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=www.starcitizen-wiki.de"
-
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=squadron42-wiki.de"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=www.squadron42-wiki.de"
-
-      - "ofelia.enabled=true"
-      - "ofelia.job-exec.rebuild-smw-shallow.schedule=@weekly"
-      - "ofelia.job-exec.rebuild-smw-shallow.command=/usr/local/bin/php /var/www/html/extensions/SemanticMediaWiki/maintenance/rebuildData.php --shallow-update -d 25"
-      - "ofelia.job-exec.rebuild-smw-shallow.user=www-data"
-
-      - "ofelia.job-exec.rebuild-smw-full.schedule=@monthly"
-      - "ofelia.job-exec.rebuild-smw-full.command=/usr/local/bin/php /var/www/html/extensions/SemanticMediaWiki/maintenance/rebuildData.php -d 25"
-      - "ofelia.job-exec.rebuild-smw-full.user=www-data"
-
-      - "ofelia.job-exec.gen-sitemap.schedule=@daily"
-      - "ofelia.job-exec.gen-sitemap.command=/usr/local/bin/php /var/www/html/maintenance/generateSitemap.php --fspath /var/www/html/sitemap --server https://star-citizen.wiki --identifier=scw --urlpath=/sitemap/"
-      - "ofelia.job-exec.gen-sitemap.user=www-data"
-
-  queue:
-    image: scw-wiki:1.33
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    depends_on:
-      - db
-      - elasticsearch
-    environment:
-      CONTAINER_ROLE: queue
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
-      - /etc/star-citizen.wiki/config:/var/www/config
-      - /srv/star-citizen.wiki/extensions:/var/www/html/extensions
-      - /srv/cdn.star-citizen.wiki/images:/var/www/html/images
-      - /srv/star-citizen.wiki/skins/Citizen:/var/www/html/skins/Citizen
-    networks:
-      - internal
+      - "traefik.http.routers.star-citizen.tls.domains[0].sans=*.star-citizen.wiki"
 
   db:
     image: mariadb:latest
@@ -126,18 +75,6 @@ services:
     networks:
       - internal
 
-  parsoid:
-    image: thenets/parsoid:0.10
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    environment:
-      - PARSOID_DOMAIN_live=http://star-citizen.wiki/api.php
-    expose:
-      - 8000
-    networks:
-      - internal
-
   ofelia:
     image:
       mcuadros/ofelia:latest
@@ -145,10 +82,17 @@ services:
       - star-citizen.wiki
       - db
       - elasticsearch
-    command:
-      daemon --docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - internal
 
 networks:
   star-citizen.wiki:

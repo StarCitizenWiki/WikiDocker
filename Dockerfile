@@ -1,4 +1,4 @@
-FROM mediawiki:1.33
+FROM mediawiki:1.35.0
 
 # Install the PHP extensions we need
 RUN set -eux; \
@@ -37,7 +37,9 @@ RUN set -eux; \
                 | xargs -rt apt-mark manual; \
         \
         apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
-        rm -rf /var/lib/apt/lists/*
+        rm -rf /var/lib/apt/lists/* ;\
+        git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis; \
+        docker-php-ext-install redis
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -45,17 +47,25 @@ COPY composer.local.json /var/www/html
 
 WORKDIR /var/www/html
 
+RUN chown -R www-data:www-data /var/www
+
+USER www-data
+
 RUN /usr/bin/composer install --no-dev \
    --ignore-platform-reqs \
    --no-ansi \
    --no-interaction \
-   --no-scripts
+   --no-cache \
+   --no-scripts; \
+   \
+   mv skins/citizen skins/Citizen; \
+   mv extensions/Oauth extensions/OAuth
 
-COPY ./start.sh /usr/local/bin/start
+USER root
 
-RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini && \
-    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini
+COPY ./queue.sh /usr/local/bin/queue
 
-RUN chmod u+x /usr/local/bin/start
-
-CMD ["/usr/local/bin/start"]
+RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini; \
+    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini; \
+    chown www-data:www-data /usr/local/bin/queue; \
+    chmod +x /usr/local/bin/queue
