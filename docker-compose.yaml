@@ -35,24 +35,11 @@ services:
       - "traefik.http.routers.star-citizen.rule=Host(`star-citizen.wiki`)"
       - "traefik.http.routers.star-citizen.entryPoints=https"
       - "traefik.http.routers.star-citizen.middlewares=default@file,star-citizen-csp@file"
-      - "traefik.http.routers.star-citizen.tls.certresolver=http"
+      - "traefik.http.routers.star-citizen.tls=true"
+      - "traefik.http.routers.star-citizen.tls.certresolver=dns"
       - "traefik.http.routers.star-citizen.tls.options=default"
       - "traefik.http.routers.star-citizen.tls.domains[0].main=star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=www.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=cdn.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=archiv.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=cdn.archiv.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=api.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=test.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=cdn.test.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=docs.star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=scripts.star-citizen.wiki"
-
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=starcitizen-wiki.de"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=www.starcitizen-wiki.de"
-
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=squadron42-wiki.de"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=www.squadron42-wiki.de"
+      - "traefik.http.routers.star-citizen.tls.domains[0].sans=*.star-citizen.wiki"
 
   db:
     image: mariadb:latest
