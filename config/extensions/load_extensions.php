@@ -19,11 +19,11 @@ wfLoadExtension( 'Echo' );
 wfLoadExtension( 'Flow' );
 wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'LabeledSectionTransclusion' );
-#wfLoadExtension( 'Lingo' );
+wfLoadExtension( 'Lingo' );
 wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'MultimediaViewer' );
 wfLoadExtension( 'OATHAuth' );
-wfLoadExtension( 'Oauth' ); // OAuth
+wfLoadExtension( 'OAuth' );
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'PdfHandler' );
 wfLoadExtension( 'RelatedArticles' );

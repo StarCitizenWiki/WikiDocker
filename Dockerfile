@@ -38,7 +38,7 @@ RUN set -eux; \
         \
         apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
         rm -rf /var/lib/apt/lists/* ;\
-        git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis ;\
+        git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis; \
         docker-php-ext-install redis
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -56,15 +56,16 @@ RUN /usr/bin/composer install --no-dev \
    --no-ansi \
    --no-interaction \
    --no-cache \
-   --no-scripts ;\
+   --no-scripts; \
    \
-   mv skins/citizen skins/Citizen
+   mv skins/citizen skins/Citizen; \
+   mv extensions/Oauth extensions/OAuth
 
 USER root
 
 COPY ./queue.sh /usr/local/bin/queue
 
-RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini && \
-    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini && \
-    chown www-data:www-data /usr/local/bin/queue && \
+RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini; \
+    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini; \
+    chown www-data:www-data /usr/local/bin/queue; \
     chmod +x /usr/local/bin/queue
