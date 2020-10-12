@@ -149,3 +149,8 @@ The Wiki stack consists of the following services:
     * Runs daily
 * redis
   * Caching
+  
+## Upgrade notes
+After a major update OAuth Consumers seem to get invalidated.  
+For each registered consumer a new one needs to get created.
+ 
