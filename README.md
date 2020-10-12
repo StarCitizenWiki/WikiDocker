@@ -149,6 +149,8 @@ The Wiki stack consists of the following services:
     * Runs daily
 * redis
   * Caching
+* [parsoid](https://github.com/thenets/docker-parsoid)
+  * Used until the implementation shipped with MW "just works"
   
 ## Upgrade notes
 After a major update OAuth Consumers seem to get invalidated.  

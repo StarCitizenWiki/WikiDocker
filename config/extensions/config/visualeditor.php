@@ -1,12 +1,11 @@
 <?php
 
-#$wgVisualEditorParsoidAutoConfig = true;
+$wgVisualEditorParsoidAutoConfig = false;
+
 $wgVirtualRestConfig['modules']['parsoid'] = [
-    // URL to the Parsoid instance.
-    // You should change $wgServer to match the non-local host running Parsoid
-    'url' => 'https://star-citizen.wiki/rest.php',
-    // Parsoid "domain", see below (optional, rarely needed)
-    'domain' => 'star-citizen.wiki',
+    'url' => 'http://parsoid:8000',
+    'domain' => 'live',
+    'prefix' => 'live',
 ];
 
 $wgVisualEditorAvailableNamespaces = [

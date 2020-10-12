@@ -94,6 +94,18 @@ services:
     networks:
       - internal
 
+  parsoid:
+    image: thenets/parsoid:0.11
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - PARSOID_DOMAIN_live=http://star-citizen.wiki/api.php
+    expose:
+      - 8000
+    networks:
+      - internal
+
 networks:
   star-citizen.wiki:
     external: true
