@@ -1,5 +1,15 @@
 <?php
 
+use CirrusSearch\CirrusSearch;
+
+enableSemantics( 'star-citizen.wiki' );
+wfLoadExtension( 'SemanticResultFormats' );
+wfLoadExtension( 'SemanticScribunto' );
+
+$smwgFallbackSearchType = static function() {
+    return new CirrusSearch();
+};
+
 $smwgSearchByPropertyFuzzy = false;
 
 $smwgNamespacesWithSemanticLinks[NS_COMMLINK] = true;
