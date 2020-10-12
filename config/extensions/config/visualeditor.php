@@ -1,6 +1,12 @@
 <?php
 
-$wgVisualEditorParsoidAutoConfig = true;
+$wgVisualEditorParsoidAutoConfig = false;
+
+$wgVirtualRestConfig['modules']['parsoid'] = [
+    'url' => 'http://parsoid:8000',
+    'domain' => 'live',
+    'prefix' => 'live',
+];
 
 $wgVisualEditorAvailableNamespaces = [
     NS_MAIN => true,

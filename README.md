@@ -5,7 +5,7 @@ The Docker configuration powering https://star-citizen.wiki.
 Replace `$wgSecretKey` in `LocalSettings.php`.
 ```shell script
 # Generates a 64 character long hex string 
-echo "$(openssl rand -hex 64)"
+echo "$(openssl rand -hex 32)"
 # Or
 php -r echo(bin2hex(openssl_random_pseudo_bytes(32)));
 ```
@@ -134,7 +134,7 @@ The Wiki stack consists of the following services:
     * [mediawiki/template-styles](https://www.mediawiki.org/wiki/Extension:TemplateStyles)
     * [mediawiki/timed-media-handler](https://www.mediawiki.org/wiki/Extension:TimedMediaHandler)
     * [mediawiki/thanks](https://www.mediawiki.org/wiki/Extension:Thanks)
-    * [mediawiki/upload-wizard](https://www.mediawiki.org/wiki/UploadWizard)
+    * [mediawiki/upload-wizard](https://www.mediawiki.org/wiki/Extension:UploadWizard)
     * [mediawiki/variables](https://www.mediawiki.org/wiki/Extension:Variables)
 * db
   * MariaDB Server
@@ -149,3 +149,10 @@ The Wiki stack consists of the following services:
     * Runs daily
 * redis
   * Caching
+* [parsoid](https://github.com/thenets/docker-parsoid)
+  * Used until the implementation shipped with MW "just works"
+  
+## Upgrade notes
+After a major update OAuth Consumers seem to get invalidated.  
+For each registered consumer a new one needs to get created.
+ 

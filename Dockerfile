@@ -58,8 +58,8 @@ RUN /usr/bin/composer install --no-dev \
    --no-cache \
    --no-scripts; \
    \
-   mv skins/citizen skins/Citizen; \
-   mv extensions/Oauth extensions/OAuth
+   mv extensions/Oauth extensions/OAuth; \
+   mv skins/citizen skins/Citizen
 
 USER root
 
