@@ -467,7 +467,7 @@
                 {
                         "type": "package",
                         "package": {
-                                "name": "mediawiki/css-sanitizer",
+                                "name": "wikimedia/css-sanitizer",
                                 "version": "2.0.0",
                                 "dist": {
                                         "url": "https://github.com/StarCitizenWiki/css-sanitizer/archive/master.zip",
@@ -477,6 +477,9 @@
                                         "type": "git",
                                         "url": "https://github.com/StarCitizenWiki/css-sanitizer.git",
                                         "reference": "master"
+                                },
+                                "autoload": {
+                                        "classmap": ["src/"]
                                 }
                         }
                 }
