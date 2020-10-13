@@ -17,9 +17,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgWikiConfigPath = __DIR__ . '/../config';
 
-
 ## Uncomment this to disable output compression
-# $wgDisableOutputCompression = true;
+### Causes issues behind Caches
+$wgDisableOutputCompression = true;
 
 $wgSitename = "Star Citizen Wiki";
 $wgMetaNamespace = "Star_Citizen_Wiki";
