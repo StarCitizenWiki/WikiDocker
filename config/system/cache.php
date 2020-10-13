@@ -3,13 +3,23 @@
 
 $wgObjectCaches['redis'] = [
     'class' => 'RedisBagOStuff',
-    'servers' => ['redis:6379'],
+    'servers' => [ 'redis:6379' ],
+    'persistent' => true,
+];
+
+$wgJobTypeConf['default'] = [
+    'class' => 'JobQueueRedis',
+    'redisServer' => 'redis:6379',
+    'redisConfig' => [],
+    'claimTTL' => 3600,
+    'daemonized' => true
 ];
 
 $wgEnableSidebarCache = true;
 
 $wgMainCacheType = 'redis';
 $wgSessionCacheType = 'redis';
+$wgMainStash = 'redis';
 
 $wgUseLocalMessageCache = true;
 $wgParserCacheExpireTime = 2592000;
