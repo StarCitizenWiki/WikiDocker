@@ -4,7 +4,7 @@
 $wgObjectCaches['redis'] = [
     'class' => 'RedisBagOStuff',
     'servers' => [ 'redis:6379' ],
-    'persistent' => true,
+    'persistent' => false,
 ];
 
 $wgJobTypeConf['default'] = [
