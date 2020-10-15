@@ -181,13 +181,13 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0",
                                 "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/archive/REL1_35.zip",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/archive/master.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs.git",
-                                        "reference": "REL1_35"
+                                        "reference": "master"
                                 }
                         }
                 },
