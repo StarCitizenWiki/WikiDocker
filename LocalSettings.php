@@ -52,17 +52,7 @@ $wgLogos = [
 $wgLogo = $wgLogos['1x'];
 $wgFavicon = "$wgUploadPath/favicon.png";
 
-## UPO means: this is also a user preference option
-
-$wgEnableEmail = true;
-$wgEnableUserEmail = true; # UPO
-
-$wgEmergencyContact = "info@star-citizen.wiki";
-$wgPasswordSender = "noreply@star-citizen.wiki";
-
-$wgEnotifUserTalk = true; # UPO
-$wgEnotifWatchlist = true; # UPO
-$wgEmailAuthentication = true;
+## E-Mail
 
 ## Database settings
 require_once "$wgWikiConfigPath/system/db.php";
@@ -158,9 +148,6 @@ $wgJobRunRate = 0;
 $wgExternalLinkTarget = '_blank';
 $wgUrlProtocols[] = "ts3server://";
 
-# Mail
-require_once "$wgWikiConfigPath/system/mail.php";
-
 # Namespaces
 define('NS_COMMLINK', 3100);
 define('NS_COMMLINK_TALK', 3101);
@@ -216,7 +203,6 @@ $wgUsePathInfo = true;
 require_once "$wgWikiConfigPath/system/action_paths.php";
 
 $wgRawHtml = false;
-$wgAllowImageTag = true; // DEPRECATED 1.35
 
 # Shell Config
 $wgMaxShellMemory = 2097152; // 2GB
