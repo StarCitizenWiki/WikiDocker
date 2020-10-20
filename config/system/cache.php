@@ -4,13 +4,16 @@
 $wgObjectCaches['redis'] = [
     'class' => 'RedisBagOStuff',
     'servers' => [ 'redis:6379' ],
-    'persistent' => false,
+    'persistent' => true,
 ];
 
 $wgJobTypeConf['default'] = [
     'class' => 'JobQueueRedis',
     'redisServer' => 'redis:6379',
-    'redisConfig' => [],
+    'redisConfig' => [
+        'connectTimeout' => 2,
+        'compression' => 'gzip',
+    ],
     'claimTTL' => 3600,
     'daemonized' => true
 ];
