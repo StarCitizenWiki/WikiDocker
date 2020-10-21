@@ -29,11 +29,10 @@ services:
         ipv4_address: 172.16.0.3
       internal:
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost"]
-      interval: 1m30s
+      test: curl --fail -s http://172.16.0.3/ || exit 1
+      interval: 10s
       timeout: 10s
       retries: 3
-      start_period: 40s
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=star-citizen.wiki"
@@ -56,6 +55,11 @@ services:
       MYSQL_USER:
       MYSQL_PASSWORD:
       MYSQL_ROOT_PASSWORD:
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "db", "-u", "root", "-pCHANGEME" ]
+      timeout: 45s
+      interval: 10s
+      retries: 5
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/lib/star-citizen.wiki/db:/var/lib/mysql
