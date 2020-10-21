@@ -27,6 +27,12 @@ services:
       star-citizen.wiki:
         ipv4_address: 172.16.0.3
       internal:
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=star-citizen.wiki"
