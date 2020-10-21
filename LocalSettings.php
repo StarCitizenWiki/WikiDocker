@@ -53,6 +53,7 @@ $wgLogo = $wgLogos['1x'];
 $wgFavicon = "$wgUploadPath/favicon.png";
 
 ## E-Mail
+require_once "$wgWikiConfigPath/system/mail.php";
 
 ## Database settings
 require_once "$wgWikiConfigPath/system/db.php";
