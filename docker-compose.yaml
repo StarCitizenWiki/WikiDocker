@@ -21,6 +21,7 @@ services:
       #- /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
       - /etc/star-citizen.wiki/includes/libs/mime/MimeMap.php:/var/www/html/includes/libs/mime/MimeMap.php:ro
       - /etc/star-citizen.wiki/container-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+      - /etc/star-citizen.wiki/container-config/robots.txt:/var/www/html/robots.txt:ro
       - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
       - /srv/cdn.star-citizen.wiki/images:/var/www/html/images
     networks:
