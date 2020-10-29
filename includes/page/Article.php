@@ -1022,17 +1022,17 @@ class Article implements Page {
 			}
 		}
 
-		$isOldRevision = false;
-	        # getOldID sometimes returns strings
-	        $oldId = (int)$this->getOldID();
+        $isOldRevision = false;
+        # getOldID sometimes returns strings
+        $oldId = (int)$this->getOldID();
 
-        	$record = $this->mPage->getRevisionRecord();
+        if ( $oldId !== 0 ) {
+            $record = $this->mPage->getRevisionRecord();
 
-	        if ( $record !== null && $oldId !== 0) {
-	            $isOldRevision = (int)$record->getId() !== $oldId;
-	        }
+            $isOldRevision = $record !== null && (int)$record->getId() !== $oldId;
+        }
 
-		if ( $this->mPage->getId() === 0 || $isOldRevision ) {
+        if ( $this->mPage->getId() === 0 || $isOldRevision ) {
 			# Non-articles (special pages etc), and old revisions
 			return [
 				'index' => 'noindex',
