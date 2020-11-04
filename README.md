@@ -1,3 +1,10 @@
+<p align="center">
+    <a href="https://hub.docker.com/r/scwiki/wiki" alt="Docker Hub">
+        <img src="https://img.shields.io/docker/pulls/scwiki/wiki" />
+    </a>
+    <img src="https://img.shields.io/docker/image-size/scwiki/wiki" />
+</p>
+
 # Star Citizen Wiki Docker
 The Docker configuration powering https://star-citizen.wiki.
 
