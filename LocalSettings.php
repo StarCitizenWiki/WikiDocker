@@ -17,9 +17,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 $wgWikiConfigPath = __DIR__ . '/../config';
 
-
 ## Uncomment this to disable output compression
-# $wgDisableOutputCompression = true;
+### Causes issues behind Caches
+$wgDisableOutputCompression = true;
 
 $wgSitename = "Star Citizen Wiki";
 $wgMetaNamespace = "Star_Citizen_Wiki";
@@ -52,17 +52,8 @@ $wgLogos = [
 $wgLogo = $wgLogos['1x'];
 $wgFavicon = "$wgUploadPath/favicon.png";
 
-## UPO means: this is also a user preference option
-
-$wgEnableEmail = true;
-$wgEnableUserEmail = true; # UPO
-
-$wgEmergencyContact = "info@star-citizen.wiki";
-$wgPasswordSender = "noreply@star-citizen.wiki";
-
-$wgEnotifUserTalk = true; # UPO
-$wgEnotifWatchlist = true; # UPO
-$wgEmailAuthentication = true;
+## E-Mail
+require_once "$wgWikiConfigPath/system/mail.php";
 
 ## Database settings
 require_once "$wgWikiConfigPath/system/db.php";
@@ -158,9 +149,6 @@ $wgJobRunRate = 0;
 $wgExternalLinkTarget = '_blank';
 $wgUrlProtocols[] = "ts3server://";
 
-# Mail
-require_once "$wgWikiConfigPath/system/mail.php";
-
 # Namespaces
 define('NS_COMMLINK', 3100);
 define('NS_COMMLINK_TALK', 3101);
@@ -193,37 +181,6 @@ $wgUsersNotifiedOnAllChanges = [
 	'Michael Corleone'
 ];
 
-# Search
-$wgCirrusSearchServers = ['elasticsearch'];
-$wgSearchType = 'CirrusSearch';
-$wgNamespacesToBeSearchedDefault = [
-	NS_MAIN =>           true,
-	NS_TALK =>           false,
-	NS_USER =>           false,
-	NS_USER_TALK =>      false,
-	NS_PROJECT =>        true,
-	NS_PROJECT_TALK =>   false,
-	NS_FILE =>           true,
-	NS_FILE_TALK =>      false,
-	NS_MEDIAWIKI =>      false,
-	NS_MEDIAWIKI_TALK => false,
-	NS_TEMPLATE =>       true,
-	NS_TEMPLATE_TALK =>  false,
-	NS_HELP =>           true,
-	NS_HELP_TALK =>      false,
-	NS_CATEGORY =>       true,
-	NS_CATEGORY_TALK =>  false,
-
-	NS_COMMLINK =>       true,
-	NS_COMMLINK_TALK =>  false,
-
-	NS_TRANSCRIPT =>     true,
-
-	NS_ORGANISATION =>   true,
-
-	NS_COMMUNITY_CONTENT =>   true,
-];
-
 # Sitemap
 $wgSitemapNamespaces = [
 	NS_MAIN,
@@ -247,7 +204,6 @@ $wgUsePathInfo = true;
 require_once "$wgWikiConfigPath/system/action_paths.php";
 
 $wgRawHtml = false;
-$wgAllowImageTag = true; // DEPRECATED 1.35
 
 # Shell Config
 $wgMaxShellMemory = 2097152; // 2GB
@@ -297,6 +253,9 @@ require_once "$wgWikiConfigPath/extensions/config/approvedrevs.php";
 
 # Captcha
 require_once "$wgWikiConfigPath/extensions/config/captcha.php";
+
+# CirrusSearch
+require_once "$wgWikiConfigPath/extensions/config/cirrussearch.php";
 
 # CodeEditor
 require_once "$wgWikiConfigPath/extensions/config/code_editor.php";

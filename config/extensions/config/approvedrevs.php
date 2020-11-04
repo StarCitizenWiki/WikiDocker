@@ -19,7 +19,7 @@ $egApprovedRevsEnabledNamespaces[NS_TRANSCRIPT] = true;
 $egApprovedRevsEnabledNamespaces[NS_ORGANISATION] = true;
 $egApprovedRevsEnabledNamespaces[NS_COMMUNITY_CONTENT] = true;
 
-$egApprovedRevsSelfOwnedNamespaces = [NS_USER];
+$egApprovedRevsSelfOwnedNamespaces = [NS_USER, NS_ORGANISATION, NS_COMMUNITY_CONTENT];
 
 $wgUseFilePatrol = false;
 $wgUseRCPatrol = false;

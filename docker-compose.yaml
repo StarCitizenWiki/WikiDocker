@@ -20,13 +20,20 @@ services:
       - /etc/star-citizen.wiki/config:/var/www/config
       #- /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
       - /etc/star-citizen.wiki/includes/libs/mime/MimeMap.php:/var/www/html/includes/libs/mime/MimeMap.php:ro
+      - /etc/star-citizen.wiki/includes/page/Article.php:/var/www/html/includes/page/Article.php:ro
       - /etc/star-citizen.wiki/container-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+      - /etc/star-citizen.wiki/container-config/robots.txt:/var/www/html/robots.txt:ro
       - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
       - /srv/cdn.star-citizen.wiki/images:/var/www/html/images
     networks:
       star-citizen.wiki:
         ipv4_address: 172.16.0.3
       internal:
+    healthcheck:
+      test: curl --fail -s http://172.16.0.3/ || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 3
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=star-citizen.wiki"
@@ -49,6 +56,11 @@ services:
       MYSQL_USER:
       MYSQL_PASSWORD:
       MYSQL_ROOT_PASSWORD:
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "db", "-u", "root", "-pCHANGEME" ]
+      timeout: 45s
+      interval: 10s
+      retries: 5
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/lib/star-citizen.wiki/db:/var/lib/mysql
@@ -62,6 +74,7 @@ services:
       - no-new-privileges:true
     environment:
       - bootstrap.memory_lock=true
+      - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
@@ -82,6 +95,7 @@ services:
       - star-citizen.wiki
       - db
       - elasticsearch
+    network_mode: "none"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro

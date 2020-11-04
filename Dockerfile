@@ -41,7 +41,7 @@ RUN set -eux; \
         git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis; \
         docker-php-ext-install redis
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
 
 COPY composer.local.json /var/www/html
 
