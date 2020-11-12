@@ -8,6 +8,8 @@
 # Star Citizen Wiki Docker
 The Docker configuration powering https://star-citizen.wiki.
 
+`docker pull scwiki/wiki:1.35.0`
+
 ## Usage
 Replace `$wgSecretKey` in `LocalSettings.php`.
 ```shell script
