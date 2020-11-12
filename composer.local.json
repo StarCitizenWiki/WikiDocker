@@ -5,6 +5,7 @@
                 "mediawiki/approved-revs": "1.35.0",
                 "mediawiki/disambiguator": "1.35.0",
                 "mediawiki/capiunto": "1.35.0",
+                "mediawiki/commons-metadata": "1.35.0",
                 "mediawiki/citizen-skin": "1.35.0",
                 "mediawiki/cookie-warning": "1.35.0",
                 "mediawiki/echo": "1.35.0",
@@ -44,13 +45,8 @@
         "extra": {
                 "merge-plugin": {
                         "include": [
-                                "extensions/CirrusSearch/composer.json",
-                                "extensions/Elastica/composer.json",
-                                "extensions/Flow/composer.json",
-                                "extensions/OAuth/composer.json",
-                                "extensions/OATHAuth/composer.json",
-                                "extensions/TemplateStyles/composer.json",
-                                "extensions/TimedMediaHandler/composer.json"
+                                "extensions/*/composer.json",
+                                "skins/*/composer.json"
                         ]
                 }
         },
@@ -86,6 +82,23 @@
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-Echo.git",
                                         "reference": "REL1_35"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/commons-metadata",
+                                "type": "mediawiki-extension",
+                                "version": "1.35.0",
+                                "dist": {
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-CommonsMetadata/archive/master.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-CommonsMetadata.git",
+                                        "reference": "master"
                                 }
                         }
                 },
