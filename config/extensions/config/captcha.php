@@ -23,7 +23,7 @@ $wgCaptchaQuestions = [
     "<hr>Wie heißt das Wort, welches mit '{$captchaRSIQuestion[$captchaRSIRnd][0]}' beginnt in <code>Roberts Space Industries</code>?" => [
         $captchaRSIQuestion[$captchaRSIRnd][1],
     ],
-    "<hr>Wie heißt das Wort, welches mit '{$captchaSCRnd[$captchaSCRnd][0]}' beginnt in <code>Star Citizen</code>?" => [
+    "<hr>Wie heißt das Wort, welches mit '{$captchaSCQuestion[$captchaSCRnd][0]}' beginnt in <code>Star Citizen</code>?" => [
         $captchaSCQuestion[$captchaSCRnd][1],
     ],
     '<hr>Wie heißt der Visionär hinter Star Citizen?' => [
