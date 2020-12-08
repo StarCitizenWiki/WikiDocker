@@ -7,13 +7,21 @@ Disallow: /Spezial:Zuf%C3%A4llige_Seite
 Disallow: /Spezial%3AZuf%C3%A4llige_Seite
 Disallow: /Spezial:Suche
 Disallow: /Spezial%3ASuche
+Disallow: /Spezial:Hochladeassistent
+Disallow: /Spezial%3AHochladeassistent
 # Without short URLs
 Disallow: /index.php?diff=
+Disallow: /index.php?*diff=
 Disallow: /index.php?oldid=
+Disallow: /index.php?*oldid=
+Disallow: /index.php?veaction=edit
+Disallow: /index.php?*veaction=edit
 Disallow: /index.php?title=MediaWiki
 Disallow: /index.php?title=Special:
 Disallow: /index.php?title=Spezial:
 Disallow: /skins/
+Disallow: */edit
+Disallow: *?redlink
 # Allow the Internet Archiver to index action=raw and thereby store the raw wikitext of pages
 User-agent: ia_archiver
 Allow: /*&action=raw
