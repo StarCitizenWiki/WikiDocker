@@ -1,5 +1,7 @@
 FROM mediawiki:1.35.0
 
+LABEL maintainer="foxftw@star-citizen.wiki"
+
 # Install the PHP extensions we need
 RUN set -eux; \
         \
@@ -39,7 +41,8 @@ RUN set -eux; \
         apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
         rm -rf /var/lib/apt/lists/* ;\
         git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis; \
-        docker-php-ext-install redis
+        docker-php-ext-install redis; \
+        rm -rf /usr/src/*
 
 COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
 
@@ -69,3 +72,10 @@ RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.
     echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini; \
     chown www-data:www-data /usr/local/bin/queue; \
     chmod +x /usr/local/bin/queue
+
+VOLUME /var/www/html/sitemap
+VOLUME /var/www/html/images
+VOLUME /var/www/html/config
+VOLUME /var/www/html/LocalSettings.php
+
+EXPOSE 80

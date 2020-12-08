@@ -1,10 +1,16 @@
-version: '3'
+version: '3.7'
+
+###
+# This file assumes the following external network
+# docker network create --subnet=172.16.0.0/29 star-citizen.wiki
+###
 
 services:
   star-citizen.wiki:
     image: scw-wiki:1.35.0
     container_name: star-citizen.wiki
     restart: unless-stopped
+    init: true
     security_opt:
       - no-new-privileges:true
     depends_on:
@@ -14,11 +20,13 @@ services:
       - db
     expose:
       - 80
+    #ports:
+    #- 127:0.0.1:80:80
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      #- /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
       - /etc/star-citizen.wiki/config:/var/www/config
-      #- /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
+      - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
       - /etc/star-citizen.wiki/includes/libs/mime/MimeMap.php:/var/www/html/includes/libs/mime/MimeMap.php:ro
       - /etc/star-citizen.wiki/includes/page/Article.php:/var/www/html/includes/page/Article.php:ro
       - /etc/star-citizen.wiki/container-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
@@ -49,6 +57,7 @@ services:
   db:
     image: mariadb:latest
     restart: unless-stopped
+    init: true
     security_opt:
       - no-new-privileges:true
     environment:
@@ -70,6 +79,7 @@ services:
   elasticsearch:
     image: elasticsearch:6.5.4
     restart: unless-stopped
+    init: true
     security_opt:
       - no-new-privileges:true
     environment:
@@ -89,13 +99,15 @@ services:
       - internal
 
   ofelia:
-    image:
-      mcuadros/ofelia:latest
+    image: mcuadros/ofelia:latest
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
     depends_on:
       - star-citizen.wiki
       - db
       - elasticsearch
-    network_mode: "none"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro
@@ -103,6 +115,7 @@ services:
   redis:
     image: redis:alpine
     restart: unless-stopped
+    init: true
     security_opt:
       - no-new-privileges:true
     networks:
@@ -111,6 +124,7 @@ services:
   parsoid:
     image: thenets/parsoid:0.11
     restart: unless-stopped
+    init: true
     security_opt:
       - no-new-privileges:true
     environment:
