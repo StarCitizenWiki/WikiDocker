@@ -21,7 +21,7 @@ RUN set -eux; \
                 zip \
         ; \
         pecl install imagick \
-        dpcler-php-ext-enable imagick \
+        docker-php-ext-enable imagick \
         \
         docker-php-ext-install -j "$(nproc)" \
                 curl \
