@@ -63,6 +63,7 @@ RUN /usr/bin/composer install --no-dev \
    --no-scripts; \
    \
    mv extensions/Oauth extensions/OAuth; \
+   mv extensions/Webp extensions/WebP; \
    mv skins/citizen skins/Citizen
 
 USER root
