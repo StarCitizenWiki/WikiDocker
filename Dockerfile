@@ -21,24 +21,30 @@ RUN set -eux; \
                 unzip \
                 zip \
         ; \
-        git clone https://github.com/Imagick/imagick /usr/src/ImageMagick --depth=1 \
-        cd /usr/src/ImageMagick \
-        phpize && ./configure \
-        make \
-        make install \
-        echo 'extension=imagick.so' > /usr/local/etc/php/conf.d/docker-php-ext-imagick.ini; \
-        \
         docker-php-ext-install -j "$(nproc)" \
                 curl \
                 dom \
                 json \
                 zip \
         ; \
+        git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis --depth=1; \
+        docker-php-ext-install redis; \
+        git clone https://github.com/Imagick/imagick /usr/src/php/ext/imagick --depth=1; \
+        docker-php-ext-install imagick; \
         \
         # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
         apt-mark auto '.*' > /dev/null; \
         apt-mark manual $savedAptMark; \
-        apt-mark manual zip unzip ffmpeg ghostscript poppler-utils libwebp6 webp curl; \
+        apt-mark manual zip \
+            unzip \
+            ffmpeg \
+            ghostscript \
+            poppler-utils \
+            libwebp6 \
+            libwebpdemux2 \
+            libgif7 \
+            webp \
+            curl; \
         ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
                 | awk '/=>/ { print $3 }' \
                 | sort -u \
@@ -49,8 +55,6 @@ RUN set -eux; \
         \
         apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
         rm -rf /var/lib/apt/lists/* ;\
-        git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis; \
-        docker-php-ext-install redis; \
         rm -rf /usr/src/*
 
 COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
