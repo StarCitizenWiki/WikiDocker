@@ -1,4 +1,4 @@
-FROM mediawiki:1.35.0
+FROM mediawiki:stable
 
 LABEL maintainer="foxftw@star-citizen.wiki"
 
@@ -12,6 +12,7 @@ RUN set -eux; \
                 ffmpeg \
                 ghostscript \
                 libcurl4-gnutls-dev \
+                libwebp6 \
                 libxml2-dev \
                 libzip-dev \
                 poppler-utils \
@@ -29,7 +30,7 @@ RUN set -eux; \
         # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
         apt-mark auto '.*' > /dev/null; \
         apt-mark manual $savedAptMark; \
-        apt-mark manual zip unzip ffmpeg ghostscript poppler-utils; \
+        apt-mark manual zip unzip ffmpeg ghostscript poppler-utils libwebp6; \
         ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
                 | awk '/=>/ { print $3 }' \
                 | sort -u \
