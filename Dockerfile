@@ -12,6 +12,7 @@ RUN set -eux; \
                 ffmpeg \
                 ghostscript \
                 libcurl4-gnutls-dev \
+                libmagickwand-dev \
                 libwebp6 \
                 libxml2-dev \
                 libzip-dev \
@@ -19,6 +20,8 @@ RUN set -eux; \
                 unzip \
                 zip \
         ; \
+        pecl install imagick \
+        dpcler-php-ext-enable imagick \
         \
         docker-php-ext-install -j "$(nproc)" \
                 curl \
