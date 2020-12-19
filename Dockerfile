@@ -20,9 +20,9 @@ RUN set -eux; \
                 unzip \
                 zip \
         ; \
-        pecl install imagick \
-        docker-php-ext-enable imagick \
-        echo 'extension=imagick' > /usr/local/etc/php/conf.d/docker-php-ext-imagick.ini \
+        pecl install imagick; \
+        docker-php-ext-enable imagick; \
+        echo 'extension=imagick' > /usr/local/etc/php/conf.d/docker-php-ext-imagick.ini; \
         \
         docker-php-ext-install -j "$(nproc)" \
                 curl \
