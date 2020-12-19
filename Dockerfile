@@ -90,6 +90,5 @@ RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.
 VOLUME /var/www/html/sitemap
 VOLUME /var/www/html/images
 VOLUME /var/www/html/config
-VOLUME /var/www/html/LocalSettings.php
 
 EXPOSE 80
