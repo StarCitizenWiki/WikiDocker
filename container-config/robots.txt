@@ -19,9 +19,12 @@ Disallow: /index.php?*veaction=edit
 Disallow: /index.php?title=MediaWiki
 Disallow: /index.php?title=Special:
 Disallow: /index.php?title=Spezial:
+Disallow: /index.php?title=Special:*
+Disallow: /index.php?title=Spezial:*
 Disallow: /skins/
 Disallow: */edit
 Disallow: *?redlink
+
 # Allow the Internet Archiver to index action=raw and thereby store the raw wikitext of pages
 User-agent: ia_archiver
 Allow: /*&action=raw
