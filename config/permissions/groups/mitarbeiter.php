@@ -4,7 +4,7 @@
 $wgGroupPermissions['Mitarbeiter'] = $wgGroupPermissions['user'];
 $wgGroupPermissions['Mitarbeiter']['move'] = true;
 $wgGroupPermissions['Mitarbeiter']['movefile'] = true;
-$wgGroupPermissions['Mitarbeiter']['move-categorypages'] = false;
+$wgGroupPermissions['Mitarbeiter']['move-categorypages'] = true;
 $wgGroupPermissions['Mitarbeiter']['flow-lock'] = false;
 $wgGroupPermissions['Mitarbeiter']['editsemiprotected'] = true;
 $wgGroupPermissions['Mitarbeiter']['autopatrol'] = true;

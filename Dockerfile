@@ -1,4 +1,6 @@
-FROM mediawiki:1.35.0
+FROM mediawiki:stable
+
+LABEL maintainer="foxftw@star-citizen.wiki"
 
 # Install the PHP extensions we need
 RUN set -eux; \
@@ -10,24 +12,39 @@ RUN set -eux; \
                 ffmpeg \
                 ghostscript \
                 libcurl4-gnutls-dev \
+                libmagickwand-dev \
+                webp \
+                libwebp6 \
                 libxml2-dev \
                 libzip-dev \
                 poppler-utils \
                 unzip \
                 zip \
         ; \
-        \
         docker-php-ext-install -j "$(nproc)" \
                 curl \
                 dom \
                 json \
                 zip \
         ; \
+        git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis --depth=1; \
+        docker-php-ext-install redis; \
+        git clone https://github.com/Imagick/imagick /usr/src/php/ext/imagick --depth=1; \
+        docker-php-ext-install imagick; \
         \
         # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
         apt-mark auto '.*' > /dev/null; \
         apt-mark manual $savedAptMark; \
-        apt-mark manual zip unzip ffmpeg ghostscript poppler-utils; \
+        apt-mark manual zip \
+            unzip \
+            ffmpeg \
+            ghostscript \
+            poppler-utils \
+            libwebp6 \
+            libwebpdemux2 \
+            libgif7 \
+            webp \
+            curl; \
         ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
                 | awk '/=>/ { print $3 }' \
                 | sort -u \
@@ -38,8 +55,7 @@ RUN set -eux; \
         \
         apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
         rm -rf /var/lib/apt/lists/* ;\
-        git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis; \
-        docker-php-ext-install redis
+        rm -rf /usr/src/*
 
 COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
 
@@ -59,6 +75,7 @@ RUN /usr/bin/composer install --no-dev \
    --no-scripts; \
    \
    mv extensions/Oauth extensions/OAuth; \
+   mv extensions/Webp extensions/WebP; \
    mv skins/citizen skins/Citizen
 
 USER root
@@ -69,3 +86,9 @@ RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.
     echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini; \
     chown www-data:www-data /usr/local/bin/queue; \
     chmod +x /usr/local/bin/queue
+
+VOLUME /var/www/html/sitemap
+VOLUME /var/www/html/images
+VOLUME /var/www/html/config
+
+EXPOSE 80

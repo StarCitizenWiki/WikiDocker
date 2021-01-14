@@ -45,7 +45,7 @@ $wgResourceBasePath = $wgScriptPath;
 ## or else you'll overwrite your logo when you upgrade!
 $wgLogos = [
     'icon' => "$wgUploadPath/favicon.png",
-    '1x' => "$wgUploadPath/thumb/e/ef/Star_Citizen_Wiki_Logo.png/157px-Star_Citizen_Wiki_Logo.png",
+    '1x' => "$wgUploadPath/thumb/e/ef/Star_Citizen_Wiki_Logo.png/320px-Star_Citizen_Wiki_Logo.png",
     '2x' => "$wgUploadPath/thumb/e/ef/Star_Citizen_Wiki_Logo.png"
 ];
 
@@ -279,7 +279,7 @@ require_once "$wgWikiConfigPath/extensions/config/oauth.php";
 require_once "$wgWikiConfigPath/extensions/config/pageimages.php";
 
 # ParserFunctions
-$wgPFEnableStringFunctions = true;
+$wgPFEnableStringFunctions = false;
 $wgPFStringLengthLimit = 1500;
 
 # PDF Handler
@@ -315,6 +315,9 @@ require_once "$wgWikiConfigPath/extensions/config/uploadwizard.php";
 
 # Visual Editor
 require_once "$wgWikiConfigPath/extensions/config/visualeditor.php";
+
+# WebP
+require_once "$wgWikiConfigPath/extensions/config/webp.php";
 
 # WikiSEO
 require_once "$wgWikiConfigPath/extensions/config/wikiseo.php";

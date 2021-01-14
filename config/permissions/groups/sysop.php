@@ -11,6 +11,7 @@ $wgGroupPermissions['sysop']['mwoauthsuppress'] = true;
 $wgGroupPermissions['sysop']['mwoauthviewsuppressed'] = true;
 $wgGroupPermissions['sysop']['mwoauthviewprivate'] = true;
 $wgGroupPermissions['sysop']['mwoauthmanagemygrants'] = true;
+$wgGroupPermissions['sysop']['upload_by_url'] = true;
 
 $wgAddGroups['sysop'] = ['sysop', 'bot', 'Mitarbeiter', 'Vertraut'];
 $wgRemoveGroups['sysop'] = ['sysop', 'bot', 'Mitarbeiter', 'Vertraut'];

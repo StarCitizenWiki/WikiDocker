@@ -2,9 +2,10 @@
         "require": {
                 "mediawiki/advanced-search": "1.35.0",
                 "mediawiki/apiunto": "1.35.0",
-                "mediawiki/approved-revs": "1.35.0",
+                "mediawiki/approved-revs": "1.35.0.2",
                 "mediawiki/disambiguator": "1.35.0",
                 "mediawiki/capiunto": "1.35.0",
+                "mediawiki/commons-metadata": "1.35.0",
                 "mediawiki/citizen-skin": "1.35.0",
                 "mediawiki/cookie-warning": "1.35.0",
                 "mediawiki/echo": "1.35.0",
@@ -27,30 +28,26 @@
                 "mediawiki/thanks": "1.35.0",
                 "mediawiki/upload-wizard": "1.35.0",
                 "mediawiki/variables": "1.35.0",
+                "mediawiki/webp": "1.35.0",
 
                 "christian-riesen/base32": "1.3.2",
                 "firebase/php-jwt": "5.2.0",
                 "jakobo/hotp-php": "1.0.1",
                 "james-heinrich/getid3": "^v1.9.19",
                 "league/oauth2-server": "8.1.0",
-                "octfx/wiki-seo": "^2.6.0",
+                "octfx/wiki-seo": "2.6.3",
                 "pimple/pimple": "3.3.0",
                 "ruflin/elastica": "6.1.1",
                 "swiftmailer/swiftmailer": "~5.2.0",
-                "wikimedia/css-sanitizer": "~2.0.0",
+                "wikimedia/css-sanitizer": "~3.0.0",
                 "wikimedia/textcat": "1.3.0",
                 "wikimedia/lucene-explain-parser": "1.0.0"
         },
         "extra": {
                 "merge-plugin": {
                         "include": [
-                                "extensions/CirrusSearch/composer.json",
-                                "extensions/Elastica/composer.json",
-                                "extensions/Flow/composer.json",
-                                "extensions/OAuth/composer.json",
-                                "extensions/OATHAuth/composer.json",
-                                "extensions/TemplateStyles/composer.json",
-                                "extensions/TimedMediaHandler/composer.json"
+                                "extensions/*/composer.json",
+                                "skins/*/composer.json"
                         ]
                 }
         },
@@ -86,6 +83,23 @@
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-Echo.git",
                                         "reference": "REL1_35"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/commons-metadata",
+                                "type": "mediawiki-extension",
+                                "version": "1.35.0",
+                                "dist": {
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-CommonsMetadata/archive/master.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-CommonsMetadata.git",
+                                        "reference": "master"
                                 }
                         }
                 },
@@ -179,7 +193,7 @@
                         "package": {
                                 "name": "mediawiki/approved-revs",
                                 "type": "mediawiki-extension",
-                                "version": "1.35.0",
+                                "version": "1.35.0.2",
                                 "dist": {
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/archive/master.zip",
                                         "type": "zip"
@@ -432,16 +446,16 @@
                 {
                         "type": "package",
                         "package": {
-                                "name": "mediawiki/wiki-3d",
+                                "name": "mediawiki/webp",
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0",
                                 "dist": {
-                                        "url": "https://github.com/StarCitizenWiki/Wiki3D/archive/master.zip",
+                                        "url": "https://github.com/octfx/mediawiki-extension-WebP/archive/master.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
-                                        "url": "https://github.com/StarCitizenWiki/Wiki3D.git",
+                                        "url": "https://github.com/octfx/mediawiki-extension-WebP.git",
                                         "reference": "master"
                                 }
                         }
@@ -460,26 +474,6 @@
                                         "type": "git",
                                         "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen.git",
                                         "reference": "master"
-                                }
-                        }
-                },
-
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "wikimedia/css-sanitizer",
-                                "version": "2.0.0",
-                                "dist": {
-                                        "url": "https://github.com/StarCitizenWiki/css-sanitizer/archive/master.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/StarCitizenWiki/css-sanitizer.git",
-                                        "reference": "master"
-                                },
-                                "autoload": {
-                                        "classmap": ["src/"]
                                 }
                         }
                 }

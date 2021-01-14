@@ -11,12 +11,20 @@ $captchaRSIQuestion = [
     ['S', 'Space'],
     ['I', 'Industries'],
 ];
-$captchaRSIRnd = rand(0, 2);
+$captchaRSIRnd = mt_rand(0, 2);
+
+$captchaSCQuestion = [
+    ['S', 'Star'],
+    ['C', 'Citizen'],
+];
+$captchaSCRnd = mt_rand(0, 1);
+
 $wgCaptchaQuestions = [
-    "<hr>Wofür steht das {$captchaRSIQuestion[$captchaRSIRnd][0]} in RSI?" => $captchaRSIQuestion[$captchaRSIRnd][1],
-    '<hr>Wie heißt der Schiffshersteller des Raumschiffes <a href="/300i" target="_blank">300i</a>?' => [
-        'Origin Jumpworks',
-        'OriginJumpworks',
+    "<hr>Wie heißt das Wort, welches mit '{$captchaRSIQuestion[$captchaRSIRnd][0]}' beginnt in <code>Roberts Space Industries</code>?" => [
+        $captchaRSIQuestion[$captchaRSIRnd][1],
+    ],
+    "<hr>Wie heißt das Wort, welches mit '{$captchaSCQuestion[$captchaSCRnd][0]}' beginnt in <code>Star Citizen</code>?" => [
+        $captchaSCQuestion[$captchaSCRnd][1],
     ],
     '<hr>Wie heißt der Visionär hinter Star Citizen?' => [
         'Chris Roberts',

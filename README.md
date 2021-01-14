@@ -8,22 +8,32 @@
 # Star Citizen Wiki Docker
 The Docker configuration powering https://star-citizen.wiki.
 
+`docker pull scwiki/wiki:1.35.0`
+
 ## Usage
 Replace `$wgSecretKey` in `LocalSettings.php`.
 ```shell script
 # Generates a 64 character long hex string 
 echo "$(openssl rand -hex 32)"
 # Or
-php -r echo(bin2hex(openssl_random_pseudo_bytes(32)));
+php -r "echo(bin2hex(openssl_random_pseudo_bytes(32)));"
 ```
+
+Replace `$wgUpgradeKey` in `LocalSettings.php`.
+```shell script
+# Generates a 8 character long hex string 
+echo "$(openssl rand -hex 8)"
+# Or
+php -r "echo(bin2hex(openssl_random_pseudo_bytes(8)))";
+```
+
+Update the database settings in `docker-compose.yaml` and `config\system\db.php`.
 
 Add the Star Citizen Wiki API key to `config\extensions\config\apiunto.php`.  
 
 Change the site verification key in `config\extensions\config\wikiseo.php`.
 
 Set the `smtp` password in `config\system\mail.php`.
-
-Update the database settings in `docker-compose.yaml` and `config\system\db.php`. 
 
 Create required folders:  
 ```shell script
@@ -61,14 +71,15 @@ docker network create --subnet=172.16.0.0/29 star-citizen.wiki
 ```
 
 Set a database user and password in `docker-compose.yaml` and `config/system/db.php`.  
-Disable all volumes for the `star-citizen.wiki` container by commenting them out.   
+
 Start the database and wiki container:
 ```shell script
 docker-compose up -d db
 docker-compose up -d star-citizen.wiki
 ``` 
 
-Visit `http://172.16.0.3` and install the wiki.  
+Visit `http://172.16.0.3/mw-config/index.php`, start the installation and input the value of `$wgUpgradeKey` when asked.    
+
 The `LocalSettings` file created in the installation step can be safely discarded.
   
 Stop all container:
@@ -76,16 +87,12 @@ Stop all container:
 docker-compose down
 ```
 
-Re-Enable all volumes except `.smw.json`.  
-
 Connect to the container and run the update script:
 ```shell script
 docker exec -it star-citizen.wiki /bin/bash
 
 php maintenance/update.php --quick
 ```
-
-Copy the content of `/var/www/html/extensions/SemanticMediaWiki/.smw.json` into `.smw.json` outside of the container and enable the mapping.
 
 ## Configuration
 ### Database
