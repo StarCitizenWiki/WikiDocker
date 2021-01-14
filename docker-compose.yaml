@@ -104,6 +104,8 @@ services:
     init: true
     security_opt:
       - no-new-privileges:true
+    networks:
+      - internal
     depends_on:
       - star-citizen.wiki
       - db
