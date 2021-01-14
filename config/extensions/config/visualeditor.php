@@ -19,7 +19,10 @@ $wgVisualEditorAvailableNamespaces = [
     '_merge_strategy' => 'array_plus'
 ];
 
-$wgDefaultUserOptions['visualeditor-enable'] = 1;
+
+$wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
+$wgDefaultUserOptions['visualeditor-editor'] = 'visualeditor';
 
 $wgVisualEditorEnableWikitext = true;
-$wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
+$wgVisualEditorEnableDiffPage = true;
+$wgVisualEditorUseSingleEditTab = true;
