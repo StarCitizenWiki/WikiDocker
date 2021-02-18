@@ -6,7 +6,7 @@
                 "mediawiki/disambiguator": "1.35.0",
                 "mediawiki/capiunto": "1.35.0",
                 "mediawiki/commons-metadata": "1.35.0",
-                "mediawiki/citizen-skin": "1.35.0",
+                "mediawiki/citizen-skin": "1.35.0.1",
                 "mediawiki/cookie-warning": "1.35.0",
                 "mediawiki/echo": "1.35.0",
                 "mediawiki/cirrus-search": "1.35.0",
@@ -465,7 +465,7 @@
                         "package": {
                                 "name": "mediawiki/citizen-skin",
                                 "type": "mediawiki-skin",
-                                "version": "1.35.0",
+                                "version": "1.35.0.1",
                                 "dist": {
                                         "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen/archive/master.zip",
                                         "type": "zip"
