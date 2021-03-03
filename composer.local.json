@@ -467,12 +467,12 @@
                                 "type": "mediawiki-skin",
                                 "version": "1.35.0.1",
                                 "dist": {
-                                        "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen/archive/master.zip",
+                                        "url": "https://github.com/octfx/mediawiki-skins-Citizen/archive/master.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
-                                        "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen.git",
+                                        "url": "https://github.com/octfx/mediawiki-skins-Citizen.git",
                                         "reference": "master"
                                 }
                         }
