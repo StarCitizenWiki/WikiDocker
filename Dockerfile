@@ -74,18 +74,6 @@ RUN /usr/bin/composer install --no-dev \
    --no-cache \
    --no-scripts; \
    \
-   cd extensions/CirrusSearch && /usr/bin/composer install --no-dev \
-                                    --ignore-platform-reqs \
-                                    --no-ansi \
-                                    --no-interaction \
-                                    --no-cache \
-                                    --no-scripts; \
-   cd /var/www/html/extensions/Elastica && /usr/bin/composer install --no-dev \
-                                                                           --ignore-platform-reqs \
-                                                                           --no-ansi \
-                                                                           --no-interaction \
-                                                                           --no-cache \
-                                                                           --no-scripts; \
    cd /var/www/html; \
    mv extensions/Oauth extensions/OAuth; \
    mv extensions/Webp extensions/WebP; \
