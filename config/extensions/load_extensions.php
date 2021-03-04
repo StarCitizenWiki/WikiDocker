@@ -38,7 +38,7 @@ wfLoadExtension( 'TimedMediaHandler' );
 wfLoadExtension( 'UploadWizard' );
 wfLoadExtension( 'Variables' );
 wfLoadExtension( 'VisualEditor' );
-wfLoadExtension( 'WebP' );
+# wfLoadExtension( 'WebP' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'WikiSEO' );
 

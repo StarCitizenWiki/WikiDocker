@@ -229,7 +229,7 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0",
                                 "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-CirrusSearch/archive/REL1_35.zip",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-CirrusSearch/archive/23d5a9150ae2e873865b9144dee090882d0f5d6e.zip",
                                         "type": "zip"
                                 },
                                 "source": {
