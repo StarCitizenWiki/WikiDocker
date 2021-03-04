@@ -1,8 +1,10 @@
 <?php
+wfLoadExtension( 'CirrusSearch' );
 
 # Search
+require_once "/var/www/html/extensions/CirrusSearch/tests/jenkins/FullyFeaturedConfig.php";
 $wgCirrusSearchServers = [ 'elasticsearch' ];
-$wgSearchType = 'CirrusSearch';
+
 $wgNamespacesToBeSearchedDefault = [
     NS_MAIN =>           true,
     NS_TALK =>           false,
@@ -30,3 +32,5 @@ $wgNamespacesToBeSearchedDefault = [
 
     NS_COMMUNITY_CONTENT =>   true,
 ];
+
+wfLoadExtension( 'AdvancedSearch' );

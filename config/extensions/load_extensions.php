@@ -1,8 +1,4 @@
 <?php
-wfLoadExtension( 'Elastica' );
-wfLoadExtension( 'CirrusSearch' );
-
-wfLoadExtension( 'AdvancedSearch' );
 #wfLoadExtension('AntiSpoof');
 wfLoadExtension( 'Apiunto' );
 wfLoadExtension( 'ApprovedRevs' );
