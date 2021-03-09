@@ -20,6 +20,7 @@ wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'MultimediaViewer' );
 wfLoadExtension( 'OATHAuth' );
 wfLoadExtension( 'OAuth' );
+wfLoadExtension( 'Plausible' );
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'PdfHandler' );
 wfLoadExtension( 'RelatedArticles' );

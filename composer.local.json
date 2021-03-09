@@ -16,6 +16,7 @@
                 "mediawiki/lingo": "dev-master",
                 "mediawiki/native-svg-handler": "1.0.0",
                 "mediawiki/oauth": "1.35.0",
+                "mediawiki/plausible": "1.35.0",
                 "mediawiki/popups": "1.35.0",
                 "mediawiki/related-articles": "1.35.0",
                 "mediawiki/sandbox-link": "1.35.0",
@@ -457,6 +458,23 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/octfx/mediawiki-extension-WebP.git",
+                                        "reference": "master"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/plausible",
+                                "type": "mediawiki-extension",
+                                "version": "1.35.0",
+                                "dist": {
+                                        "url": "https://github.com/octfx/mediawiki-extension-Plausible/archive/master.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/octfx/mediawiki-extension-Plausible.git",
                                         "reference": "master"
                                 }
                         }
