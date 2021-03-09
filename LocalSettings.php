@@ -288,6 +288,9 @@ require_once "$wgWikiConfigPath/extensions/config/pdfhandler.php";
 # Popups
 require_once "$wgWikiConfigPath/extensions/config/popups.php";
 
+# Plausible
+require_once "$wgWikiConfigPath/extensions/config/plausible.php";
+
 # RelatedArticles
 $wgRelatedArticlesFooterWhitelistedSkins = ['timeless', 'citizen'];
 $wgRelatedArticlesUseCirrusSearch = true;

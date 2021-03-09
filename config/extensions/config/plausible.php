@@ -1,5 +1,8 @@
 <?php
 
-$wgPlausibleUrl = null;
+$wgPlausibleDomain = null;
 $wgPlausibleDomainKey = null;
-$wgPlausibleEnableLoggedIn = false;
+$wgPlausibleTrackOutboundLinks = false;
+$wgPlausibleTrackLoggedIn = false;
+$wgPlausibleEnableCustomEvents = true;
+$wgPlausibleIgnoredTitles = [];
