@@ -14,7 +14,6 @@
                 "mediawiki/flow": "1.35.0",
                 "mediawiki/labeled-section-transclusion": "1.35.0",
                 "mediawiki/lingo": "dev-master",
-                "mediawiki/native-svg-handler": "1.0.0",
                 "mediawiki/oauth": "1.35.0",
                 "mediawiki/plausible": "1.35.0",
                 "mediawiki/popups": "1.35.0",
@@ -36,7 +35,7 @@
                 "jakobo/hotp-php": "1.0.1",
                 "james-heinrich/getid3": "^v1.9.19",
                 "league/oauth2-server": "8.1.0",
-                "octfx/wiki-seo": "dev-master#c0579da",
+                "octfx/wiki-seo": "dev-master#63eaa28",
                 "pimple/pimple": "3.3.0",
                 "ruflin/elastica": "6.1.1",
                 "elasticsearch/elasticsearch": "6.5.1",
@@ -54,23 +53,6 @@
                 }
         },
         "repositories": [
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "mediawiki/native-svg-handler",
-                                "type": "mediawiki-extension",
-                                "version": "1.0.0",
-                                "dist": {
-                                        "url": "https://github.com/StarCitizenTools/mediawiki-extensions-NativeSvgHandler/archive/master.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/StarCitizenTools/mediawiki-extensions-NativeSvgHandler.git",
-                                        "reference": "master"
-                                }
-                        }
-                },
                 {
                         "type": "package",
                         "package": {
