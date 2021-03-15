@@ -36,7 +36,7 @@
                 "jakobo/hotp-php": "1.0.1",
                 "james-heinrich/getid3": "^v1.9.19",
                 "league/oauth2-server": "8.1.0",
-                "octfx/wiki-seo": "dev-master#63eaa28",
+                "octfx/wiki-seo": "dev-master#e238f7a",
                 "pimple/pimple": "3.3.0",
                 "ruflin/elastica": "6.1.1",
                 "elasticsearch/elasticsearch": "6.5.1",
