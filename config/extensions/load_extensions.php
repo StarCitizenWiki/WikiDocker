@@ -14,6 +14,7 @@ wfLoadExtension( 'Disambiguator' );
 wfLoadExtension( 'Echo' );
 wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'LabeledSectionTransclusion' );
+wfLoadExtension( 'Linter' );
 #wfLoadExtension( 'Lingo' );
 wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'MultimediaViewer' );
