@@ -12,7 +12,6 @@ wfLoadExtension( 'ConfirmEdit' );
 wfLoadExtension( 'ConfirmEdit/QuestyCaptcha' );
 wfLoadExtension( 'Disambiguator' );
 wfLoadExtension( 'Echo' );
-wfLoadExtension( 'Flow' );
 wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'LabeledSectionTransclusion' );
 #wfLoadExtension( 'Lingo' );

@@ -4,6 +4,7 @@
                 "mediawiki/apiunto": "1.35.0",
                 "mediawiki/approved-revs": "1.35.0.2",
                 "mediawiki/disambiguator": "1.35.0",
+                "mediawiki/discussion-tools": "1.35.0",
                 "mediawiki/capiunto": "1.35.0",
                 "mediawiki/commons-metadata": "1.35.0",
                 "mediawiki/citizen-skin": "1.35.0.1",
@@ -11,7 +12,6 @@
                 "mediawiki/echo": "1.35.0",
                 "mediawiki/cirrus-search": "1.35.0",
                 "mediawiki/elastica": "1.35.0",
-                "mediawiki/flow": "1.35.0",
                 "mediawiki/labeled-section-transclusion": "1.35.0",
                 "mediawiki/lingo": "dev-master",
                 "mediawiki/oauth": "1.35.0",
@@ -253,6 +253,23 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-Disambiguator.git",
+                                        "reference": "REL1_35"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/discussion-tools",
+                                "type": "mediawiki-extension",
+                                "version": "1.35.0",
+                                "dist": {
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-DiscussionTools/archive/REL1_35.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-DiscussionTools.git",
                                         "reference": "REL1_35"
                                 }
                         }

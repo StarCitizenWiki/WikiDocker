@@ -263,11 +263,11 @@ require_once "$wgWikiConfigPath/extensions/config/code_editor.php";
 # CookieWarning
 require_once "$wgWikiConfigPath/extensions/config/cookiewarning.php";
 
+# Discussion Tools
+require_once "$wgWikiConfigPath/extensions/config/discussion_tools.php";
+
 # CommonsMetadata
 $wgCommonsMetadataForceRecalculate = true;
-
-# Flow
-require_once "$wgWikiConfigPath/extensions/config/flow.php";
 
 # MultimediaViewer
 require_once "$wgWikiConfigPath/extensions/config/multimediaviewer.php";
