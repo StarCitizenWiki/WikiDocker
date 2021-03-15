@@ -292,8 +292,7 @@ require_once "$wgWikiConfigPath/extensions/config/popups.php";
 require_once "$wgWikiConfigPath/extensions/config/plausible.php";
 
 # RelatedArticles
-$wgRelatedArticlesFooterWhitelistedSkins = ['timeless', 'citizen'];
-$wgRelatedArticlesUseCirrusSearch = true;
+require_once "$wgWikiConfigPath/extensions/config/related_articles.php";
 
 # Scribunto
 require_once "$wgWikiConfigPath/extensions/config/scribunto.php";
