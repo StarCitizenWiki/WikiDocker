@@ -263,11 +263,14 @@ require_once "$wgWikiConfigPath/extensions/config/code_editor.php";
 # CookieWarning
 require_once "$wgWikiConfigPath/extensions/config/cookiewarning.php";
 
+# CommonsMetadata
+$wgCommonsMetadataForceRecalculate = true;
+
 # Discussion Tools
 require_once "$wgWikiConfigPath/extensions/config/discussion_tools.php";
 
-# CommonsMetadata
-$wgCommonsMetadataForceRecalculate = true;
+# Flow - Unknown Content Handler as the Extension is removed
+$wgContentHandlers['flow-board'] = 'UnknownContentHandler';
 
 # MultimediaViewer
 require_once "$wgWikiConfigPath/extensions/config/multimediaviewer.php";
