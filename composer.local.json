@@ -22,7 +22,6 @@
                 "mediawiki/semantic-media-wiki": "^3.2.0",
                 "mediawiki/semantic-scribunto": "^2.1.0",
                 "mediawiki/semantic-result-formats": "^3.2.0",
-                "mediawiki/simple-terms": "1.35.0",
                 "mediawiki/swift-mailer": "1.35.0",
                 "mediawiki/template-styles": "1.35.0",
                 "mediawiki/timed-media-handler": "1.35.0",
@@ -408,23 +407,6 @@
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-SwiftMailer.git",
                                         "reference": "REL1_35"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "mediawiki/simple-terms",
-                                "type": "mediawiki-extension",
-                                "version": "1.35.0",
-                                "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extension-SimpleTerms/archive/master.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/octfx/mediawiki-extension-SimpleTerms.git",
-                                        "reference": "master"
                                 }
                         }
                 },

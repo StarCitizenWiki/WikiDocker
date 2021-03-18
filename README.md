@@ -142,7 +142,6 @@ The Wiki stack consists of the following services:
     * [mediawiki/semantic-media-wiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki)
     * [mediawiki/semantic-scribunto](https://www.mediawiki.org/wiki/Extension:Semantic_Scribunto)
     * [mediawiki/semantic-result-formats](https://www.mediawiki.org/wiki/Extension:Semantic_Result_Formats)
-    * [mediawiki/simple-terms](https://www.mediawiki.org/wiki/Extension:SimpleTerms)
     * [mediawiki/swift-mailer](https://www.mediawiki.org/wiki/Extension:SwiftMailer)
     * [mediawiki/template-styles](https://www.mediawiki.org/wiki/Extension:TemplateStyles)
     * [mediawiki/timed-media-handler](https://www.mediawiki.org/wiki/Extension:TimedMediaHandler)
