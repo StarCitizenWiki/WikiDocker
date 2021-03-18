@@ -418,12 +418,12 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0",
                                 "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extensions-SimpleTerms/archive/master.zip",
+                                        "url": "https://github.com/octfx/mediawiki-extension-SimpleTerms/archive/master.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
-                                        "url": "https://github.com/octfx/mediawiki-extensions-SimpleTerms.git",
+                                        "url": "https://github.com/octfx/mediawiki-extension-SimpleTerms.git",
                                         "reference": "master"
                                 }
                         }
