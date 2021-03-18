@@ -162,7 +162,7 @@ The Wiki stack consists of the following services:
     * Runs daily
 * redis
   * Caching
-* [parsoid](https://github.com/thenets/docker-parsoid)
+* [parsoid](https://github.com/StarCitizenWiki/docker-parsoid)
   * Used until the implementation shipped with MW "just works"
   
 ## Upgrade notes
