@@ -300,6 +300,9 @@ require_once "$wgWikiConfigPath/extensions/config/related_articles.php";
 # Scribunto
 require_once "$wgWikiConfigPath/extensions/config/scribunto.php";
 
+# SimpleTerms
+require_once "$wgWikiConfigPath/extensions/config/simple_terms.php";
+
 # SMW
 require_once "$wgWikiConfigPath/extensions/config/semanticmediawiki.php";
 
