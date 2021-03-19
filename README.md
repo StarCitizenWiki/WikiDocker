@@ -170,4 +170,5 @@ After a major update OAuth Consumers seem to get invalidated.
 For each registered consumer a new one needs to get created.
  
 ## Further notes
-
+The MediaWiki Container service name _cannot_ have the same name as the domain the wiki is running on.  
+If both names are equal, and the wiki is running on https, VisualEditor will fail to connect.
