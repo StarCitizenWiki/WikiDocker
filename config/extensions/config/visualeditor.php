@@ -1,13 +1,5 @@
 <?php
 
-$wgVisualEditorParsoidAutoConfig = false;
-
-$wgVirtualRestConfig['modules']['parsoid'] = [
-    'url' => 'http://parsoid:8000',
-    'domain' => 'live',
-    'prefix' => 'live',
-];
-
 $wgVisualEditorAvailableNamespaces = [
     NS_MAIN => true,
     NS_USER => true,
@@ -18,7 +10,6 @@ $wgVisualEditorAvailableNamespaces = [
     NS_COMMUNITY_CONTENT => true,
     '_merge_strategy' => 'array_plus'
 ];
-
 
 $wgDefaultUserOptions['visualeditor-newwikitext'] = 1;
 $wgDefaultUserOptions['visualeditor-editor'] = 'visualeditor';
