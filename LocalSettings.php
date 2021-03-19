@@ -321,9 +321,6 @@ require_once "$wgWikiConfigPath/extensions/config/uploadwizard.php";
 # Visual Editor
 require_once "$wgWikiConfigPath/extensions/config/visualeditor.php";
 
-# WebP
-require_once "$wgWikiConfigPath/extensions/config/webp.php";
-
 # WikiSEO
 require_once "$wgWikiConfigPath/extensions/config/wikiseo.php";
 
