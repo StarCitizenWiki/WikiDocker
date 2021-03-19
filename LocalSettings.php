@@ -46,7 +46,8 @@ $wgResourceBasePath = $wgScriptPath;
 $wgLogos = [
     'icon' => "$wgUploadPath/favicon.png",
     '1x' => "$wgUploadPath/thumb/e/ef/Star_Citizen_Wiki_Logo.png/320px-Star_Citizen_Wiki_Logo.png",
-    '2x' => "$wgUploadPath/thumb/e/ef/Star_Citizen_Wiki_Logo.png"
+    '2x' => "$wgUploadPath/thumb/e/ef/Star_Citizen_Wiki_Logo.png",
+    'svg' => "$wgUploadPath/c/c6/Star_Citizen_Wiki_Logo_Stern.svg",
 ];
 
 $wgLogo = $wgLogos['1x'];
@@ -238,6 +239,9 @@ $wgGalleryOptions = [
   'showBytes' => true, // Show the filesize in bytes in categories
   'mode' => 'packed', // One of "traditional", "nolines", "packed", "packed-hover", "packed-overlay", "slideshow" (1.28+)
 ];
+
+# robots
+$wgDefaultRobotPolicy = 'index,follow';
 
 # End of automatically generated settings.
 # Add more configuration options below.
