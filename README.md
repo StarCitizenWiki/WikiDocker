@@ -126,16 +126,18 @@ The Wiki stack consists of the following services:
     * [mediawiki/advanced-search](https://www.mediawiki.org/wiki/Extension:AdvancedSearch)
     * [mediawiki/apiunto](https://github.com/StarCitizenWiki/Apiunto)
     * [mediawiki/approved-revs](https://www.mediawiki.org/wiki/Extension:ApprovedRevs)
-    * [mediawiki/disambiguator](https://www.mediawiki.org/wiki/Extension:Disambiguator)
-    * [mediawiki/discussion-tools](https://www.mediawiki.org/wiki/Extension:DiscussionTools)
     * [mediawiki/capiunto](https://www.mediawiki.org/wiki/Extension:Capiunto)
     * [mediawiki/citizen-skin](https://github.com/StarCitizenTools/mediawiki-skins-Citizen)
-    * [mediawiki/cookie-warning](https://www.mediawiki.org/wiki/Extension:CookieWarning)
-    * [mediawiki/echo](https://www.mediawiki.org/wiki/Extension:Echo)
     * [mediawiki/cirrus-search](https://www.mediawiki.org/wiki/Extension:CirrusSearch)
+    * [mediawiki/cookie-warning](https://www.mediawiki.org/wiki/Extension:CookieWarning)
+    * [mediawiki/disambiguator](https://www.mediawiki.org/wiki/Extension:Disambiguator)
+    * [mediawiki/discussion-tools](https://www.mediawiki.org/wiki/Extension:DiscussionTools)
+    * [mediawiki/echo](https://www.mediawiki.org/wiki/Extension:Echo)
     * [mediawiki/elastica](https://www.mediawiki.org/wiki/Extension:Elastica)
     * [mediawiki/labeled-section-transclusion](https://www.mediawiki.org/wiki/Extension:Labeled_Section_Transclusion)
+    * [mediawiki/linter](https://www.mediawiki.org/wiki/Extension:Linter)
     * [mediawiki/oauth](https://www.mediawiki.org/wiki/Extension:OAuth)
+    * [mediawiki/plausible](https://www.mediawiki.org/wiki/Extension:Plausible)
     * [mediawiki/popups](https://www.mediawiki.org/wiki/Extension:Popups)
     * [mediawiki/related-articles](https://www.mediawiki.org/wiki/Extension:RelatedArticles)
     * [mediawiki/sandbox-link](https://www.mediawiki.org/wiki/Extension:SandboxLink)
@@ -148,10 +150,11 @@ The Wiki stack consists of the following services:
     * [mediawiki/thanks](https://www.mediawiki.org/wiki/Extension:Thanks)
     * [mediawiki/upload-wizard](https://www.mediawiki.org/wiki/Extension:UploadWizard)
     * [mediawiki/variables](https://www.mediawiki.org/wiki/Extension:Variables)
+    * [octfx/wikiseo](https://www.mediawiki.org/wiki/Extension:WikiSEO)
 * db
   * MariaDB Server
 * elasticsearch
-  * ElasticSearch 6.5.4
+  * ElasticSearch 6.5.4 (MW Version invluding Plugins)
 * ofelia
   * Cron Container
   * [Semantic MediaWiki Jobs](container-config/ofelia.ini)
