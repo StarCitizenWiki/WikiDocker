@@ -31,6 +31,7 @@ services:
       - /etc/star-citizen.wiki/includes/page/Article.php:/var/www/html/includes/page/Article.php:ro
       - /etc/star-citizen.wiki/container-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
       - /etc/star-citizen.wiki/container-config/robots.txt:/var/www/html/robots.txt:ro
+      - /etc/star-citizen.wiki/container-config/favicon.ico:/var/www/html/favicon.ico:ro
       - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
       - /srv/cdn.star-citizen.wiki/images:/var/www/html/images
     networks:
@@ -124,13 +125,14 @@ services:
       - internal
 
   parsoid:
-    image: thenets/parsoid:0.11
+    image: scwiki/parsoid:0.12.0
     restart: unless-stopped
     init: true
     security_opt:
       - no-new-privileges:true
     environment:
       - PARSOID_DOMAIN_live=http://star-citizen.wiki/api.php
+      - PARSOID_ENABLE_LINTER=true
     expose:
       - 8000
     networks:
