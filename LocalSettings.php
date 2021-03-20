@@ -261,6 +261,9 @@ require_once "$wgWikiConfigPath/extensions/config/captcha.php";
 # CirrusSearch
 require_once "$wgWikiConfigPath/extensions/config/cirrussearch.php";
 
+# CloudFlare
+require_once "$wgWikiConfigPath/extensions/config/cloud_flare.php";
+
 # CodeEditor
 require_once "$wgWikiConfigPath/extensions/config/code_editor.php";
 

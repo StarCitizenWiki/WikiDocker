@@ -129,6 +129,7 @@ The Wiki stack consists of the following services:
     * [mediawiki/capiunto](https://www.mediawiki.org/wiki/Extension:Capiunto)
     * [mediawiki/citizen-skin](https://github.com/StarCitizenTools/mediawiki-skins-Citizen)
     * [mediawiki/cirrus-search](https://www.mediawiki.org/wiki/Extension:CirrusSearch)
+    * [mediawiki/cloud-flare](https://github.com/StarCitizenTools/mediawiki-extensions-CloudFlare)
     * [mediawiki/cookie-warning](https://www.mediawiki.org/wiki/Extension:CookieWarning)
     * [mediawiki/disambiguator](https://www.mediawiki.org/wiki/Extension:Disambiguator)
     * [mediawiki/discussion-tools](https://www.mediawiki.org/wiki/Extension:DiscussionTools)

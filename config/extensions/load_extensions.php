@@ -5,6 +5,7 @@ wfLoadExtension( 'ApprovedRevs' );
 wfLoadExtension( 'CategoryTree' );
 wfLoadExtension( 'Capiunto' );
 wfLoadExtension( 'Cite' );
+wfLoadExtension( 'CloudFlare' );
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'CookieWarning' );
 #wfLoadExtension( 'CommonsMetadata' );
