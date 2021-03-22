@@ -30,6 +30,7 @@ wfLoadExtension( 'SwiftMailer' );
 wfLoadExtension( 'SyntaxHighlight_GeSHi' );
 wfLoadExtension( 'TemplateData' );
 wfLoadExtension( 'TemplateStyles' );
+wfLoadExtension( 'TemplateStylesExtender' );
 wfLoadExtension( 'Thanks' );
 wfLoadExtension( 'TimedMediaHandler' );
 wfLoadExtension( 'UploadWizard' );
