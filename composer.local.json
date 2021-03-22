@@ -6,6 +6,7 @@
                 "mediawiki/disambiguator": "1.35.0",
                 "mediawiki/discussion-tools": "1.35.0",
                 "mediawiki/capiunto": "1.35.0",
+                "mediawiki/cloud-flare": "1.35.0",
                 "mediawiki/commons-metadata": "1.35.0",
                 "mediawiki/citizen-skin": "1.35.0.1",
                 "mediawiki/cookie-warning": "1.35.0",

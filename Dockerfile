@@ -76,7 +76,7 @@ RUN /usr/bin/composer install --no-dev \
    \
    cd /var/www/html; \
    mv extensions/Oauth extensions/OAuth; \
-   mv extensions/Webp extensions/WebP; \
+   mv extensions/Cloudflare extensions/CloudFlare; \
    mv skins/citizen skins/Citizen
 
 USER root
