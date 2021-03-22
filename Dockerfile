@@ -67,12 +67,13 @@ RUN chown -R www-data:www-data /var/www
 
 USER www-data
 
-RUN /usr/bin/composer install --no-dev \
-   --ignore-platform-reqs \
-   --no-ansi \
-   --no-interaction \
-   --no-cache \
-   --no-scripts; \
+RUN set -eux; \
+   /usr/bin/composer install --no-dev \
+     --ignore-platform-reqs \
+     --no-ansi \
+     --no-interaction \
+     --no-cache \
+     --no-scripts; \
    \
    cd /var/www/html; \
    mv extensions/Oauth extensions/OAuth; \
