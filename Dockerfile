@@ -77,7 +77,6 @@ RUN set -eux; \
    \
    cd /var/www/html; \
    mv extensions/Oauth extensions/OAuth; \
-   mv extensions/Cloudflare extensions/CloudFlare; \
    mv skins/citizen skins/Citizen
 
 USER root
