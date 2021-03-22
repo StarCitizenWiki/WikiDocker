@@ -499,6 +499,23 @@
                 {
                         "type": "package",
                         "package": {
+                                "name": "mediawiki/cloud-flare",
+                                "type": "mediawiki-extension",
+                                "version": "1.35.0",
+                                "dist": {
+                                        "url": "https://github.com/octfx/mediawiki-extensions-CloudFlare/archive/master.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/octfx/mediawiki-extensions-CloudFlare.git",
+                                        "reference": "master"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
                                 "name": "mediawiki/citizen-skin",
                                 "type": "mediawiki-skin",
                                 "version": "1.35.0.1",
@@ -509,23 +526,6 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen.git",
-                                        "reference": "master"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "mediawiki/cloud-flare",
-                                "type": "mediawiki-skin",
-                                "version": "1.35.0",
-                                "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extensions-CloudFlare/archive/master.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/octfx/mediawiki-extensions-CloudFlare.git",
                                         "reference": "master"
                                 }
                         }
