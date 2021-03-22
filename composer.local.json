@@ -129,7 +129,7 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0",
                                 "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extensions-TemplateStylesExtender/archive/REL1_35.zip",
+                                        "url": "https://github.com/octfx/mediawiki-extensions-TemplateStylesExtender/archive/master.zip",
                                         "type": "zip"
                                 },
                                 "source": {
