@@ -20,4 +20,3 @@ $wgWikiSeoNoindexPageTitles = [
     'Spezial:Benutzerkonto_anlegen',
 ];
 $wgWikiSeoEnableAutoDescription = true;
-$wgWikiSeoSaveAutoDescriptionOnView = true;
