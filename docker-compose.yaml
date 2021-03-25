@@ -28,7 +28,6 @@ services:
       - /etc/star-citizen.wiki/config:/var/www/config
       - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
       - /etc/star-citizen.wiki/includes/libs/mime/MimeMap.php:/var/www/html/includes/libs/mime/MimeMap.php:ro
-      - /etc/star-citizen.wiki/includes/page/Article.php:/var/www/html/includes/page/Article.php:ro
       - /etc/star-citizen.wiki/container-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
       - /etc/star-citizen.wiki/container-config/robots.txt:/var/www/html/robots.txt:ro
       - /etc/star-citizen.wiki/container-config/favicon.ico:/var/www/html/favicon.ico:ro
