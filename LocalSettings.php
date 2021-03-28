@@ -224,7 +224,7 @@ date_default_timezone_set($wgLocaltimezone);
 # Upload / Images
 $wgMaxUploadSize = [
     '*' => 1024 * 1024 * 1000 * 2, // 100 MB
-    'url' => 1024 * 1024 * 8, // 8 MB
+    'url' => 1024 * 1024 * 20, // 8 MB
 ];
 $wgMaxImageArea = 3.6e7;
 $wgThumbnailEpoch = '20191118000000';
