@@ -123,6 +123,8 @@ services:
       - no-new-privileges:true
     networks:
       - internal
+    volumes:
+      - /var/lib/star-citizen.wiki/redis:/data
 
 networks:
   star-citizen.wiki:
