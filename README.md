@@ -10,7 +10,21 @@ The Docker configuration powering https://star-citizen.wiki.
 
 `docker pull scwiki/wiki:1.35.0`
 
-## Usage
+## Installation
+Create the user and allow it to use docker:
+```shell
+adduser scwiki
+
+usermod -aG docker scwiki 
+```
+
+And add the resulting UID and GUID to `.env`
+
+Create the network:
+```shell script
+docker network create --subnet=172.16.0.0/29 star-citizen.wiki
+```
+
 Replace `$wgSecretKey` in `LocalSettings.php`.
 ```shell script
 # Generates a 64 character long hex string 
@@ -29,20 +43,24 @@ php -r "echo(bin2hex(openssl_random_pseudo_bytes(8)))";
 
 Update the database settings in `docker-compose.yaml` and `config\system\db.php`.
 
-Add the Star Citizen Wiki API key to `config\extensions\config\apiunto.php`.  
+Add the Star Citizen Wiki API key to `config\extensions\config\apiunto.php`.
 
 Change the site verification key in `config\extensions\config\wikiseo.php`.
 
 Set the `smtp` password in `config\system\mail.php`.
 
-Create required folders:  
+Create required folders:
 ```shell script
 $ mkdir -p /etc/star-citizen.wiki
-$ mkdir -p /var/lib/star-citizen.wiki
+$ mkdir -p /var/lib/star-citizen.wiki/esdata
 $ mkdir -p /srv/star-citizen.wiki/sitemap
+$ chown -R scwiki: /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
+$ chmod -R g+w /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
+$ chmod g+rwx /var/lib/star-citizen.wiki/esdata
+$ chgrp 0 /var/lib/star-citizen.wiki/esdata
 ```
 
-Copy files to destination:  
+Copy files to destination:
 ```shell script
 $ cp ./LocalSettings.php /etc/star-citizen.wiki
 $ cp -R ./config /etc/star-citizen.wiki
@@ -50,27 +68,7 @@ $ cp -R ./container-settings /etc/star-citizen.wiki
 $ cp -R ./includes /etc/star-citizen.wiki
 ```
 
-Build the image:
-```shell script
-./docker-build.sh
-```
-
-_Note:_  
-Elasticsearch requires `vm.max_map_count` to be at least `262144`.  
-Run: `sysctl -w vm.max_map_count=262144`
-
-Start the container:
-```shell script
-docker-compose up -d
-```
-
-## Installation
-Create the network:
-```shell script
-docker network create --subnet=172.16.0.0/29 star-citizen.wiki
-```
-
-Set a database user and password in `docker-compose.yaml` and `config/system/db.php`.  
+Set a database user and password in `.env` and `config/system/db.php`.  
 
 Start the database and wiki container:
 ```shell script
@@ -78,18 +76,27 @@ docker-compose up -d db
 docker-compose up -d star-citizen.wiki
 ``` 
 
-Visit `http://172.16.0.3/mw-config/index.php`, start the installation and input the value of `$wgUpgradeKey` when asked.    
+_Note:_  
+Elasticsearch requires `vm.max_map_count` to be set to at least `262144`.  
+Run: `sysctl -w vm.max_map_count=262144`  
 
-The `LocalSettings` file created in the installation step can be safely discarded.
-  
+Visit `http://172.16.0.3/mw-config/index.php`, start the installation and input the value of `$wgUpgradeKey` when asked.  
+
+The `LocalSettings` file created in the installation step can be safely discarded.  
+
 Stop all container:
 ```shell script
 docker-compose down
 ```
 
+Uncomment the `LocalSettings.php` mount and start the stack.
+```shell
+docker-compose up -d
+```
+
 Connect to the container and run the update script:
 ```shell script
-docker exec -it star-citizen.wiki /bin/bash
+docker exec -it star-citizen.wiki_live /bin/bash
 
 php maintenance/update.php --quick
 ```
@@ -112,7 +119,7 @@ Settings for the [Star Citizen Wiki API](https://api.star-citizen.wiki).
 ## Stack
 The Wiki stack consists of the following services:
 * star-citizen.wiki
-  * MediaWiki 1.35
+  * MediaWiki 1.35.1
   * Including
     * ffmpeg
     * ghostscript / poppler-utils
@@ -155,7 +162,7 @@ The Wiki stack consists of the following services:
 * db
   * MariaDB Server
 * elasticsearch
-  * ElasticSearch 6.5.4 (MW Version invluding Plugins)
+  * ElasticSearch 6.5.4 (MW Version including Plugins)
 * ofelia
   * Cron Container
   * [Semantic MediaWiki Jobs](container-config/ofelia.ini)

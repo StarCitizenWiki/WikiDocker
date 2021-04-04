@@ -2,6 +2,13 @@ FROM mediawiki:stable
 
 LABEL maintainer="foxftw@star-citizen.wiki"
 
+COPY ./queue.sh /usr/local/bin/queue
+
+RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini; \
+    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini; \
+    chown www-data:www-data /usr/local/bin/queue; \
+    chmod +x /usr/local/bin/queue
+
 # Install the PHP extensions we need
 RUN set -eux; \
         \
@@ -63,11 +70,10 @@ COPY composer.local.json /var/www/html
 
 WORKDIR /var/www/html
 
-RUN chown -R www-data:www-data /var/www
-
 USER www-data
 
 RUN set -eux; \
+   chown -R www-data:www-data /var/www ;\
    /usr/bin/composer install --no-dev \
      --ignore-platform-reqs \
      --no-ansi \
@@ -77,16 +83,8 @@ RUN set -eux; \
    \
    cd /var/www/html; \
    mv extensions/Oauth extensions/OAuth; \
+   mv extensions/Webp extensions/WebP; \
    mv skins/citizen skins/Citizen
-
-USER root
-
-COPY ./queue.sh /usr/local/bin/queue
-
-RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini; \
-    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini; \
-    chown www-data:www-data /usr/local/bin/queue; \
-    chmod +x /usr/local/bin/queue
 
 VOLUME /var/www/html/sitemap
 VOLUME /var/www/html/images
