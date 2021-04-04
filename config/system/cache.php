@@ -60,5 +60,11 @@ $wgCdnServersNoPurge = [
     '2c0f:f248::/32',
 ];
 
+$wgCdnServers = [
+    '127.0.0.1',
+    '172.16.0.4',
+    'star-citizen.wiki-varnish',
+];
+
 $wgUseFileCache = true;
 $wgFileCacheDirectory = "/var/www/cache";

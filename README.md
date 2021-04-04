@@ -71,7 +71,7 @@ $ cp -R ./includes /etc/star-citizen.wiki
 
 $ chown -R scwiki: /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
 $ chown -R scwiki:www-data /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images /var/lib/star-citizen.wiki/cache /etc/star-citizen.wiki/.smw.json
-$ chmod -R g+w /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap /var/lib/star-citizen.wiki/cache /etc/star-citizen.wiki/.smw.json
+$ chmod -R g+w /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap /var/lib/star-citizen.wiki/cache /etc/star-citizen.wiki/.smw.json
 $ chmod g+rwx /var/lib/star-citizen.wiki/esdata
 $ chgrp 0 /var/lib/star-citizen.wiki/esdata
 $ chmod g+rwx /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images
@@ -178,6 +178,8 @@ The Wiki stack consists of the following services:
     * Runs daily
 * redis
   * Caching
+* Varnish
+  * Page Cache
   
 ## Upgrade notes
 After a major update OAuth Consumers seem to get invalidated.  
