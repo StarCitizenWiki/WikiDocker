@@ -70,8 +70,6 @@ COPY composer.local.json /var/www/html
 
 WORKDIR /var/www/html
 
-USER www-data
-
 RUN set -eux; \
    chown -R www-data:www-data /var/www ;\
    /usr/bin/composer install --no-dev \
@@ -85,6 +83,8 @@ RUN set -eux; \
    mv extensions/Oauth extensions/OAuth; \
    mv extensions/Webp extensions/WebP; \
    mv skins/citizen skins/Citizen
+
+USER www-data
 
 VOLUME /var/www/html/sitemap
 VOLUME /var/www/html/images
