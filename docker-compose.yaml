@@ -33,6 +33,7 @@ services:
       - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
       - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
       - /srv/star-citizen.wiki/images:/var/www/html/images
+      - /var/lib/star-citizen.wiki/cache:/var/www/cache
       #- /srv/cdn.star-citizen.wiki/images:/var/www/html/images
     networks:
       star-citizen.wiki:
@@ -56,7 +57,7 @@ services:
       - "traefik.http.routers.star-citizen.tls.domains[0].main=${HOST}"
       - "traefik.http.routers.star-citizen.tls.domains[0].sans=*.${HOST}"
 
-      - "traefik.http.routers.star-citizen-api.rule=Host(`star-citizen.wiki`) && (Query(`action=ask`) || Query(`action=query`))"
+      - "traefik.http.routers.star-citizen-api.rule=Host(`${HOST}`) && (Query(`action=ask`) || Query(`action=query`))"
       - "traefik.http.routers.star-citizen-api.entryPoints=https"
       - "traefik.http.routers.star-citizen-api.middlewares=cdn-star-citizen-headers@file"
       - "traefik.http.routers.star-citizen-api.tls=true"

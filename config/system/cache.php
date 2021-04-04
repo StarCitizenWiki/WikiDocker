@@ -59,3 +59,6 @@ $wgCdnServersNoPurge = [
     '2a06:98c0::/29',
     '2c0f:f248::/32',
 ];
+
+$wgUseFileCache = true;
+$wgFileCacheDirectory = "/var/www/cache";

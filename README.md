@@ -58,7 +58,7 @@ Run: `sysctl -w vm.max_map_count=262144`
 Create required folders:
 ```shell script
 $ mkdir -p /etc/star-citizen.wiki
-$ mkdir -p /var/lib/star-citizen.wiki/{esdata,redis,db}
+$ mkdir -p /var/lib/star-citizen.wiki/{esdata,redis,db,cache}
 $ mkdir -p /srv/star-citizen.wiki/{images,sitemap}
 ```
 
@@ -70,8 +70,8 @@ $ cp -R ./container-config /etc/star-citizen.wiki
 $ cp -R ./includes /etc/star-citizen.wiki
 
 $ chown -R scwiki: /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
-$ chown -R scwiki:www-data /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images /etc/star-citizen.wiki/.smw.json
-$ chmod -R g+w /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap /etc/star-citizen.wiki/.smw.json
+$ chown -R scwiki:www-data /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images /var/lib/star-citizen.wiki/cache /etc/star-citizen.wiki/.smw.json
+$ chmod -R g+w /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap /var/lib/star-citizen.wiki/cache /etc/star-citizen.wiki/.smw.json
 $ chmod g+rwx /var/lib/star-citizen.wiki/esdata
 $ chgrp 0 /var/lib/star-citizen.wiki/esdata
 $ chmod g+rwx /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images
