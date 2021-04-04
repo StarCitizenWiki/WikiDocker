@@ -71,7 +71,6 @@ COPY composer.local.json /var/www/html
 WORKDIR /var/www/html
 
 RUN set -eux; \
-   chown -R www-data:www-data /var/www ;\
    /usr/bin/composer install --no-dev \
      --ignore-platform-reqs \
      --no-ansi \
@@ -82,7 +81,8 @@ RUN set -eux; \
    cd /var/www/html; \
    mv extensions/Oauth extensions/OAuth; \
    mv extensions/Webp extensions/WebP; \
-   mv skins/citizen skins/Citizen
+   mv skins/citizen skins/Citizen ;\
+   chown -R www-data:www-data /var/www
 
 USER www-data
 

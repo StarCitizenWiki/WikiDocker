@@ -21,10 +21,10 @@ services:
       - elasticsearch
     links:
       - db
-    expose:
-      - 80
-    #ports:
-    #- 127.0.0.1:8080:80
+    #expose:
+    #  - 80
+    ports:
+      - 0.0.0.0:8080:80
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php

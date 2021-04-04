@@ -49,36 +49,40 @@ Change the site verification key in `config\extensions\config\wikiseo.php`.
 
 Set the `smtp` password in `config\system\mail.php`.
 
+Update `$wgServer` and `$wgCanonicalServer` in `LocalSettings.php`
+
+_Note:_  
+Elasticsearch requires `vm.max_map_count` to be set to at least `262144`.  
+Run: `sysctl -w vm.max_map_count=262144`
+
 Create required folders:
 ```shell script
 $ mkdir -p /etc/star-citizen.wiki
-$ mkdir -p /var/lib/star-citizen.wiki/esdata
+$ mkdir -p /var/lib/star-citizen.wiki/{esdata,redis,db}
 $ mkdir -p /srv/star-citizen.wiki/sitemap
-$ chown -R scwiki: /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
-$ chmod -R g+w /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
-$ chmod g+rwx /var/lib/star-citizen.wiki/esdata
-$ chgrp 0 /var/lib/star-citizen.wiki/esdata
 ```
 
 Copy files to destination:
 ```shell script
 $ cp ./LocalSettings.php /etc/star-citizen.wiki
 $ cp -R ./config /etc/star-citizen.wiki
-$ cp -R ./container-settings /etc/star-citizen.wiki
+$ cp -R ./container-config /etc/star-citizen.wiki
 $ cp -R ./includes /etc/star-citizen.wiki
+
+$ chown -R scwiki: /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
+$ chmod -R g+w /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
+$ chmod g+rwx /var/lib/star-citizen.wiki/esdata
+$ chgrp 0 /var/lib/star-citizen.wiki/esdata
 ```
 
 Set a database user and password in `.env` and `config/system/db.php`.  
 
 Start the database and wiki container:
 ```shell script
+su scwiki
 docker-compose up -d db
-docker-compose up -d star-citizen.wiki
+docker-compose up -d star-citizen.wiki_live
 ``` 
-
-_Note:_  
-Elasticsearch requires `vm.max_map_count` to be set to at least `262144`.  
-Run: `sysctl -w vm.max_map_count=262144`  
 
 Visit `http://172.16.0.3/mw-config/index.php`, start the installation and input the value of `$wgUpgradeKey` when asked.  
 
