@@ -54,7 +54,7 @@ services:
     depends_on:
       - db
       - elasticsearch
-      - star-citizen.wiki_live
+      - star-citizen.wiki-live
     #expose:
     #  - 80
     ports:
@@ -142,7 +142,7 @@ services:
     networks:
       - internal
     depends_on:
-      - star-citizen.wiki_live
+      - star-citizen.wiki-live
       - db
       - elasticsearch
     volumes:
