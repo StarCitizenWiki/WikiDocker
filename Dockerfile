@@ -3,6 +3,13 @@ FROM mediawiki:stable
 LABEL maintainer="foxftw@star-citizen.wiki"
 
 COPY ./queue.sh /usr/local/bin/queue
+COPY ./config /var/www
+COPY ./includes/libs/mime/MimeMap.php /var/www/html/includes/libs/mime/MimeMap.php
+COPY ./includes/page/Article.php /var/www/html/includes/page/Article.php
+
+COPY ./container-config/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
+COPY ./container-config/robots.txt /var/www/html/robots.txt
+COPY ./container-config/favicon.ico /var/www/html/favicon.ico
 
 RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini; \
     echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini; \
@@ -78,16 +85,14 @@ RUN set -eux; \
      --no-cache \
      --no-scripts; \
    \
-   cd /var/www/html; \
-   mv extensions/Oauth extensions/OAuth; \
-   mv extensions/Webp extensions/WebP; \
-   mv skins/citizen skins/Citizen ;\
+   mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
+   mv /var/www/html/extensions/Webp /var/www/html/extensions/WebP; \
+   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen ;\
    chown -R www-data:www-data /var/www
 
 USER www-data
 
 VOLUME /var/www/html/sitemap
 VOLUME /var/www/html/images
-VOLUME /var/www/html/config
 
 EXPOSE 80

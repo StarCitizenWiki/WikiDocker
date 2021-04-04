@@ -9,7 +9,8 @@ version: '3.7'
 
 services:
   star-citizen.wiki_live:
-    image: scw-wiki:1.35.0
+    image: scwiki/wiki:1.35.0
+    #image: scwiki/wiki:dev
     container_name: star-citizen.wiki_live
     restart: unless-stopped
     init: true
@@ -27,16 +28,17 @@ services:
       - 0.0.0.0:8080:80
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      #- /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
       - /etc/star-citizen.wiki/config:/var/www/config
       - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
-      - /etc/star-citizen.wiki/includes/libs/mime/MimeMap.php:/var/www/html/includes/libs/mime/MimeMap.php:ro
-      - /etc/star-citizen.wiki/includes/page/Article.php:/var/www/html/includes/page/Article.php:ro
-      - /etc/star-citizen.wiki/container-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
-      - /etc/star-citizen.wiki/container-config/robots.txt:/var/www/html/robots.txt:ro
-      - /etc/star-citizen.wiki/container-config/favicon.ico:/var/www/html/favicon.ico:ro
+      #- /etc/star-citizen.wiki/includes/libs/mime/MimeMap.php:/var/www/html/includes/libs/mime/MimeMap.php:ro
+      #- /etc/star-citizen.wiki/includes/page/Article.php:/var/www/html/includes/page/Article.php:ro
+      #- /etc/star-citizen.wiki/container-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+      #- /etc/star-citizen.wiki/container-config/robots.txt:/var/www/html/robots.txt:ro
+      #- /etc/star-citizen.wiki/container-config/favicon.ico:/var/www/html/favicon.ico:ro
       - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
-      - /srv/cdn.star-citizen.wiki/images:/var/www/html/images
+      - /srv/star-citizen.wiki/images:/var/www/html/images
+      #- /srv/cdn.star-citizen.wiki/images:/var/www/html/images
     networks:
       star-citizen.wiki:
         ipv4_address: 172.16.0.3
@@ -46,6 +48,7 @@ services:
       interval: 10s
       timeout: 10s
       retries: 3
+    # Find the traefik config at https://github.com/StarCitizenWiki/WikiTraefik
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=star-citizen.wiki"
@@ -84,7 +87,7 @@ services:
     image: docker-registry.wikimedia.org/dev/stretch-elasticsearch:0.0.1
     restart: unless-stopped
     init: true
-    user: "${UID}:${GID}"
+    user: "${UID}:0"
     security_opt:
       - no-new-privileges:true
     environment:
@@ -96,6 +99,7 @@ services:
         soft: -1
         hard: -1
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /var/lib/star-citizen.wiki/esdata:/usr/share/elasticsearch/data
     expose:
       - 9200
@@ -116,6 +120,7 @@ services:
       - db
       - elasticsearch
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro
 
@@ -129,6 +134,7 @@ services:
     networks:
       - internal
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /var/lib/star-citizen.wiki/redis:/data
 
 networks:

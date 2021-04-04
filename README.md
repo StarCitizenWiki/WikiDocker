@@ -15,7 +15,7 @@ Create the user and allow it to use docker:
 ```shell
 adduser scwiki
 
-usermod -aG docker scwiki 
+usermod -aG docker scwiki
 ```
 
 And add the resulting UID and GUID to `.env`
@@ -59,20 +59,22 @@ Create required folders:
 ```shell script
 $ mkdir -p /etc/star-citizen.wiki
 $ mkdir -p /var/lib/star-citizen.wiki/{esdata,redis,db}
-$ mkdir -p /srv/star-citizen.wiki/sitemap
+$ mkdir -p /srv/star-citizen.wiki/{images,sitemap}
 ```
 
 Copy files to destination:
 ```shell script
-$ cp ./LocalSettings.php /etc/star-citizen.wiki
+$ cp ./LocalSettings.php ./.smw.json /etc/star-citizen.wiki
 $ cp -R ./config /etc/star-citizen.wiki
 $ cp -R ./container-config /etc/star-citizen.wiki
 $ cp -R ./includes /etc/star-citizen.wiki
 
 $ chown -R scwiki: /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
+$ chown -R scwiki:www-data /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images
 $ chmod -R g+w /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
 $ chmod g+rwx /var/lib/star-citizen.wiki/esdata
 $ chgrp 0 /var/lib/star-citizen.wiki/esdata
+$ chmod g+rwx /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images
 ```
 
 Set a database user and password in `.env` and `config/system/db.php`.  
