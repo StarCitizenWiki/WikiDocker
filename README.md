@@ -8,7 +8,7 @@
 # Star Citizen Wiki Docker
 The Docker configuration powering https://star-citizen.wiki.
 
-`docker pull scwiki/wiki:1.35.0`
+`docker pull scwiki/wiki:dev`
 
 ## Installation
 Create the user and allow it to use docker:
@@ -41,13 +41,13 @@ echo "$(openssl rand -hex 8)"
 php -r "echo(bin2hex(openssl_random_pseudo_bytes(8)))";
 ```
 
-Update the database settings in `docker-compose.yaml` and `config\system\db.php`.
+Set a database user and password in `.env` and `config/system/db.php`.  
 
-Add the Star Citizen Wiki API key to `config\extensions\config\apiunto.php`.
+Add the Star Citizen Wiki API key to `config/extensions/config/apiunto.php`.
 
-Change the site verification key in `config\extensions\config\wikiseo.php`.
+Change the site verification key in `config/extensions/config/wikiseo.php`.
 
-Set the `smtp` password in `config\system\mail.php`.
+Set the `smtp` password in `config/system/mail.php`.
 
 Update `$wgServer` and `$wgCanonicalServer` in `LocalSettings.php`
 
@@ -70,14 +70,12 @@ $ cp -R ./container-config /etc/star-citizen.wiki
 $ cp -R ./includes /etc/star-citizen.wiki
 
 $ chown -R scwiki: /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
-$ chown -R scwiki:www-data /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images
-$ chmod -R g+w /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap
+$ chown -R scwiki:www-data /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images /etc/star-citizen.wiki/.smw.json
+$ chmod -R g+w /etc/star-citizen.wiki /var/lib/star-citizen.wiki /srv/star-citizen.wiki/sitemap /etc/star-citizen.wiki/.smw.json
 $ chmod g+rwx /var/lib/star-citizen.wiki/esdata
 $ chgrp 0 /var/lib/star-citizen.wiki/esdata
 $ chmod g+rwx /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images
 ```
-
-Set a database user and password in `.env` and `config/system/db.php`.  
 
 Start the database and wiki container:
 ```shell script
@@ -86,7 +84,7 @@ docker-compose up -d db
 docker-compose up -d star-citizen.wiki_live
 ``` 
 
-Visit `http://172.16.0.3/mw-config/index.php`, start the installation and input the value of `$wgUpgradeKey` when asked.  
+Visit `http://0.0.0.0:8080/mw-config/index.php`, start the installation and input the value of `$wgUpgradeKey` if asked.  
 
 The `LocalSettings` file created in the installation step can be safely discarded.  
 
@@ -160,10 +158,12 @@ The Wiki stack consists of the following services:
     * [mediawiki/semantic-result-formats](https://www.mediawiki.org/wiki/Extension:Semantic_Result_Formats)
     * [mediawiki/swift-mailer](https://www.mediawiki.org/wiki/Extension:SwiftMailer)
     * [mediawiki/template-styles](https://www.mediawiki.org/wiki/Extension:TemplateStyles)
+    * [mediawiki/template-styles-extender](https://www.mediawiki.org/wiki/Extension:TemplateStylesExtender)
     * [mediawiki/timed-media-handler](https://www.mediawiki.org/wiki/Extension:TimedMediaHandler)
     * [mediawiki/thanks](https://www.mediawiki.org/wiki/Extension:Thanks)
     * [mediawiki/upload-wizard](https://www.mediawiki.org/wiki/Extension:UploadWizard)
     * [mediawiki/variables](https://www.mediawiki.org/wiki/Extension:Variables)
+    * [mediawiki/webp](https://www.mediawiki.org/wiki/Extension:WebP)
     * [octfx/wikiseo](https://www.mediawiki.org/wiki/Extension:WikiSEO)
 * db
   * MariaDB Server

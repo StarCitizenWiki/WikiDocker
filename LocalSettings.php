@@ -126,7 +126,6 @@ $wgDefaultSkin = 'citizen';
 
 # Enabled skins.
 # The following skins were automatically enabled:
-wfLoadSkin( 'Timeless' );
 wfLoadSkin( 'Citizen' );
 
 # Seiten

@@ -9,8 +9,8 @@ version: '3.7'
 
 services:
   star-citizen.wiki_live:
-    image: scwiki/wiki:1.35.0
-    #image: scwiki/wiki:dev
+    image: scwiki/wiki:dev
+    #image: scwiki/wiki:1.35.0
     container_name: star-citizen.wiki_live
     restart: unless-stopped
     init: true
@@ -28,14 +28,9 @@ services:
       - 0.0.0.0:8080:80
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      #- /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
       - /etc/star-citizen.wiki/config:/var/www/config
       - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
-      #- /etc/star-citizen.wiki/includes/libs/mime/MimeMap.php:/var/www/html/includes/libs/mime/MimeMap.php:ro
-      #- /etc/star-citizen.wiki/includes/page/Article.php:/var/www/html/includes/page/Article.php:ro
-      #- /etc/star-citizen.wiki/container-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
-      #- /etc/star-citizen.wiki/container-config/robots.txt:/var/www/html/robots.txt:ro
-      #- /etc/star-citizen.wiki/container-config/favicon.ico:/var/www/html/favicon.ico:ro
       - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
       - /srv/star-citizen.wiki/images:/var/www/html/images
       #- /srv/cdn.star-citizen.wiki/images:/var/www/html/images
