@@ -56,6 +56,12 @@ services:
       - "traefik.http.routers.star-citizen.tls.domains[0].main=${HOST}"
       - "traefik.http.routers.star-citizen.tls.domains[0].sans=*.${HOST}"
 
+      - "traefik.http.routers.star-citizen-api.rule=Host(`star-citizen.wiki`) && (Query(`action=ask`) || Query(`action=query`))"
+      - "traefik.http.routers.star-citizen-api.entryPoints=https"
+      - "traefik.http.routers.star-citizen-api.middlewares=cdn-star-citizen-headers@file"
+      - "traefik.http.routers.star-citizen-api.tls=true"
+      - "traefik.http.routers.star-citizen-api.tls.options=default"
+
   db:
     image: mariadb:latest
     restart: unless-stopped
