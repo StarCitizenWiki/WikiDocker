@@ -67,4 +67,6 @@ $wgCdnServers = [
 ];
 
 $wgUseFileCache = true;
-$wgFileCacheDirectory = "/var/www/cache";
+$wgFileCacheDirectory = '/var/www/cache';
+
+$wgInternalServer = 'star-citizen.wiki-live';
