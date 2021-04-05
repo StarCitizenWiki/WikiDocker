@@ -10,11 +10,11 @@ backend server1 { # Define one backend
   .max_connections = 300;              # That's it
 
   .probe = {
-    #.url = "/"; # short easy way (GET /)
+    #.url = "/Star_Citizen_Wiki"; # short easy way (GET /)
     # We prefer to only do a HEAD /
     .request =
-      "HEAD / HTTP/1.1"
-      "Host: localhost"
+      "HEAD /Spezial:Version HTTP/1.1"
+      "Host: star-citizen.wiki-live"
       "Connection: close"
       "User-Agent: Varnish Health Probe";
 
@@ -35,6 +35,7 @@ acl purge {
   "127.0.0.1";
   "::1";
   "star-citizen.wiki-live";
+  "172.16.0.3";
 }
 
 sub vcl_init {
@@ -67,7 +68,6 @@ sub vcl_recv {
   set req.url = std.querysort(req.url);
 
   set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + client.ip;
-
 
   # Allow purging
   if (req.method == "PURGE") {
@@ -181,7 +181,7 @@ sub vcl_recv {
   # Send Surrogate-Capability headers to announce ESI support to backend
   set req.http.Surrogate-Capability = "key=ESI/1.0";
 
-  if (req.http.Authorization || req.http.Cookie ~ "session" || req.http.Cookie ~ "Token") {
+  if (req.http.Authorization || req.http.Cookie ~ "Token") {
     # Not cacheable by default
     return (pass);
   }
@@ -262,11 +262,11 @@ sub vcl_hit {
   # load sky high. Secondly - nobody likes to wait. To deal with this we can instruct Varnish to keep the objects in cache
   # beyond their TTL and to serve the waiting requests somewhat stale content.
 
-# if (!std.healthy(req.backend_hint) && (obj.ttl + obj.grace > 0s)) {
-#   return (deliver);
-# } else {
-#   return (miss);
-# }
+  if (!std.healthy(req.backend_hint) && (obj.ttl + obj.grace > 0s)) {
+    return (deliver);
+  } else {
+    return (miss);
+  }
 
   # We have no fresh fish. Lets look at the stale ones.
   if (std.healthy(req.backend_hint)) {
@@ -295,6 +295,10 @@ sub vcl_miss {
 # Handle the HTTP request coming from our backend
 sub vcl_backend_response {
   # Called after the response headers has been successfully retrieved from the backend.
+
+  if (beresp.ttl < 48h) {
+    set beresp.ttl = 7d;
+  }
 
   # Pause ESI request and remove Surrogate-Control header
   if (beresp.http.Surrogate-Control ~ "ESI/1.0") {
