@@ -56,13 +56,8 @@ sub vcl_recv {
   set req.backend_hint = vdir.backend(); # send all traffic to the vdir director
 
   # Pass mw-config
-  if (req.url ~ "mw-config") {
+  if (req.url ~ "^/mw-config/") {
     return (pass);
-  }
-
-  # Normalize the header if it exists, remove the port (in case you're testing this on various TCP ports)
-  if (req.http.Host) {
-    set req.http.Host = regsub(req.http.Host, ":[0-9]+", "");
   }
 
   # Remove the proxy header (see https://httpoxy.org/#mitigate-varnish)
@@ -111,8 +106,6 @@ sub vcl_recv {
   if (req.url ~ "(\?|&)(utm_source|utm_medium|utm_campaign|utm_content|gclid|cx|ie|cof|siteurl)=") {
     set req.url = regsuball(req.url, "&(utm_source|utm_medium|utm_campaign|utm_content|gclid|cx|ie|cof|siteurl)=([A-z0-9_\-\.%25]+)", "");
     set req.url = regsuball(req.url, "\?(utm_source|utm_medium|utm_campaign|utm_content|gclid|cx|ie|cof|siteurl)=([A-z0-9_\-\.%25]+)", "?");
-    set req.url = regsub(req.url, "\?&", "?");
-    set req.url = regsub(req.url, "\?$", "");
   }
 
   # Strip hash, server doesn't need it.
@@ -123,6 +116,15 @@ sub vcl_recv {
   # Strip a trailing ? if it exists
   if (req.url ~ "\?$") {
     set req.url = regsub(req.url, "\?$", "");
+  }
+
+  # Remove all cookies for static files
+  # A valid discussion could be held on this line: do you really need to cache static files that don't cause load? Only if you have memory left.
+  # Sure, there's disk I/O, but chances are your OS will already have these files in their buffers (thus memory).
+  # Before you blindly enable this, have a read here: https://ma.ttias.be/stop-caching-static-files/
+  if (req.url ~ "^[^?]*\.(7z|avi|bmp|bz2|css|csv|doc|docx|eot|flac|flv|gif|gz|ico|jpeg|jpg|js|less|mka|mkv|mov|mp3|mp4|mpeg|mpg|odt|otf|ogg|ogm|opus|pdf|png|ppt|pptx|rar|rtf|svg|svgz|swf|tar|tbz|tgz|ttf|txt|txz|wav|webm|webp|woff|woff2|xls|xlsx|xml|xz|zip)(\?.*)?$") {
+    unset req.http.Cookie;
+    return (hash);
   }
 
   # Some generic cookie manipulation, useful for all templates that follow
@@ -170,23 +172,6 @@ sub vcl_recv {
       #}
     #}
   #}
-
-  # Large static files are delivered directly to the end-user without
-  # waiting for Varnish to fully read the file first.
-  # Varnish 4 fully supports Streaming, so set do_stream in vcl_backend_response()
-  if (req.url ~ "^[^?]*\.(7z|avi|bz2|flac|flv|gz|mka|mkv|mov|mp3|mp4|mpeg|mpg|ogg|ogm|opus|rar|tar|tgz|tbz|txz|wav|webm|xz|zip)(\?.*)?$") {
-    unset req.http.Cookie;
-    return (hash);
-  }
-
-  # Remove all cookies for static files
-  # A valid discussion could be held on this line: do you really need to cache static files that don't cause load? Only if you have memory left.
-  # Sure, there's disk I/O, but chances are your OS will already have these files in their buffers (thus memory).
-  # Before you blindly enable this, have a read here: https://ma.ttias.be/stop-caching-static-files/
-  if (req.url ~ "^[^?]*\.(7z|avi|bmp|bz2|css|csv|doc|docx|eot|flac|flv|gif|gz|ico|jpeg|jpg|js|less|mka|mkv|mov|mp3|mp4|mpeg|mpg|odt|otf|ogg|ogm|opus|pdf|png|ppt|pptx|rar|rtf|svg|svgz|swf|tar|tbz|tgz|ttf|txt|txz|wav|webm|webp|woff|woff2|xls|xlsx|xml|xz|zip)(\?.*)?$") {
-    unset req.http.Cookie;
-    return (hash);
-  }
 
   # Send Surrogate-Capability headers to announce ESI support to backend
   set req.http.Surrogate-Capability = "key=ESI/1.0";
@@ -260,12 +245,6 @@ sub vcl_hit {
   # problems - one is a thundering herd problem - suddenly releasing a thousand threads to serve content might send the
   # load sky high. Secondly - nobody likes to wait. To deal with this we can instruct Varnish to keep the objects in cache
   # beyond their TTL and to serve the waiting requests somewhat stale content.
-
-  if (!std.healthy(req.backend_hint) && (obj.ttl + obj.grace > 0s)) {
-    return (deliver);
-  } else {
-    return (miss);
-  }
 
   # We have no fresh fish. Lets look at the stale ones.
   if (std.healthy(req.backend_hint)) {
