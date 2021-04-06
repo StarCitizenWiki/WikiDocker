@@ -150,7 +150,7 @@ sub vcl_recv {
   set req.http.Cookie = regsuball(req.http.Cookie, "__cfduid=[^;]+(; )?", "");
   set req.http.Cookie = regsuball(req.http.Cookie, "__cf_bm=[^;]+(; )?", "");
   # Remove has_js and Cloudflare/Google Analytics __* cookies.
-  set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)(_[_a- z]+|has_js)=[^;]*", "");
+  set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)(_[_a-z]+|has_js)=[^;]*", "");
 
   # Remove a ";" prefix in the cookie if present
   set req.http.Cookie = regsuball(req.http.Cookie, "^;\s*", "");
@@ -191,7 +191,7 @@ sub vcl_recv {
   # Send Surrogate-Capability headers to announce ESI support to backend
   set req.http.Surrogate-Capability = "key=ESI/1.0";
 
-  if (req.http.Authorization || req.http.Cookie ~ "Token" || req.http.Cookie ~ "_session") {
+  if (req.http.Authorization || req.http.Cookie ~ "Token" || req.http.Cookie ~ "session") {
     # Not cacheable by default
     return (pass);
   }
