@@ -185,7 +185,7 @@ sub vcl_recv {
   # Send Surrogate-Capability headers to announce ESI support to backend
   set req.http.Surrogate-Capability = "key=ESI/1.0";
 
-  if (req.http.Authorization || req.http.Cookie ~ "Token") {
+  if (req.http.Authorization || req.http.Cookie ~ "Token" || req.http.Cookie ~ "_session") {
     # Not cacheable by default
     return (pass);
   }
@@ -300,10 +300,6 @@ sub vcl_miss {
 sub vcl_backend_response {
   # Called after the response headers has been successfully retrieved from the backend.
 
-  if (beresp.ttl < 48h) {
-    set beresp.ttl = 7d;
-  }
-
   # Pause ESI request and remove Surrogate-Control header
   if (beresp.http.Surrogate-Control ~ "ESI/1.0") {
     unset beresp.http.Surrogate-Control;
@@ -315,6 +311,10 @@ sub vcl_backend_response {
   # Before you blindly enable this, have a read here: https://ma.ttias.be/stop-caching-static-files/
   if (bereq.url ~ "^[^?]*\.(7z|avi|bmp|bz2|css|csv|doc|docx|eot|flac|flv|gif|gz|ico|jpeg|jpg|js|less|mka|mkv|mov|mp3|mp4|mpeg|mpg|odt|otf|ogg|ogm|opus|pdf|png|ppt|pptx|rar|rtf|svg|svgz|swf|tar|tbz|tgz|ttf|txt|txz|wav|webm|webp|woff|woff2|xls|xlsx|xml|xz|zip)(\?.*)?$") {
     unset beresp.http.set-cookie;
+  }
+
+  if (bereq.url ~ "^[^?]*\.(otf|ttf|woff|woff2)(\?.*)?$") {
+    set beresp.ttl = 1y;
   }
 
   # Large static files are delivered directly to the end-user without
@@ -345,6 +345,10 @@ sub vcl_backend_response {
   # Don't cache 50x responses
   if (beresp.status == 500 || beresp.status == 502 || beresp.status == 503 || beresp.status == 504) {
     return (abandon);
+  }
+
+  if (beresp.ttl < 48h) {
+    set beresp.ttl = 7d;
   }
 
   # Allow stale content, in case the backend goes down.
