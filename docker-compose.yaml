@@ -8,40 +8,7 @@ version: '3.7'
 ###
 
 services:
-  star-citizen.wiki-live:
-    image: scwiki/wiki:dev
-    #image: scwiki/wiki:1.35.0
-    container_name: star-citizen.wiki-live
-    restart: unless-stopped
-    init: true
-    user: "www-data:www-data"
-    security_opt:
-      - no-new-privileges:true
-    depends_on:
-      - db
-      - redis
-      - elasticsearch
-    links:
-      - db
-    expose:
-      - 80
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      #- /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
-      - /etc/star-citizen.wiki/config:/var/www/config
-      - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
-      - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
-      - /srv/star-citizen.wiki/images:/var/www/html/images
-      - /var/lib/star-citizen.wiki/cache:/var/www/cache
-      #- /srv/cdn.star-citizen.wiki/images:/var/www/html/images
-    networks:
-      internal:
-    healthcheck:
-      test: curl --fail -s http://star-citizen.wiki-live/ || exit 1
-      interval: 10s
-      timeout: 10s
-      retries: 3
-
+  # This is the entrypoint for all requests
   star-citizen.wiki-varnish:
     image: varnish:stable
     container_name: star-citizen.wiki-varnish
@@ -63,7 +30,7 @@ services:
         ipv4_address: 172.16.0.4
       internal:
     environment:
-      VARNISH_SIZE: 1G
+      VARNISH_SIZE: "${VARNISH_SIZE}"
     # Find the traefik config at https://github.com/StarCitizenWiki/WikiTraefik
     labels:
       - "traefik.enable=true"
@@ -83,6 +50,40 @@ services:
       - "traefik.http.routers.star-citizen-api.tls=true"
       - "traefik.http.routers.star-citizen-api.tls.options=default"
 
+  # The MediaWiki instance running apache
+  star-citizen.wiki-live:
+    image: scwiki/wiki:dev
+    #image: scwiki/wiki:1.35.0
+    container_name: star-citizen.wiki-live
+    restart: unless-stopped
+    init: true
+    user: "www-data:www-data"
+    security_opt:
+      - no-new-privileges:true
+    depends_on:
+      - db
+      - redis
+      - elasticsearch
+    expose:
+      - 80
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      #- /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      - /etc/star-citizen.wiki/config:/var/www/config
+      - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
+      - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
+      - /srv/star-citizen.wiki/images:/var/www/html/images
+      - /var/lib/star-citizen.wiki/cache:/var/www/cache
+      #- /srv/cdn.star-citizen.wiki/images:/var/www/html/images
+    networks:
+      internal:
+    healthcheck:
+      test: curl --fail -s http://star-citizen.wiki-live/ || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 3
+
+  # Database
   db:
     image: mariadb:latest
     restart: unless-stopped
@@ -105,6 +106,7 @@ services:
     networks:
       - internal
 
+  # Elasticsearch container providing search functionality to the wiki
   elasticsearch:
     image: docker-registry.wikimedia.org/dev/stretch-elasticsearch:0.0.1
     restart: unless-stopped
@@ -129,6 +131,7 @@ services:
     networks:
       - internal
 
+  # CRON container running the queue and other jobs
   ofelia:
     image: mcuadros/ofelia:latest
     restart: unless-stopped
@@ -146,6 +149,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro
 
+  # Redis as the main cache
   redis:
     image: redis:alpine
     restart: unless-stopped

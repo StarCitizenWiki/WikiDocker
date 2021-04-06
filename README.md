@@ -81,11 +81,22 @@ Start the database and wiki container:
 ```shell script
 su scwiki
 docker-compose up -d star-citizen.wiki-varnish
+
+docker exec -it star-citizen.wiki-live /bin/bash
+
+# This creates the database and installs the wiki
+# You should use the user / db / password configured in the .env file
+# See https://www.mediawiki.org/wiki/Manual:Install.php for more information
+php maintenance/install.php \
+  --confpath /dev/null \
+  --dbserver db \
+  --dbuser scw \
+  --dbpass scw \
+  --dbname scw \
+  --pass ADMIN_PASSWORD \
+  WIKI_NAME \
+  AMDIN_NAME
 ``` 
-
-Visit `http://0.0.0.0:8080/mw-config/index.php`, start the installation and input the value of `$wgUpgradeKey` if asked.  
-
-The `LocalSettings` file created in the installation step can be safely discarded.  
 
 Stop all container:
 ```shell script
@@ -118,6 +129,13 @@ Configuration file: [`config/extensions/config/wikiseo.php`](config/extensions/c
 ### Wiki API Config
 Configuration file: [`config/extensions/config/apiunto.php`](config/extensions/config/apiunto.php)
 Settings for the [Star Citizen Wiki API](https://api.star-citizen.wiki).
+
+### Traefik
+If you are running traefik remove the `ports` portion from the varnish container and uncomment the `expose` part.
+
+For local traefik instances without SSL you need to remove all labels containing `tls` and change out the entry point from `https` to `http` (or the name you set in your traefik config).  
+
+Also when not using the Star Citizen Wiki Traefik config you need to remove the labels containing `middlewares`.
 
 ## Stack
 The Wiki stack consists of the following services:
