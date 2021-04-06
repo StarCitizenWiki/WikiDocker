@@ -196,6 +196,19 @@ sub vcl_recv {
     return (pass);
   }
 
+  # normalize Accept-Encoding to reduce vary
+  if (req.http.Accept-Encoding) {
+    if (req.http.User-Agent ~ "MSIE 6") {
+      unset req.http.Accept-Encoding;
+    } elsif (req.http.Accept-Encoding ~ "gzip") {
+      set req.http.Accept-Encoding = "gzip";
+    } elsif (req.http.Accept-Encoding ~ "deflate") {
+      set req.http.Accept-Encoding = "deflate";
+    } else {
+      unset req.http.Accept-Encoding;
+    }
+  }
+
   return (hash);
 }
 
@@ -229,30 +242,6 @@ sub vcl_pass {
   # requests submitted over the same client connection are handled normally.
 
   # return (pass);
-}
-
-# The data on which the hashing will take place
-sub vcl_hash {
-  # Called after vcl_recv to create a hash value for the request. This is used as a key
-  # to look up the object in Varnish.
-
-  hash_data(req.url);
-
-  if (req.http.host) {
-    hash_data(req.http.host);
-  } else {
-    hash_data(server.ip);
-  }
-
-  # hash cookies for requests that have them
-  if (req.http.Cookie) {
-    hash_data(req.http.Cookie);
-  }
-
-  # Cache the HTTP vs HTTPs separately
-  if (req.http.X-Forwarded-Proto) {
-    hash_data(req.http.X-Forwarded-Proto);
-  }
 }
 
 sub vcl_hit {
@@ -305,6 +294,9 @@ sub vcl_miss {
 # Handle the HTTP request coming from our backend
 sub vcl_backend_response {
   # Called after the response headers has been successfully retrieved from the backend.
+
+  unset beresp.http.Vary;
+
   if (beresp.ttl < 48h) {
     set beresp.ttl = 7d;
   }
