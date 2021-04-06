@@ -35,7 +35,6 @@ acl purge {
   "127.0.0.1";
   "::1";
   "star-citizen.wiki-live";
-  "172.16.0.3";
 }
 
 sub vcl_init {
@@ -56,9 +55,14 @@ sub vcl_recv {
 
   set req.backend_hint = vdir.backend(); # send all traffic to the vdir director
 
+  # Pass mw-config
+  if (req.url ~ "mw-config") {
+    return (pass);
+  }
+
   # Normalize the header if it exists, remove the port (in case you're testing this on various TCP ports)
   if (req.http.Host) {
-   set req.http.Host = regsub(req.http.Host, ":[0-9]+", "");
+    set req.http.Host = regsub(req.http.Host, ":[0-9]+", "");
   }
 
   # Remove the proxy header (see https://httpoxy.org/#mitigate-varnish)

@@ -19,6 +19,7 @@ services:
       - no-new-privileges:true
     depends_on:
       - db
+      - redis
       - elasticsearch
     links:
       - db
@@ -26,7 +27,7 @@ services:
       - 80
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      #- /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
       - /etc/star-citizen.wiki/config:/var/www/config
       - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
       - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
@@ -34,11 +35,9 @@ services:
       - /var/lib/star-citizen.wiki/cache:/var/www/cache
       #- /srv/cdn.star-citizen.wiki/images:/var/www/html/images
     networks:
-      star-citizen.wiki:
-        ipv4_address: 172.16.0.3
       internal:
     healthcheck:
-      test: curl --fail -s http://172.16.0.3/ || exit 1
+      test: curl --fail -s http://star-citizen.wiki-live/ || exit 1
       interval: 10s
       timeout: 10s
       retries: 3
@@ -48,12 +47,9 @@ services:
     container_name: star-citizen.wiki-varnish
     restart: unless-stopped
     init: true
-    user: "${UID}:${GID}"
     security_opt:
       - no-new-privileges:true
     depends_on:
-      - db
-      - elasticsearch
       - star-citizen.wiki-live
     #expose:
     #  - 80

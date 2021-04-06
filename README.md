@@ -80,8 +80,7 @@ $ chmod g+rwx /srv/star-citizen.wiki/sitemap /srv/star-citizen.wiki/images
 Start the database and wiki container:
 ```shell script
 su scwiki
-docker-compose up -d db
-docker-compose up -d star-citizen.wiki_live
+docker-compose up -d star-citizen.wiki-varnish
 ``` 
 
 Visit `http://0.0.0.0:8080/mw-config/index.php`, start the installation and input the value of `$wgUpgradeKey` if asked.  
@@ -100,7 +99,7 @@ docker-compose up -d
 
 Connect to the container and run the update script:
 ```shell script
-docker exec -it star-citizen.wiki_live /bin/bash
+docker exec -it star-citizen.wiki-live /bin/bash
 
 php maintenance/update.php --quick
 ```
