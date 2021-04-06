@@ -47,6 +47,8 @@ Add the Star Citizen Wiki API key to `config/extensions/config/apiunto.php`.
 
 Change the site verification key in `config/extensions/config/wikiseo.php`.
 
+Add Plausible settings to `config/extensions/config/plausible.php` or disable the extension in `config/extensions/config/load_extensions.php`.
+
 Set the `smtp` password in `config/system/mail.php`.
 
 Update `$wgServer` and `$wgCanonicalServer` in `LocalSettings.php`
@@ -95,7 +97,7 @@ php maintenance/install.php \
   --dbname scw \
   --pass ADMIN_PASSWORD \
   WIKI_NAME \
-  AMDIN_NAME
+  ADMIN_NAME
 ``` 
 
 Stop all container:
