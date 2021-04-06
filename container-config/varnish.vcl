@@ -146,6 +146,12 @@ sub vcl_recv {
   # Remove the AddThis cookies
   set req.http.Cookie = regsuball(req.http.Cookie, "__atuv.=[^;]+(; )?", "");
 
+  # Remove Cloudflare cookies
+  set req.http.Cookie = regsuball(req.http.Cookie, "__cfduid=[^;]+(; )?", "");
+  set req.http.Cookie = regsuball(req.http.Cookie, "__cf_bm=[^;]+(; )?", "");
+  # Remove has_js and Cloudflare/Google Analytics __* cookies.
+  set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)(_[_a- z]+|has_js)=[^;]*", "");
+
   # Remove a ";" prefix in the cookie if present
   set req.http.Cookie = regsuball(req.http.Cookie, "^;\s*", "");
 
