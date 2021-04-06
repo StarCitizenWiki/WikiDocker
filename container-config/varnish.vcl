@@ -191,7 +191,7 @@ sub vcl_recv {
   # Send Surrogate-Capability headers to announce ESI support to backend
   set req.http.Surrogate-Capability = "key=ESI/1.0";
 
-  if (req.http.Authorization || req.http.Cookie ~ "Token" || req.http.Cookie ~ "session") {
+  if (req.http.Authorization || req.http.Cookie ~ "Token") {
     # Not cacheable by default
     return (pass);
   }
@@ -305,6 +305,9 @@ sub vcl_miss {
 # Handle the HTTP request coming from our backend
 sub vcl_backend_response {
   # Called after the response headers has been successfully retrieved from the backend.
+  if (beresp.ttl < 48h) {
+    set beresp.ttl = 7d;
+  }
 
   # Pause ESI request and remove Surrogate-Control header
   if (beresp.http.Surrogate-Control ~ "ESI/1.0") {
@@ -351,10 +354,6 @@ sub vcl_backend_response {
   # Don't cache 50x responses
   if (beresp.status == 500 || beresp.status == 502 || beresp.status == 503 || beresp.status == 504) {
     return (abandon);
-  }
-
-  if (beresp.ttl < 48h) {
-    set beresp.ttl = 7d;
   }
 
   # Allow stale content, in case the backend goes down.
