@@ -318,7 +318,7 @@ sub vcl_backend_response {
   }
 
   # Remove cookies from load.php
-  if (req.url ~ "^[^?]*load\.php.*$") {
+  if (bereq.url ~ "^[^?]*load\.php.*$") {
     unset beresp.http.set-cookie;
   }
 
