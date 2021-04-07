@@ -122,12 +122,23 @@ sub vcl_recv {
   # A valid discussion could be held on this line: do you really need to cache static files that don't cause load? Only if you have memory left.
   # Sure, there's disk I/O, but chances are your OS will already have these files in their buffers (thus memory).
   # Before you blindly enable this, have a read here: https://ma.ttias.be/stop-caching-static-files/
-  if (req.url ~ "^[^?]*\.(7z|avi|bmp|bz2|css|csv|doc|docx|eot|flac|flv|gif|gz|ico|jpeg|jpg|js|less|mka|mkv|mov|mp3|mp4|mpeg|mpg|odt|otf|ogg|ogm|opus|pdf|png|ppt|pptx|rar|rtf|svg|svgz|swf|tar|tbz|tgz|ttf|txt|txz|wav|webm|webp|woff|woff2|xls|xlsx|xml|xz|zip)(\?.*)?$") {
+  # if (req.url ~ "^[^?]*\.(7z|avi|bmp|bz2|css|csv|doc|docx|eot|flac|flv|gif|gz|ico|jpeg|jpg|js|less|mka|mkv|mov|mp3|mp4|mpeg|mpg|odt|otf|ogg|ogm|opus|pdf|png|ppt|pptx|rar|rtf|svg|svgz|swf|tar|tbz|tgz|ttf|txt|txz|wav|webm|webp|woff|woff2|xls|xlsx|xml|xz|zip)(\?.*)?$") {
+  #   unset req.http.Cookie;
+  #   return (hash);
+  # }
+
+  # Remove cookies from load.php
+  if (req.url ~ "^[^?]*load\.php.*$") {
     unset req.http.Cookie;
     return (hash);
   }
 
   # Some generic cookie manipulation, useful for all templates that follow
+
+  # Remove the mwuser-sessionId cookie that is only used in SessionManager::logPotentialSessionLeakage
+  # That cookie should not be set for proxy ips, but it gets set nonetheless
+  set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)[\w_-]+livemwuser-sessionId=[^;]+(; )?", "");
+
   # Remove the "has_js" cookie
   set req.http.Cookie = regsuball(req.http.Cookie, "has_js=[^;]+(; )?", "");
 
@@ -176,7 +187,7 @@ sub vcl_recv {
   # Send Surrogate-Capability headers to announce ESI support to backend
   set req.http.Surrogate-Capability = "key=ESI/1.0";
 
-  if (req.http.Authorization || req.http.Cookie ~ "Token") {
+  if (req.http.Authorization || req.http.Cookie ~ "Token" || req.http.Cookie ~ "_session") {
     # Not cacheable by default
     return (pass);
   }
@@ -277,7 +288,7 @@ sub vcl_backend_response {
   unset beresp.http.Vary;
 
   if (beresp.ttl < 48h) {
-    set beresp.ttl = 7d;
+    set beresp.ttl = 48h;
   }
 
   # Pause ESI request and remove Surrogate-Control header
@@ -289,20 +300,26 @@ sub vcl_backend_response {
   # Enable cache for all static files
   # The same argument as the static caches from above: monitor your cache size, if you get data nuked out of it, consider giving up the static file cache.
   # Before you blindly enable this, have a read here: https://ma.ttias.be/stop-caching-static-files/
-  if (bereq.url ~ "^[^?]*\.(7z|avi|bmp|bz2|css|csv|doc|docx|eot|flac|flv|gif|gz|ico|jpeg|jpg|js|less|mka|mkv|mov|mp3|mp4|mpeg|mpg|odt|otf|ogg|ogm|opus|pdf|png|ppt|pptx|rar|rtf|svg|svgz|swf|tar|tbz|tgz|ttf|txt|txz|wav|webm|webp|woff|woff2|xls|xlsx|xml|xz|zip)(\?.*)?$") {
-    unset beresp.http.set-cookie;
-  }
-
-  if (bereq.url ~ "^[^?]*\.(otf|ttf|woff|woff2)(\?.*)?$") {
-    set beresp.ttl = 1y;
-  }
+  # if (bereq.url ~ "^[^?]*\.(7z|avi|bmp|bz2|css|csv|doc|docx|eot|flac|flv|gif|gz|ico|jpeg|jpg|js|less|mka|mkv|mov|mp3|mp4|mpeg|mpg|odt|otf|ogg|ogm|opus|pdf|png|ppt|pptx|rar|rtf|svg|svgz|swf|tar|tbz|tgz|ttf|txt|txz|wav|webm|webp|woff|woff2|xls|xlsx|xml|xz|zip)(\?.*)?$") {
+  #   unset beresp.http.set-cookie;
+  # }
 
   # Large static files are delivered directly to the end-user without
   # waiting for Varnish to fully read the file first.
   # Varnish 4 fully supports Streaming, so use streaming here to avoid locking.
-  if (bereq.url ~ "^[^?]*\.(7z|avi|bz2|flac|flv|gz|mka|mkv|mov|mp3|mp4|mpeg|mpg|ogg|ogm|opus|rar|tar|tgz|tbz|txz|wav|webm|xz|zip)(\?.*)?$") {
+  # if (bereq.url ~ "^[^?]*\.(7z|avi|bz2|flac|flv|gz|mka|mkv|mov|mp3|mp4|mpeg|mpg|ogg|ogm|opus|rar|tar|tgz|tbz|txz|wav|webm|xz|zip)(\?.*)?$") {
+  #   set beresp.do_stream = true;  # Check memory usage it'll grow in fetch_chunksize blocks (128k by default) if the backend doesn't send a Content-Length header, so only enable it for big objects
+  # }
+
+  if (bereq.url ~ "^[^?]*\.(otf|ttf|woff|woff2)(\?.*)?$") {
     unset beresp.http.set-cookie;
-    set beresp.do_stream = true;  # Check memory usage it'll grow in fetch_chunksize blocks (128k by default) if the backend doesn't send a Content-Length header, so only enable it for big objects
+    unset beresp.http.expires;
+    set beresp.http.cache-control = "public, max-age=31536000";
+  }
+
+  # Remove cookies from load.php
+  if (req.url ~ "^[^?]*load\.php.*$") {
+    unset beresp.http.set-cookie;
   }
 
   # Sometimes, a 301 or 302 redirect formed via Apache's mod_rewrite can mess with the HTTP port that is being passed along.
