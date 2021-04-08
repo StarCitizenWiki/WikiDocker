@@ -30,7 +30,7 @@ RUN set -eux; \
                 libwebp6 \
                 libxml2-dev \
                 libzip-dev \
-                php-luasandbox \
+                liblua5.1-0-dev \
                 poppler-utils \
                 unzip \
                 webp \
@@ -47,6 +47,9 @@ RUN set -eux; \
         git clone https://github.com/Imagick/imagick /usr/src/php/ext/imagick --depth=1; \
         docker-php-ext-install imagick; \
         \
+        git clone https://gerrit.wikimedia.org/r/mediawiki/php/luasandbox.git /usr/src/php/ext/luasandbox --depth=1; \
+        docker-php-ext-install luasandbox; \
+        \
         # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
         apt-mark auto '.*' > /dev/null; \
         apt-mark manual $savedAptMark; \
@@ -58,7 +61,6 @@ RUN set -eux; \
             libwebpdemux2 \
             libgif7 \
             poppler-utils \
-            php-luasandbox \
             unzip \
             webp \
             zip; \
