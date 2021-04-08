@@ -21,7 +21,6 @@ wfLoadExtension( 'MultimediaViewer' );
 wfLoadExtension( 'OATHAuth' );
 wfLoadExtension( 'OAuth' );
 wfLoadExtension( 'ParserFunctions' );
-wfLoadExtension( 'Purge' );
 wfLoadExtension( 'PdfHandler' );
 wfLoadExtension( 'Plausible' );
 wfLoadExtension( 'RelatedArticles' );

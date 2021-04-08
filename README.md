@@ -146,6 +146,8 @@ The Wiki stack consists of the following services:
   * Including
     * ffmpeg
     * ghostscript / poppler-utils
+    * luasandbox
+    * webp
   * PHP Extensions
     * CURL
     * DOM
@@ -170,7 +172,6 @@ The Wiki stack consists of the following services:
     * [mediawiki/oauth](https://www.mediawiki.org/wiki/Extension:OAuth)
     * [mediawiki/plausible](https://www.mediawiki.org/wiki/Extension:Plausible)
     * [mediawiki/popups](https://www.mediawiki.org/wiki/Extension:Popups)
-    * [mediawiki/purge](https://www.mediawiki.org/wiki/Extension:Purge)
     * [mediawiki/related-articles](https://www.mediawiki.org/wiki/Extension:RelatedArticles)
     * [mediawiki/sandbox-link](https://www.mediawiki.org/wiki/Extension:SandboxLink)
     * [mediawiki/semantic-media-wiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki)
@@ -197,6 +198,7 @@ The Wiki stack consists of the following services:
   * Sitemap generation
     * Runs daily
 * redis
+  * JobQueue
   * Caching
 * Varnish
   * Page Cache
