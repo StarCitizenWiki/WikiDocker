@@ -27,12 +27,13 @@ RUN set -eux; \
                 ghostscript \
                 libcurl4-gnutls-dev \
                 libmagickwand-dev \
-                webp \
                 libwebp6 \
                 libxml2-dev \
                 libzip-dev \
+                php-luasandbox \
                 poppler-utils \
                 unzip \
+                webp \
                 zip \
         ; \
         docker-php-ext-install -j "$(nproc)" \
@@ -49,16 +50,18 @@ RUN set -eux; \
         # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
         apt-mark auto '.*' > /dev/null; \
         apt-mark manual $savedAptMark; \
-        apt-mark manual zip \
-            unzip \
+        apt-mark manual \
+            curl \
             ffmpeg \
             ghostscript \
-            poppler-utils \
             libwebp6 \
             libwebpdemux2 \
             libgif7 \
+            poppler-utils \
+            php-luasandbox \
+            unzip \
             webp \
-            curl; \
+            zip; \
         ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
                 | awk '/=>/ { print $3 }' \
                 | sort -u \
