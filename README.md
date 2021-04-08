@@ -173,6 +173,7 @@ The Wiki stack consists of the following services:
     * [mediawiki/plausible](https://www.mediawiki.org/wiki/Extension:Plausible)
     * [mediawiki/popups](https://www.mediawiki.org/wiki/Extension:Popups)
     * [mediawiki/related-articles](https://www.mediawiki.org/wiki/Extension:RelatedArticles)
+    * [mediawiki/revision-slider](https://www.mediawiki.org/wiki/Extension:RevisionSlider)
     * [mediawiki/sandbox-link](https://www.mediawiki.org/wiki/Extension:SandboxLink)
     * [mediawiki/semantic-media-wiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki)
     * [mediawiki/semantic-scribunto](https://www.mediawiki.org/wiki/Extension:Semantic_Scribunto)

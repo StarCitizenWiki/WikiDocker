@@ -24,6 +24,7 @@ wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'PdfHandler' );
 wfLoadExtension( 'Plausible' );
 wfLoadExtension( 'RelatedArticles' );
+wfLoadExtension( 'RevisionSlider' );
 wfLoadExtension( 'SandboxLink' );
 wfLoadExtension( 'Scribunto' );
 wfLoadExtension( 'SwiftMailer' );
