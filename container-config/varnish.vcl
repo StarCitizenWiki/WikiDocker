@@ -137,7 +137,9 @@ sub vcl_recv {
 
   # Remove the mwuser-sessionId cookie that is only used in SessionManager::logPotentialSessionLeakage
   # That cookie should not be set for proxy ips, but it gets set nonetheless
-  set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)[\w_-]+livemwuser-sessionId=[^;]+(; )?", "");
+  if (!req.http.Cookie ~ "Token") {
+    set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)[\w_-]+livemwuser-sessionId=[^;]+(; )?", "");
+  }
 
   # Remove the "has_js" cookie
   set req.http.Cookie = regsuball(req.http.Cookie, "has_js=[^;]+(; )?", "");
@@ -187,7 +189,7 @@ sub vcl_recv {
   # Send Surrogate-Capability headers to announce ESI support to backend
   set req.http.Surrogate-Capability = "key=ESI/1.0";
 
-  if (req.http.Authorization || req.http.Cookie ~ "Token" || req.http.Cookie ~ "_session") {
+  if (req.http.Authorization || req.http.Cookie ~ "Token" || req.http.Cookie ~ "session") {
     # Not cacheable by default
     return (pass);
   }
