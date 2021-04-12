@@ -33,7 +33,6 @@ acl purge {
   # ACL we'll use later to allow purges
   "star-citizen.wiki-live";
   "172.16.0.3";
-  "172.16.0.5";
 }
 
 sub vcl_init {
