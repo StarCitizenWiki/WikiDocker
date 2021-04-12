@@ -3,6 +3,7 @@ version: '3.7'
 ###
 # This file assumes the following external network
 # docker network create --subnet=172.16.0.0/29 star-citizen.wiki
+# docker network create --subnet=10.16.0.0/16 star-citizen.wiki-internal
 #
 # And user scwiki (change UID and GID in .env)
 ###
@@ -77,7 +78,7 @@ services:
     networks:
       star-citizen.wiki:
         ipv4_address: 172.16.0.3
-      internal:
+      star-citizen.wiki-internal:
         ipv4_address: 10.16.0.3
     healthcheck:
       test: curl --fail -s http://star-citizen.wiki-live/ || exit 1
@@ -106,7 +107,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/lib/star-citizen.wiki/db:/var/lib/mysql
     networks:
-      internal:
+      star-citizen.wiki-internal:
         ipv4_address: 10.16.0.5
 
   # Elasticsearch container providing search functionality to the wiki
@@ -132,7 +133,7 @@ services:
       - 9200
       - 9300
     networks:
-      internal:
+      star-citizen.wiki-internal:
         ipv4_address: 10.16.0.6
 
   # CRON container running the queue and other jobs
@@ -143,7 +144,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      internal:
+      star-citizen.wiki-internal:
         ipv4_address: 10.16.0.7
     depends_on:
       - star-citizen.wiki-live
@@ -163,7 +164,7 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      internal:
+      star-citizen.wiki-internal:
         ipv4_address: 10.16.0.8
     volumes:
       - /etc/localtime:/etc/localtime:ro
@@ -172,9 +173,5 @@ services:
 networks:
   star-citizen.wiki:
     external: true
-  internal:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 10.16.0.0/16
-          gateway: 10.16.0.1
+  star-citizen.wiki-internal:
+    external: true
