@@ -31,11 +31,9 @@ backend server1 { # Define one backend
 
 acl purge {
   # ACL we'll use later to allow purges
-  "localhost";
-  "127.0.0.1";
-  "::1";
   "star-citizen.wiki-live";
   "172.16.0.3";
+  "10.16.0.3";
 }
 
 sub vcl_init {

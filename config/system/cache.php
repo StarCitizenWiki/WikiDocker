@@ -32,14 +32,6 @@ $wgObjectCacheSessionExpiry = 3600 * 3;
 $wgUseCdn = true;
 
 $wgCdnServers = [
-    '127.0.0.1',
-    '172.16.0.4',
-    'star-citizen.wiki-varnish',
-    'traefik',
-];
-
-$wgCdnServersNoPurge = [
-    '127.0.0.1',
     '172.16.0.4',
 ];
 
