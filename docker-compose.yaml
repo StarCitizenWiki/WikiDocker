@@ -76,6 +76,8 @@ services:
       - /var/lib/star-citizen.wiki/cache:/var/www/cache
       #- /srv/cdn.star-citizen.wiki/images:/var/www/html/images
     networks:
+      star-citizen.wiki:
+        ipv4_address: 172.16.0.3
       internal:
     healthcheck:
       test: curl --fail -s http://star-citizen.wiki-live/ || exit 1
