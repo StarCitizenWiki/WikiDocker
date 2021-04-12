@@ -85,6 +85,27 @@ services:
       timeout: 10s
       retries: 3
 
+  # CRON container running the queue and other jobs
+  ofelia:
+    image: mcuadros/ofelia:latest
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      star-citizen.wiki:
+        ipv4_address: 172.16.0.5
+      star-citizen.wiki-internal:
+        ipv4_address: 10.16.0.5
+    depends_on:
+      - star-citizen.wiki-live
+      - db
+      - elasticsearch
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro
+
   # Database
   db:
     image: mariadb:latest
@@ -107,7 +128,7 @@ services:
       - /var/lib/star-citizen.wiki/db:/var/lib/mysql
     networks:
       star-citizen.wiki-internal:
-        ipv4_address: 10.16.0.5
+        ipv4_address: 10.16.0.6
 
   # Elasticsearch container providing search functionality to the wiki
   elasticsearch:
@@ -133,26 +154,8 @@ services:
       - 9300
     networks:
       star-citizen.wiki-internal:
-        ipv4_address: 10.16.0.6
-
-  # CRON container running the queue and other jobs
-  ofelia:
-    image: mcuadros/ofelia:latest
-    restart: unless-stopped
-    init: true
-    security_opt:
-      - no-new-privileges:true
-    networks:
-      star-citizen.wiki-internal:
         ipv4_address: 10.16.0.7
-    depends_on:
-      - star-citizen.wiki-live
-      - db
-      - elasticsearch
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro
+
 
   # Redis as the main cache
   redis:

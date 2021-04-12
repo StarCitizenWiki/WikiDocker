@@ -32,10 +32,8 @@ $wgObjectCacheSessionExpiry = 3600 * 3;
 $wgUseCdn = true;
 
 $wgCdnServers = [
-    '172.16.0.4',
+    '172.16.0.4:80',
 ];
 
 $wgUseFileCache = false;
 $wgFileCacheDirectory = '/var/www/cache';
-
-$wgInternalServer = 'star-citizen.wiki-live';

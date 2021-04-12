@@ -33,7 +33,7 @@ acl purge {
   # ACL we'll use later to allow purges
   "star-citizen.wiki-live";
   "172.16.0.3";
-  "10.16.0.3";
+  "172.16.0.5";
 }
 
 sub vcl_init {
@@ -72,16 +72,21 @@ sub vcl_recv {
     } else {
       set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + client.ip;
     }
+
+    # Allow purging
+    if (req.method == "PURGE") {
+      if (!client.ip ~ purge) { # purge is the ACL defined at the begining
+        # Not from an allowed IP? Then die with an error.
+        return (synth(405, "This IP is not allowed to send PURGE requests."));
+      }
+      # If you got this stage (and didn't error out above), purge the cached result
+      return (purge);
+    }
   }
 
-  # Allow purging
-  if (req.method == "PURGE") {
-    if (!client.ip ~ purge) { # purge is the ACL defined at the begining
-      # Not from an allowed IP? Then die with an error.
-      return (synth(405, "This IP is not allowed to send PURGE requests."));
-    }
-    # If you got this stage (and didn't error out above), purge the cached result
-    return (purge);
+  if (req.restarts > 0) {
+    unset req.http.X-Purge;
+    set req.hash_always_miss = true;
   }
 
   # Only deal with "normal" types
