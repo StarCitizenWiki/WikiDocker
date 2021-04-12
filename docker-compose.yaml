@@ -93,8 +93,6 @@ services:
     security_opt:
       - no-new-privileges:true
     networks:
-      star-citizen.wiki:
-        ipv4_address: 172.16.0.5
       star-citizen.wiki-internal:
         ipv4_address: 10.16.0.5
     depends_on:
@@ -155,7 +153,6 @@ services:
     networks:
       star-citizen.wiki-internal:
         ipv4_address: 10.16.0.7
-
 
   # Redis as the main cache
   redis:
