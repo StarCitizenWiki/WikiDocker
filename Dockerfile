@@ -39,11 +39,13 @@ RUN set -eux; \
         docker-php-ext-install -j "$(nproc)" \
                 curl \
                 dom \
+                sockets \
                 json \
                 zip \
         ; \
         git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis --depth=1; \
         docker-php-ext-install redis; \
+        \
         git clone https://github.com/Imagick/imagick /usr/src/php/ext/imagick --depth=1; \
         docker-php-ext-install imagick; \
         \
