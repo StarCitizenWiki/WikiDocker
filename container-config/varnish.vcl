@@ -35,6 +35,7 @@ acl purge {
   "127.0.0.1";
   "::1";
   "star-citizen.wiki-live";
+  "172.16.0.3";
 }
 
 sub vcl_init {
@@ -66,7 +67,14 @@ sub vcl_recv {
   # Normalize the query arguments
   set req.url = std.querysort(req.url);
 
-  set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + client.ip;
+  # Set XFF to Connecting-IP
+  if (req.restarts == 0) {
+    if (req.http.CF-Connecting-IP) {
+      set req.http.X-Forwarded-For = req.http.CF-Connecting-IP + ", " + req.http.X-Forwarded-For + ", " + client.ip;
+    } else {
+      set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + client.ip;
+    }
+  }
 
   # Allow purging
   if (req.method == "PURGE") {
@@ -164,8 +172,8 @@ sub vcl_recv {
   # Remove Cloudflare cookies
   set req.http.Cookie = regsuball(req.http.Cookie, "__cfduid=[^;]+(; )?", "");
   set req.http.Cookie = regsuball(req.http.Cookie, "__cf_bm=[^;]+(; )?", "");
-  # Remove has_js and Cloudflare/Google Analytics __* cookies.
-  set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)(_[_a-z]+|has_js)=[^;]*", "");
+  # Remove Cloudflare/Google Analytics __* cookies.
+  set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)(_[_a-z]+)=[^;]*", "");
 
   # Remove a ";" prefix in the cookie if present
   set req.http.Cookie = regsuball(req.http.Cookie, "^;\s*", "");
@@ -174,17 +182,6 @@ sub vcl_recv {
   if (req.http.cookie ~ "^\s*$") {
     unset req.http.cookie;
   }
-
-  #if (req.http.Cache-Control ~ "(?i)no-cache") {
-    #if (client.ip ~ purge) {
-      # Ignore requests via proxy caches and badly behaved crawlers
-      # like msnbot that send no-cache with every request.
-      #if (! (req.http.Via || req.http.User-Agent ~ "(?i)bot" || req.http.X-Purge)) {
-        #set req.hash_always_miss = true; # Doesn't seems to refresh the object in the cache
-        #return(purge); # Couple this with restart in vcl_purge and X-Purge header to avoid loops
-      #}
-    #}
-  #}
 
   # Send Surrogate-Capability headers to announce ESI support to backend
   set req.http.Surrogate-Capability = "key=ESI/1.0";
