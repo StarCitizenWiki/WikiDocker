@@ -33,9 +33,9 @@
                 "mediawiki/variables": "1.35.0",
                 "mediawiki/webp": "1.35.0.1",
 
-                "christian-riesen/base32": "1.3.2",
+                "christian-riesen/base32": "1.6.0",
                 "firebase/php-jwt": "5.2.0",
-                "jakobo/hotp-php": "1.0.1",
+                "jakobo/hotp-php": "v1.0.1",
                 "james-heinrich/getid3": "^v1.9.19",
                 "league/oauth2-server": "8.1.0",
                 "octfx/wiki-seo": "2.6.5",
