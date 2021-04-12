@@ -46,7 +46,7 @@ services:
 
       - "traefik.http.routers.star-citizen-api.rule=Host(`${HOST}`) && (Query(`action=ask`) || Query(`action=query`))"
       - "traefik.http.routers.star-citizen-api.entryPoints=https"
-      - "traefik.http.routers.star-citizen-api.middlewares=cdn-star-citizen-headers@file"
+      - "traefik.http.routers.star-citizen-api.middlewares=api-route-headers@file"
       - "traefik.http.routers.star-citizen-api.tls=true"
       - "traefik.http.routers.star-citizen-api.tls.options=default"
 
