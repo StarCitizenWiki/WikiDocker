@@ -11,14 +11,12 @@ version: '3.7'
 services:
   # This is the entrypoint for all requests
   star-citizen.wiki-varnish:
-    image: varnish:stable
+    image: varnish:fresh
     container_name: star-citizen.wiki-varnish
     restart: unless-stopped
     init: true
     security_opt:
       - no-new-privileges:true
-    depends_on:
-      - star-citizen.wiki-live
     #expose:
     #  - 80
     ports:
@@ -61,6 +59,7 @@ services:
     security_opt:
       - no-new-privileges:true
     depends_on:
+      - star-citizen.wiki-varnish
       - db
       - redis
       - elasticsearch
