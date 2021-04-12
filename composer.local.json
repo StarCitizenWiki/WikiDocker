@@ -33,7 +33,7 @@
                 "mediawiki/variables": "1.35.0",
                 "mediawiki/webp": "1.35.0.1",
 
-                "christian-riesen/base32": "1.6.0",
+                "christian-riesen/base32": "1.4.0",
                 "firebase/php-jwt": "5.2.0",
                 "jakobo/hotp-php": "2.0.0",
                 "james-heinrich/getid3": "^v1.9.19",
