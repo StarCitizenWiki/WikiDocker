@@ -11,7 +11,7 @@ version: '3.7'
 services:
   # This is the entrypoint for all requests
   star-citizen.wiki-varnish:
-    image: varnish:fresh
+    image: varnish:6.5
     container_name: star-citizen.wiki-varnish
     restart: unless-stopped
     init: true
