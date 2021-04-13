@@ -109,6 +109,25 @@ sub vcl_recv {
     return (pass);
   }
 
+  # normalize Accept-Encoding to reduce vary
+  if (req.http.Accept-Encoding) {
+    if (req.http.User-Agent ~ "MSIE 6") {
+      unset req.http.Accept-Encoding;
+    } elsif (req.http.Accept-Encoding ~ "gzip") {
+      set req.http.Accept-Encoding = "gzip";
+    } elsif (req.http.Accept-Encoding ~ "deflate") {
+      set req.http.Accept-Encoding = "deflate";
+    } else {
+      unset req.http.Accept-Encoding;
+    }
+  }
+
+  # Remove cookies from load.php
+  if (req.url ~ "^/load\.php") {
+    unset req.http.Cookie;
+    return (hash);
+  }
+
   # Some generic URL manipulation, useful for all templates that follow
   # First remove the Google Analytics added parameters, useless for our backend
   if (req.url ~ "(\?|&)(utm_source|utm_medium|utm_campaign|utm_content|gclid|cx|ie|cof|siteurl)=") {
@@ -135,12 +154,6 @@ sub vcl_recv {
   #   return (hash);
   # }
 
-  # Remove cookies from load.php
-  if (req.url ~ "^[^?]*load\.php.*$") {
-    unset req.http.Cookie;
-    return (hash);
-  }
-
   # Some generic cookie manipulation, useful for all templates that follow
 
   # Remove the mwuser-sessionId cookie that is only used in SessionManager::logPotentialSessionLeakage
@@ -149,34 +162,37 @@ sub vcl_recv {
     set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)[\w_-]+livemwuser-sessionId=[^;]+(; )?", "");
   }
 
-  # Remove the "has_js" cookie
-  set req.http.Cookie = regsuball(req.http.Cookie, "has_js=[^;]+(; )?", "");
+  # Thinks to run if there is a cookie
+  if (req.http.Cookie) {
+    # Remove the "has_js" cookie
+    set req.http.Cookie = regsuball(req.http.Cookie, "has_js=[^;]+(; )?", "");
 
-  # Remove any Google Analytics based cookies
-  set req.http.Cookie = regsuball(req.http.Cookie, "__utm.=[^;]+(; )?", "");
-  set req.http.Cookie = regsuball(req.http.Cookie, "_ga=[^;]+(; )?", "");
-  set req.http.Cookie = regsuball(req.http.Cookie, "_gat=[^;]+(; )?", "");
-  set req.http.Cookie = regsuball(req.http.Cookie, "utmctr=[^;]+(; )?", "");
-  set req.http.Cookie = regsuball(req.http.Cookie, "utmcmd.=[^;]+(; )?", "");
-  set req.http.Cookie = regsuball(req.http.Cookie, "utmccn.=[^;]+(; )?", "");
+    # Remove any Google Analytics based cookies
+    set req.http.Cookie = regsuball(req.http.Cookie, "__utm.=[^;]+(; )?", "");
+    set req.http.Cookie = regsuball(req.http.Cookie, "_ga=[^;]+(; )?", "");
+    set req.http.Cookie = regsuball(req.http.Cookie, "_gat=[^;]+(; )?", "");
+    set req.http.Cookie = regsuball(req.http.Cookie, "utmctr=[^;]+(; )?", "");
+    set req.http.Cookie = regsuball(req.http.Cookie, "utmcmd.=[^;]+(; )?", "");
+    set req.http.Cookie = regsuball(req.http.Cookie, "utmccn.=[^;]+(; )?", "");
 
-  # Remove DoubleClick offensive cookies
-  set req.http.Cookie = regsuball(req.http.Cookie, "__gads=[^;]+(; )?", "");
+    # Remove DoubleClick offensive cookies
+    set req.http.Cookie = regsuball(req.http.Cookie, "__gads=[^;]+(; )?", "");
 
-  # Remove the Quant Capital cookies (added by some plugin, all __qca)
-  set req.http.Cookie = regsuball(req.http.Cookie, "__qc.=[^;]+(; )?", "");
+    # Remove the Quant Capital cookies (added by some plugin, all __qca)
+    set req.http.Cookie = regsuball(req.http.Cookie, "__qc.=[^;]+(; )?", "");
 
-  # Remove the AddThis cookies
-  set req.http.Cookie = regsuball(req.http.Cookie, "__atuv.=[^;]+(; )?", "");
+    # Remove the AddThis cookies
+    set req.http.Cookie = regsuball(req.http.Cookie, "__atuv.=[^;]+(; )?", "");
 
-  # Remove Cloudflare cookies
-  set req.http.Cookie = regsuball(req.http.Cookie, "__cfduid=[^;]+(; )?", "");
-  set req.http.Cookie = regsuball(req.http.Cookie, "__cf_bm=[^;]+(; )?", "");
-  # Remove Cloudflare/Google Analytics __* cookies.
-  set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)(_[_a-z]+)=[^;]*", "");
+    # Remove Cloudflare cookies
+    set req.http.Cookie = regsuball(req.http.Cookie, "__cfduid=[^;]+(; )?", "");
+    set req.http.Cookie = regsuball(req.http.Cookie, "__cf_bm=[^;]+(; )?", "");
+    # Remove Cloudflare/Google Analytics __* cookies.
+    set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)(_[_a-z]+)=[^;]*", "");
 
-  # Remove a ";" prefix in the cookie if present
-  set req.http.Cookie = regsuball(req.http.Cookie, "^;\s*", "");
+    # Remove a ";" prefix in the cookie if present
+    set req.http.Cookie = regsuball(req.http.Cookie, "^;\s*", "");
+  }
 
   # Are there cookies left with only spaces or that are empty?
   if (req.http.cookie ~ "^\s*$") {
@@ -189,19 +205,6 @@ sub vcl_recv {
   if (req.http.Authorization || req.http.Cookie ~ "Token" || req.http.Cookie ~ "_session") {
     # Not cacheable by default
     return (pass);
-  }
-
-  # normalize Accept-Encoding to reduce vary
-  if (req.http.Accept-Encoding) {
-    if (req.http.User-Agent ~ "MSIE 6") {
-      unset req.http.Accept-Encoding;
-    } elsif (req.http.Accept-Encoding ~ "gzip") {
-      set req.http.Accept-Encoding = "gzip";
-    } elsif (req.http.Accept-Encoding ~ "deflate") {
-      set req.http.Accept-Encoding = "deflate";
-    } else {
-      unset req.http.Accept-Encoding;
-    }
   }
 
   return (hash);
