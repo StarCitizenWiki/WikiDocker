@@ -67,7 +67,7 @@ sub vcl_recv {
   # Set XFF to Connecting-IP
   if (req.restarts == 0) {
     if (req.http.CF-Connecting-IP) {
-      set req.http.X-Forwarded-For = req.http.CF-Connecting-IP + ", " + req.http.X-Forwarded-For + ", " + client.ip;
+      set req.http.X-Forwarded-For = req.http.CF-Connecting-IP;
     } else {
       set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + client.ip;
     }
