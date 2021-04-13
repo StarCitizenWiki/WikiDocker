@@ -4,7 +4,6 @@ LABEL maintainer="foxftw@star-citizen.wiki"
 
 COPY ./queue.sh /usr/local/bin/queue
 COPY ./config /var/www
-#COPY ./includes/deferred/CdnCacheUpdate.php /var/www/html/includes/deferred/CdnCacheUpdate.php
 COPY ./includes/libs/mime/MimeMap.php /var/www/html/includes/libs/mime/MimeMap.php
 COPY ./includes/page/Article.php /var/www/html/includes/page/Article.php
 

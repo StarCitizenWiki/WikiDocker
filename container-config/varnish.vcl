@@ -81,9 +81,7 @@ sub vcl_recv {
       # If you got this stage (and didn't error out above), purge the cached result
       return (purge);
     }
-  }
-
-  if (req.restarts > 0) {
+  } else {
     unset req.http.X-Purge;
     set req.hash_always_miss = true;
   }
