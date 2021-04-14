@@ -124,6 +124,7 @@ sub vcl_recv {
 
   # Remove cookies from load.php
   if (req.url ~ "^/load\.php") {
+    unset req.http.cookie;
     unset req.http.Cookie;
     return (hash);
   }
@@ -154,16 +155,15 @@ sub vcl_recv {
   #   return (hash);
   # }
 
+  # Things to run if there is a cookie
   # Some generic cookie manipulation, useful for all templates that follow
-
-  # Remove the mwuser-sessionId cookie that is only used in SessionManager::logPotentialSessionLeakage
-  # That cookie should not be set for proxy ips, but it gets set nonetheless
-  if (!req.http.Cookie ~ "Token") {
-    set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)[\w_-]+livemwuser-sessionId=[^;]+(; )?", "");
-  }
-
-  # Thinks to run if there is a cookie
   if (req.http.Cookie) {
+    # Remove the mwuser-sessionId cookie that is only used in SessionManager::logPotentialSessionLeakage
+    # That cookie should not be set for proxy ips, but it gets set nonetheless
+    if (!req.http.Cookie ~ "Token") {
+      set req.http.Cookie = regsuball(req.http.Cookie, "(^|;\s*)[\w_-]+mwuser-sessionId=[^;]+(; )?", "");
+    }
+
     # Remove the "has_js" cookie
     set req.http.Cookie = regsuball(req.http.Cookie, "has_js=[^;]+(; )?", "");
 
@@ -192,11 +192,11 @@ sub vcl_recv {
 
     # Remove a ";" prefix in the cookie if present
     set req.http.Cookie = regsuball(req.http.Cookie, "^;\s*", "");
-  }
 
-  # Are there cookies left with only spaces or that are empty?
-  if (req.http.cookie ~ "^\s*$") {
-    unset req.http.cookie;
+    # Are there cookies left with only spaces or that are empty?
+    if (req.http.cookie ~ "^\s*$") {
+      unset req.http.Cookie;
+    }
   }
 
   # Send Surrogate-Capability headers to announce ESI support to backend
@@ -315,13 +315,17 @@ sub vcl_backend_response {
 
   if (bereq.url ~ "^[^?]*\.(otf|ttf|woff|woff2)(\?.*)?$") {
     unset beresp.http.set-cookie;
+    unset beresp.http.Set-Cookie;
     unset beresp.http.expires;
-    set beresp.http.cache-control = "public, max-age=31536000";
+    set beresp.http.Cache-Control = "public, max-age=31536000";
   }
 
   # Remove cookies from load.php
-  if (bereq.url ~ "^[^?]*load\.php.*$") {
+  if (bereq.url ~ "^/load\.php") {
     unset beresp.http.set-cookie;
+    unset beresp.http.Set-Cookie;
+    unset beresp.http.expires;
+    set beresp.http.Cache-Control = "public, max-age=2592000";
   }
 
   # Sometimes, a 301 or 302 redirect formed via Apache's mod_rewrite can mess with the HTTP port that is being passed along.
