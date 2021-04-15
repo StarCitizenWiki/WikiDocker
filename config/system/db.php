@@ -1,5 +1,7 @@
 <?php
 
+$wgMiserMode = true;
+
 $wgDBtype = "mysql";
 $wgDBserver = "db";
 // Provided defaults, should be changed
