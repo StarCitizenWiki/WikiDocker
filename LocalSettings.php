@@ -250,7 +250,7 @@ $wgDefaultRobotPolicy = 'index,follow';
 # Add more configuration options below.
 
 # WebP - Needs to be loaded pre include
-require_once "$wgWikiConfigPath/extensions/config/webp.php";
+#require_once "$wgWikiConfigPath/extensions/config/webp.php";
 
 # Extensions
 require_once "$wgWikiConfigPath/extensions/load_extensions.php";
