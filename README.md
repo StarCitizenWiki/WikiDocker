@@ -142,7 +142,7 @@ Also when not using the Star Citizen Wiki Traefik config you need to remove the 
 ## Stack
 The Wiki stack consists of the following services:
 * star-citizen.wiki
-  * MediaWiki 1.35.1
+  * MediaWiki 1.35.2
   * Including
     * ffmpeg
     * ghostscript / poppler-utils
@@ -152,8 +152,9 @@ The Wiki stack consists of the following services:
     * CURL
     * DOM
     * JSON
-    * ZIP
     * REDIS
+    * SOCKETS
+    * ZIP
   * Extensions and Skins bundled in the container
     * [mediawiki/advanced-search](https://www.mediawiki.org/wiki/Extension:AdvancedSearch)
     * [mediawiki/apiunto](https://github.com/StarCitizenWiki/Apiunto)
@@ -203,7 +204,21 @@ The Wiki stack consists of the following services:
   * Caching
 * Varnish
   * Page Cache
-  
+
+## Cloudflare Settings
+The following page rules are used for CloudFlare
+
+* `star-citizen.wiki/thumb.php?*`
+  * Cache-Level: Cache Everything
+  * Browser-Cache-TTL: 1 Year
+  * Edge-Cache-TTL: 1 Month
+  * Always Online: Yes
+* `star-citizen.wiki/load.php?*`
+  * Cache-Level: Cache Everything
+  * Browser-Cache-TTL: 1 Year
+  * Edge-Cache-TTL: 1 Month
+  * Always Online: Yes
+
 ## Upgrade notes
 After a major update OAuth Consumers seem to get invalidated.  
 For each registered consumer a new one needs to get created.
