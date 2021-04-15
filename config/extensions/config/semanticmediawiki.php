@@ -18,3 +18,9 @@ $smwgNamespacesWithSemanticLinks[NS_ORGANISATION] = true;
 $smwgNamespacesWithSemanticLinks[NS_COMMUNITY_CONTENT] = true;
 
 $smwgQMaxInlineLimit = 2500;
+
+# Experimental speed up
+$smwgQueryResultCacheType = 'redis';
+
+$smwgQFilterDuplicates = true;
+
