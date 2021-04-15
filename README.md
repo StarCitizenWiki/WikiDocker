@@ -206,6 +206,7 @@ The Wiki stack consists of the following services:
   * Page Cache
 
 ## Cloudflare Settings
+### Page Rules
 The following page rules are used for CloudFlare
 
 * `star-citizen.wiki/thumb.php?*`
@@ -218,6 +219,21 @@ The following page rules are used for CloudFlare
   * Browser-Cache-TTL: 1 Year
   * Edge-Cache-TTL: 1 Month
   * Always Online: Yes
+
+### Firewall Rules
+Visit Firewall -> Firewall Rules and add the following code to a new rule.
+
+This will disable bots trying to edit pages, visit special pages, or the login view.
+```
+(http.request.uri.query contains "action=query" and cf.client.bot) or
+(http.request.uri.query contains "action=visualeditor" and cf.client.bot) or
+(http.request.uri.query contains "Anmelden" and cf.client.bot) or
+(http.request.uri.path contains "Spezial" and cf.client.bot) or
+(http.request.uri.query contains "Spezial" and cf.client.bot) or
+(http.request.uri.query contains "UserLogin" and cf.client.bot) or
+(http.request.uri.path contains "Special" and cf.client.bot) or
+(http.request.uri.query contains "Special" and cf.client.bot)
+```
 
 ## Upgrade notes
 After a major update OAuth Consumers seem to get invalidated.  

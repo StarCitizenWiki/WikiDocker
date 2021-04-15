@@ -29,6 +29,10 @@ Disallow: */edit
 Disallow: */history
 Disallow: *?redlink
 Disallow: *?veaction=edit
+Disallow: /api.php?action=visualeditor
+Disallow: /api.php?action=visualeditor*
+Disallow: /index.php?action=edit
+Disallow: /index.php?action=edit*
 
 # Allow the Internet Archiver to index action=raw and thereby store the raw wikitext of pages
 User-agent: ia_archiver
