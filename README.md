@@ -225,7 +225,7 @@ Visit Firewall -> Firewall Rules and add the following code to a new rule.
 
 This will disable bots trying to edit pages, visit special pages, or the login view.
 ```
-(http.request.uri.query contains "action=query" and cf.client.bot) or
+(http.request.uri.query contains "action=edit" and cf.client.bot) or
 (http.request.uri.query contains "action=visualeditor" and cf.client.bot) or
 (http.request.uri.query contains "Anmelden" and cf.client.bot) or
 (http.request.uri.path contains "Spezial" and cf.client.bot) or
