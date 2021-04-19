@@ -10,6 +10,10 @@ $wgDiscordNotificationWikiUrl = 'https://star-citizen.wiki/';
 $wgDiscordExcludeNotificationsFrom = [
     'User:',
     'Benutzer:',
+    'Modul:',
+    'Module:',
+    'Vorlage:',
+    'Template:',
 ];
 
 $wgDiscordIncludePageUrls = true;
