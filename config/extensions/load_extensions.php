@@ -12,6 +12,7 @@ wfLoadExtension( 'CookieWarning' );
 wfLoadExtension( 'ConfirmEdit' );
 wfLoadExtension( 'ConfirmEdit/QuestyCaptcha' );
 wfLoadExtension( 'Disambiguator' );
+wfLoadExtension( 'DiscordNotifications' );
 wfLoadExtension( 'Echo' );
 wfLoadExtension( 'InputBox' );
 wfLoadExtension( 'LabeledSectionTransclusion' );

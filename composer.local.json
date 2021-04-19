@@ -10,6 +10,7 @@
                 "mediawiki/commons-metadata": "1.35.0",
                 "mediawiki/citizen-skin": "1.35.0.2",
                 "mediawiki/cookie-warning": "1.35.0",
+                "mediawiki/discord-notifications": "1.35.0",
                 "mediawiki/echo": "1.35.0",
                 "mediawiki/cirrus-search": "1.35.0",
                 "mediawiki/elastica": "1.35.0",
@@ -256,6 +257,23 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-CookieWarning.git",
+                                        "reference": "REL1_35"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/discord-notifications",
+                                "type": "mediawiki-extension",
+                                "version": "1.35.0",
+                                "dist": {
+                                        "url": "https://github.com/kulttuuri/DiscordNotifications/archive/master.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/kulttuuri/DiscordNotifications.git",
                                         "reference": "REL1_35"
                                 }
                         }

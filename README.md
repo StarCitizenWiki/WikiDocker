@@ -166,6 +166,7 @@ The Wiki stack consists of the following services:
     * [mediawiki/cookie-warning](https://www.mediawiki.org/wiki/Extension:CookieWarning)
     * [mediawiki/disambiguator](https://www.mediawiki.org/wiki/Extension:Disambiguator)
     * [mediawiki/discussion-tools](https://www.mediawiki.org/wiki/Extension:DiscussionTools)
+    * [mediawiki/discord-notifications](https://github.com/kulttuuri/DiscordNotifications)
     * [mediawiki/echo](https://www.mediawiki.org/wiki/Extension:Echo)
     * [mediawiki/elastica](https://www.mediawiki.org/wiki/Extension:Elastica)
     * [mediawiki/labeled-section-transclusion](https://www.mediawiki.org/wiki/Extension:Labeled_Section_Transclusion)
