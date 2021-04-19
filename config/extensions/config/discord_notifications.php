@@ -2,19 +2,24 @@
 
 $wgDiscordIncomingWebhookUrl = "";
 
-$wgDiscordFromName = 'Star Citizen Wiki';
+$wgDiscordFromName = 'Wiki Changelog Bot';
 $wgDiscordAvatarUrl = 'https://cdn.star-citizen.wiki/images/favicon.png';
 
 $wgDiscordNotificationWikiUrl = 'https://star-citizen.wiki/';
 
+$wgDiscordExcludeNotificationsFrom = [
+    'User:',
+    'Benutzer:',
+];
+
 $wgDiscordIncludePageUrls = true;
-$wgDiscordIncludeUserUrls = true;
-$wgDiscordIgnoreMinorEdits = true;
+$wgDiscordIncludeUserUrls = false;
+$wgDiscordIgnoreMinorEdits = false;
 
 $wgDiscordIncludeDiffSize = true;
 
 // If this is set, actions by users with this permission won't cause alerts
-#$wgDiscordExcludedPermission = "";
+$wgDiscordExcludedPermission = 'sysop';
 
 // New user added into MediaWiki
 $wgDiscordNotificationNewUser = true;
