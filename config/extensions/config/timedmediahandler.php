@@ -13,5 +13,3 @@ $wgEnabledTranscodeSet = [
 #	WebVideoTranscode::ENC_WEBM_480P,
 #	WebVideoTranscode::ENC_WEBM_720P,
 ];
-
-$wgFFmpegLocation = '/usr/bin/ffmpeg';

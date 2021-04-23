@@ -243,6 +243,12 @@ $wgGalleryOptions = [
   'mode' => 'packed', // One of "traditional", "nolines", "packed", "packed-hover", "packed-overlay", "slideshow" (1.28+)
 ];
 
+# Locations
+$wgFFmpegLocation = '/usr/bin/ffmpeg';
+$wgPdfProcessor = '/usr/bin/ghostscript';
+$wgPdfInfo = '/usr/bin/pdfinfo';
+$wgPdftoText = '/usr/bin/pdftotext';
+
 # robots
 $wgDefaultRobotPolicy = 'index,follow';
 
