@@ -12,6 +12,7 @@
                 "mediawiki/cookie-warning": "1.35.0",
                 "mediawiki/discord-notifications": "1.35.0",
                 "mediawiki/echo": "1.35.0",
+                "mediawiki/embed-video": "1.35.0",
                 "mediawiki/cirrus-search": "1.35.0",
                 "mediawiki/elastica": "1.35.0",
                 "mediawiki/labeled-section-transclusion": "1.35.0.1",
@@ -332,16 +333,16 @@
                 {
                         "type": "package",
                         "package": {
-                                "name": "mediawiki/flow",
+                                "name": "mediawiki/embed-video",
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0",
                                 "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-Flow/archive/REL1_35.zip",
+                                        "url": "https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo/archive/master.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-Flow.git",
+                                        "url": "https://github.com/StarCitizenWiki/mediawiki-extensions-EmbedVideo.git",
                                         "reference": "REL1_35"
                                 }
                         }

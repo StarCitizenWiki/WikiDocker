@@ -9,7 +9,5 @@ $wgMediaVideoTypes = [
     'H.264'
 ];
 
-$wgEnabledTranscodeSet = [
-#	WebVideoTranscode::ENC_WEBM_480P,
-#	WebVideoTranscode::ENC_WEBM_720P,
-];
+$wgEnabledTranscodeSet = [];
+$wgEnabledAudioTranscodeSet = [];
