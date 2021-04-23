@@ -19,8 +19,11 @@ $smwgNamespacesWithSemanticLinks[NS_COMMUNITY_CONTENT] = true;
 
 $smwgQMaxInlineLimit = 2500;
 
-# Experimental speed up
+# Experimental Caching
+$smwgMainCacheType = 'redis';
 $smwgQueryResultCacheType = 'redis';
+$smwgQueryResultCacheLifetime = 60 * 60 * 24 * 7;
+
+$smwgEnabledQueryDependencyLinksStore = true;
 
 $smwgQFilterDuplicates = true;
-
