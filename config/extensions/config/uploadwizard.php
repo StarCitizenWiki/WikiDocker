@@ -75,7 +75,7 @@ $wgUploadWizardConfig = [
         'ownWork' => [
             'type' => 'or',
             'template' => 'self',
-            'defaults' => 'generic',
+            'defaults' => 'license-custom-rsi',
             'licenses' => [
                 'generic',
                 'license-custom-rsi',
