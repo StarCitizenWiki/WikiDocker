@@ -1,0 +1,23 @@
+mwe-upwiz-license-rsi
+''Roberts Space Industries International LTD'' Dateien mit eben genanntem Urheber ([https://robertsspaceindustries.com/tos#fansite_use Text der Lizenz])
+
+mwe-upwiz-license-custom-rsi
+''Roberts Space Industries International LTD'' Dateien welche auf Grundlage des eben genannten Urhebers erstellt wurden. Dies entspricht '''Screenshots''' aus [[Star Citizen]] oder Squadron 42, sowie '''Bearbeitungen''' offizieller Bilder ([https://robertsspaceindustries.com/tos#fansite_use Text der Lizenz])
+
+mwe-upwiz-license-starcitizen-head
+Dateien deren Urheber Roberts Space Industries International Ltd ist.
+
+mwe-upwiz-source-ownwork-assert-license-custom-rsi
+Ich, $2, {{GENDER:$4|der Ersteller|die Erstellerin}} {{PLURAL:$1|dieses Werkes|dieser Werke}}, gewähre unwiderruflich jedem das Recht, {{PLURAL:$1|dieses Werk|diese Werke}} unter der RSI-Fan-Lizenz zu verwenden ([https://robertsspaceindustries.com/tos#fansite_use Text der Lizenz]).
+
+mwe-upwiz-source-ownwork-license-custom-rsi-explain
+(Jeder darf {{PLURAL:$1|dieses Werk|diese Werke}} verwenden, teilen oder verändern, solange Roberts Space Industries International Ltd. als Urheber angegeben wird und das abgeleitete Werk unter dieser Lizenz geteilt, sowie nicht für kommerzielle Zwecke eingesetzt wird.)
+
+mwe-upwiz-license-cc-by-nc-sa-4.0
+''Creative Commons'' „Namensnennung – Nicht-kommerziell – Weitergabe unter gleichen Bedingungen 4.0“ ([http://creativecommons.org/licenses/by-nc-sa/4.0/deed.de Text der Lizenz])
+
+mwe-upwiz-license-cc-by-sa-4.0
+''Creative Commons'' „Namensnennung – Weitergabe unter gleichen Bedingungen 4.0“ ([http://creativecommons.org/licenses/by-sa/4.0/deed.de Text der Lizenz])
+
+mwe-upwiz-license-cc-by-4.0
+''Creative Commons'' „Namensnennung 4.0“ ([http://creativecommons.org/licenses/by/4.0/deed.de Text der Lizenz])
