@@ -7,7 +7,7 @@ import directors;
 backend server1 { # Define one backend
   .host = "star-citizen.wiki-live";    # IP or Hostname of backend
   .port = "80";                        # Port Apache or whatever is listening
-  .max_connections = 300;              # That's it
+  .max_connections = 500;              # That's it
 
   .probe = {
     #.url = "/Star_Citizen_Wiki"; # short easy way (GET /)
@@ -19,14 +19,14 @@ backend server1 { # Define one backend
       "User-Agent: Varnish Health Probe";
 
     .interval  = 5s; # check the health of each backend every 5 seconds
-    .timeout   = 2s; # timing out after 5 second.
+    .timeout   = 5s; # timing out after 5 second.
     .window    = 10;  # If 3 out of the last 5 polls succeeded the backend is considered healthy, otherwise it will be marked as sick
     .threshold = 8;
   }
 
-  .first_byte_timeout     = 300s;   # How long to wait before we receive a first byte from our backend?
-  .connect_timeout        = 5s;     # How long to wait for a backend connection?
-  .between_bytes_timeout  = 2s;     # How long to wait between bytes received from our backend?
+  .first_byte_timeout     = 60s;   # How long to wait before we receive a first byte from our backend?
+  .connect_timeout        = 5s;    # How long to wait for a backend connection?
+  .between_bytes_timeout  = 2s;    # How long to wait between bytes received from our backend?
 }
 
 acl purge {
