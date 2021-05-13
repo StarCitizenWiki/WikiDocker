@@ -243,3 +243,6 @@ For each registered consumer a new one needs to get created.
 ## Further notes
 The MediaWiki Container service name _cannot_ have the same name as the domain the wiki is running on.  
 If both names are equal, and the wiki is running on https, VisualEditor will fail to connect.
+
+## Upload Wizard Messages
+To use the custom licenses in UW you need to create the following system [messages](messages/uploadwizard-custom-messages.txt)
