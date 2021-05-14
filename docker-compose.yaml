@@ -3,57 +3,108 @@ version: '3.7'
 ###
 # This file assumes the following external network
 # docker network create --subnet=172.16.0.0/29 star-citizen.wiki
+# docker network create --subnet=10.16.0.0/16 star-citizen.wiki-internal
+#
+# And user scwiki (change UID and GID in .env)
 ###
 
 services:
-  star-citizen.wiki:
-    image: scw-wiki:1.35.0
-    container_name: star-citizen.wiki
+  # This is the entrypoint for all requests
+  star-citizen.wiki-varnish:
+    image: varnish:6.5
+    container_name: star-citizen.wiki-varnish
     restart: unless-stopped
     init: true
     security_opt:
       - no-new-privileges:true
-    depends_on:
-      - db
-      - elasticsearch
-    links:
-      - db
-    expose:
-      - 80
-    #ports:
-    #- 127:0.0.1:80:80
+    #expose:
+    #  - 80
+    ports:
+      - 0.0.0.0:8080:80
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
-      - /etc/star-citizen.wiki/config:/var/www/config
-      - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
-      - /etc/star-citizen.wiki/includes/libs/mime/MimeMap.php:/var/www/html/includes/libs/mime/MimeMap.php:ro
-      - /etc/star-citizen.wiki/includes/page/Article.php:/var/www/html/includes/page/Article.php:ro
-      - /etc/star-citizen.wiki/container-config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
-      - /etc/star-citizen.wiki/container-config/robots.txt:/var/www/html/robots.txt:ro
-      - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
-      - /srv/cdn.star-citizen.wiki/images:/var/www/html/images
+      - /etc/star-citizen.wiki/container-config/varnish.vcl:/etc/varnish/default.vcl:ro
     networks:
       star-citizen.wiki:
-        ipv4_address: 172.16.0.3
-      internal:
-    healthcheck:
-      test: curl --fail -s http://172.16.0.3/ || exit 1
-      interval: 10s
-      timeout: 10s
-      retries: 3
+        ipv4_address: 172.16.0.4
+    environment:
+      VARNISH_SIZE: "${VARNISH_SIZE}"
+    # Find the traefik config at https://github.com/StarCitizenWiki/WikiTraefik
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.rule=Host(`star-citizen.wiki`)"
+      - "traefik.http.routers.star-citizen.rule=Host(`${HOST}`)"
       - "traefik.http.routers.star-citizen.entryPoints=https"
       - "traefik.http.routers.star-citizen.middlewares=default@file,star-citizen-csp@file"
       - "traefik.http.routers.star-citizen.tls=true"
       - "traefik.http.routers.star-citizen.tls.certresolver=dns"
       - "traefik.http.routers.star-citizen.tls.options=default"
-      - "traefik.http.routers.star-citizen.tls.domains[0].main=star-citizen.wiki"
-      - "traefik.http.routers.star-citizen.tls.domains[0].sans=*.star-citizen.wiki"
+      - "traefik.http.routers.star-citizen.tls.domains[0].main=${HOST}"
+      - "traefik.http.routers.star-citizen.tls.domains[0].sans=*.${HOST}"
 
+      - "traefik.http.routers.star-citizen-api.rule=Host(`${HOST}`) && (Query(`action=ask`) || Query(`action=query`))"
+      - "traefik.http.routers.star-citizen-api.entryPoints=https"
+      - "traefik.http.routers.star-citizen-api.middlewares=api-route-headers@file"
+      - "traefik.http.routers.star-citizen-api.tls=true"
+      - "traefik.http.routers.star-citizen-api.tls.options=default"
+
+  # The MediaWiki instance running apache
+  star-citizen.wiki-live:
+    image: scwiki/wiki:dev
+    #image: scwiki/wiki:1.35.0
+    container_name: star-citizen.wiki-live
+    restart: unless-stopped
+    init: true
+    user: "www-data:www-data"
+    security_opt:
+      - no-new-privileges:true
+    depends_on:
+      - star-citizen.wiki-varnish
+      - db
+      - redis
+      - elasticsearch
+    expose:
+      - 80
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      #- /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      - /etc/star-citizen.wiki/config:/var/www/config
+      - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
+      - /srv/star-citizen.wiki/sitemap:/var/www/html/sitemap
+      - /srv/star-citizen.wiki/images:/var/www/html/images
+      - /var/lib/star-citizen.wiki/cache:/var/www/cache
+      #- /srv/cdn.star-citizen.wiki/images:/var/www/html/images
+    networks:
+      star-citizen.wiki:
+        ipv4_address: 172.16.0.3
+      star-citizen.wiki-internal:
+        ipv4_address: 10.16.0.3
+    healthcheck:
+      test: curl --fail -s http://star-citizen.wiki-live/ || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 3
+
+  # CRON container running the queue and other jobs
+  ofelia:
+    image: mcuadros/ofelia:latest
+    restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      star-citizen.wiki-internal:
+        ipv4_address: 10.16.0.5
+    depends_on:
+      - star-citizen.wiki-live
+      - db
+      - elasticsearch
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro
+
+  # Database
   db:
     image: mariadb:latest
     restart: unless-stopped
@@ -61,12 +112,12 @@ services:
     security_opt:
       - no-new-privileges:true
     environment:
-      MYSQL_DATABASE:
-      MYSQL_USER:
-      MYSQL_PASSWORD:
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
     healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping", "-h", "db", "-u", "root", "-pCHANGEME" ]
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "db", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}" ]
       timeout: 45s
       interval: 10s
       retries: 5
@@ -74,12 +125,15 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/lib/star-citizen.wiki/db:/var/lib/mysql
     networks:
-      - internal
+      star-citizen.wiki-internal:
+        ipv4_address: 10.16.0.6
 
+  # Elasticsearch container providing search functionality to the wiki
   elasticsearch:
-    image: elasticsearch:6.5.4
+    image: docker-registry.wikimedia.org/dev/stretch-elasticsearch:0.0.1
     restart: unless-stopped
     init: true
+    user: "${UID}:0"
     security_opt:
       - no-new-privileges:true
     environment:
@@ -91,52 +145,32 @@ services:
         soft: -1
         hard: -1
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - /var/lib/star-citizen.wiki/esdata:/usr/share/elasticsearch/data
     expose:
       - 9200
       - 9300
     networks:
-      - internal
+      star-citizen.wiki-internal:
+        ipv4_address: 10.16.0.7
 
-  ofelia:
-    image: mcuadros/ofelia:latest
-    restart: unless-stopped
-    init: true
-    security_opt:
-      - no-new-privileges:true
-    networks:
-      - internal
-    depends_on:
-      - star-citizen.wiki
-      - db
-      - elasticsearch
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /etc/star-citizen.wiki/container-config/ofelia.ini:/etc/ofelia/config.ini:ro
-
+  # Redis as the main cache
   redis:
     image: redis:alpine
     restart: unless-stopped
     init: true
+    user: "${UID}:${GID}"
     security_opt:
       - no-new-privileges:true
     networks:
-      - internal
-
-  parsoid:
-    image: thenets/parsoid:0.11
-    restart: unless-stopped
-    init: true
-    security_opt:
-      - no-new-privileges:true
-    environment:
-      - PARSOID_DOMAIN_live=http://star-citizen.wiki/api.php
-    expose:
-      - 8000
-    networks:
-      - internal
+      star-citizen.wiki-internal:
+        ipv4_address: 10.16.0.8
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/lib/star-citizen.wiki/redis:/data
 
 networks:
   star-citizen.wiki:
     external: true
-  internal:
+  star-citizen.wiki-internal:
+    external: true

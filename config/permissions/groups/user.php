@@ -19,4 +19,3 @@ $wgGroupPermissions['user']['movefile'] = false;
 $wgGroupPermissions['user']['reupload-shared'] = false;
 $wgGroupPermissions['user']['upload_by_url'] = false;
 $wgGroupPermissions['user']['move-categorypages'] = false;
-$wgGroupPermissions['user']['flow-lock'] = false;

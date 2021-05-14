@@ -1,5 +1,5 @@
 <?php
 
-$wgScribuntoDefaultEngine = 'luastandalone';
+$wgScribuntoDefaultEngine = 'luasandbox';
 $wgScribuntoUseGeSHi = true;
 $wgScribuntoUseCodeEditor = true;

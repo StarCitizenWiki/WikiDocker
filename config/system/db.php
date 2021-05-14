@@ -1,7 +1,10 @@
 <?php
 
+$wgMiserMode = true;
+
 $wgDBtype = "mysql";
 $wgDBserver = "db";
-$wgDBname = "";
-$wgDBuser = "";
-$wgDBpassword = "";
+// Provided defaults, should be changed
+$wgDBname = "scw";
+$wgDBuser = "scw";
+$wgDBpassword = "scw";

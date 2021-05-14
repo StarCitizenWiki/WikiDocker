@@ -75,10 +75,10 @@ $wgUploadWizardConfig = [
         'ownWork' => [
             'type' => 'or',
             'template' => 'self',
-            'defaults' => 'generic',
+            'defaults' => 'license-custom-rsi',
             'licenses' => [
-                'generic',
                 'license-custom-rsi',
+                'generic',
                 'cc-by-sa-4.0',
                 'cc-by-nc-sa-4.0',
                 'cc-by-4.0',
@@ -139,6 +139,8 @@ $wgResourceModules['myUploadWizardResources'] = [
         'mwe-upwiz-license-rsi',
         'mwe-upwiz-license-custom-rsi',
         'mwe-upwiz-license-starcitizen-head',
+        'mwe-upwiz-source-ownwork-assert-license-custom-rsi',
+        'mwe-upwiz-source-ownwork-license-custom-rsi-explain',
         'mwe-upwiz-license-cc-by-nc-sa-4.0',
         'mwe-upwiz-license-cc-by-sa-4.0',
         'mwe-upwiz-license-cc-by-4.0',
