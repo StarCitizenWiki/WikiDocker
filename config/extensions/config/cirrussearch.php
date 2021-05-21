@@ -1,8 +1,10 @@
 <?php
+# Search
+## This loads Elastica and sets wgSearchType
+require_once "/var/www/html/extensions/CirrusSearch/tests/jenkins/FullyFeaturedConfig.php";
+
 wfLoadExtension( 'CirrusSearch' );
 
-# Search
-require_once "/var/www/html/extensions/CirrusSearch/tests/jenkins/FullyFeaturedConfig.php";
 $wgCirrusSearchServers = [ 'elasticsearch' ];
 
 $wgNamespacesToBeSearchedDefault = [
