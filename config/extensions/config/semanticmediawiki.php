@@ -29,4 +29,4 @@ $smwgEnabledQueryDependencyLinksStore = true;
 $smwgQFilterDuplicates = true;
 
 $smwgDefaultStore = 'SMWElasticStore';
-$smwgElasticsearchEndpoints = [ 'smw-elasticsearch' ];
+$smwgElasticsearchEndpoints = [ 'smw-elasticsearch:9200' ];
