@@ -27,3 +27,6 @@ $smwgQueryResultCacheLifetime = 60 * 60 * 24 * 7;
 $smwgEnabledQueryDependencyLinksStore = true;
 
 $smwgQFilterDuplicates = true;
+
+$smwgDefaultStore = 'SMWElasticStore';
+$smwgElasticsearchEndpoints = [ 'smw-elasticsearch' ];
