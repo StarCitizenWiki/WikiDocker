@@ -82,13 +82,13 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0",
                                 "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-CommonsMetadata/archive/master.zip",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-CommonsMetadata/archive/REL1_35.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-CommonsMetadata.git",
-                                        "reference": "master"
+                                        "reference": "REL1_35"
                                 }
                         }
                 },
@@ -116,7 +116,7 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0",
                                 "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-TemplateStyles/archive/master.zip",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-TemplateStyles/archive/REL1_35.zip",
                                         "type": "zip"
                                 },
                                 "source": {
@@ -541,13 +541,13 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0.1",
                                 "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extension-WebP/archive/master.zip",
+                                        "url": "https://github.com/octfx/mediawiki-extension-WebP/archive/develop.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/octfx/mediawiki-extension-WebP.git",
-                                        "reference": "master"
+                                        "reference": "develop"
                                 }
                         }
                 },
