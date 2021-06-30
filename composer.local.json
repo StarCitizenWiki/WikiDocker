@@ -2,7 +2,7 @@
         "require": {
                 "mediawiki/advanced-search": "1.35.0",
                 "mediawiki/apiunto": "1.35.0",
-                "mediawiki/approved-revs": "1.35.0.2",
+                "mediawiki/approved-revs": "1.35.0.3",
                 "mediawiki/disambiguator": "1.35.0",
                 "mediawiki/discussion-tools": "1.35.0",
                 "mediawiki/capiunto": "1.35.0",
@@ -199,7 +199,7 @@
                         "package": {
                                 "name": "mediawiki/approved-revs",
                                 "type": "mediawiki-extension",
-                                "version": "1.35.0.2",
+                                "version": "1.35.0.3",
                                 "dist": {
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/archive/master.zip",
                                         "type": "zip"
