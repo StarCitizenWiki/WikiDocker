@@ -199,7 +199,7 @@
                         "package": {
                                 "name": "mediawiki/approved-revs",
                                 "type": "mediawiki-extension",
-                                "version": "1.35.0.3",
+                                "version": "1.35.0.4",
                                 "dist": {
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/archive/master.zip",
                                         "type": "zip"
@@ -573,7 +573,7 @@
                         "package": {
                                 "name": "mediawiki/citizen-skin",
                                 "type": "mediawiki-skin",
-                                "version": "1.35.0.2",
+                                "version": "1.35.0.3",
                                 "dist": {
                                         "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen/archive/main.zip",
                                         "type": "zip"
