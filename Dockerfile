@@ -7,7 +7,7 @@ COPY ./config /var/www/
 COPY ./includes/libs/mime/MimeMap.php /var/www/html/includes/libs/mime/MimeMap.php
 COPY ./includes/page/Article.php /var/www/html/includes/page/Article.php
 
-COPY ./container-config/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
+COPY ./container-config/php-config.ini /usr/local/etc/php/conf.d/php-config.ini
 COPY ./container-config/robots.txt /var/www/html/robots.txt
 COPY ./container-config/favicon.ico /var/www/html/favicon.ico
 
