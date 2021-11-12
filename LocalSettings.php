@@ -291,6 +291,9 @@ require_once "$wgWikiConfigPath/extensions/config/discussion_tools.php";
 # DiscordNotifications
 require_once "$wgWikiConfigPath/extensions/config/discord_notifications.php";
 
+# EmbedVideo
+require_once "$wgWikiConfigPath/extensions/config/embedvideo.php";
+
 # Flow - Unknown Content Handler as the Extension is removed
 $wgContentHandlers['flow-board'] = 'UnknownContentHandler';
 
