@@ -29,29 +29,31 @@
                 "mediawiki/swift-mailer": "1.35.0",
                 "mediawiki/template-styles": "1.35.0",
                 "mediawiki/template-styles-extender": "1.35.0",
-                "mediawiki/timed-media-handler": "1.35.0",
                 "mediawiki/thanks": "1.35.0",
                 "mediawiki/upload-wizard": "1.35.0",
                 "mediawiki/variables": "1.35.0",
                 "mediawiki/webp": "1.35.0.1",
 
                 "christian-riesen/base32": "1.4.0",
-                "firebase/php-jwt": "5.2.0",
                 "jakobo/hotp-php": "2.0.0",
-                "james-heinrich/getid3": "^v1.9.19",
-                "league/oauth2-server": "8.1.0",
                 "octfx/wiki-seo": "2.6.5",
                 "pimple/pimple": "3.3.1",
-                "ruflin/elastica": "6.1.5",
-                "elasticsearch/elasticsearch": "~6.5.1||~6.7.2",
-                "swiftmailer/swiftmailer": "~5.2.0",
-                "wikimedia/css-sanitizer": "~3.0.0",
-                "wikimedia/textcat": "1.3.0",
-                "wikimedia/lucene-explain-parser": "1.0.0",
 
                 "wikibase/ws-search": "~3.6",
                 "wikibase/ws-search-front": "~1.0",
                 "wikibase/ws-semantic-parsed-text": "~2.1"
+        },
+        "extra": {
+                "merge-plugin": {
+                        "include": [
+                                "extensions/CirrusSearch/composer.json",
+                                "extensions/Elastica/composer.json",
+                                "extensions/OAuth/composer.json",
+                                "extensions/SwiftMailer/composer.json",
+                                "extensions/TemplateStyles/composer.json",
+                                "extensions/WSSearch/composer.json"
+                        ]
+                }
         },
         "repositories": [
                 {
@@ -152,23 +154,6 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-Variables.git",
-                                        "reference": "REL1_35"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "mediawiki/timed-media-handler",
-                                "type": "mediawiki-extension",
-                                "version": "1.35.0",
-                                "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-TimedMediaHandler/archive/REL1_35.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-TimedMediaHandler.git",
                                         "reference": "REL1_35"
                                 }
                         }
