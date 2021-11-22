@@ -6,7 +6,6 @@
                 "mediawiki/disambiguator": "1.35.0",
                 "mediawiki/discussion-tools": "1.35.0",
                 "mediawiki/capiunto": "1.35.0",
-                "mediawiki/cloud-flare": "1.35.0",
                 "mediawiki/commons-metadata": "1.35.0",
                 "mediawiki/citizen-skin": "1.35.0.3",
                 "mediawiki/cookie-warning": "1.35.0",
@@ -21,7 +20,6 @@
                 "mediawiki/plausible": "1.35.0",
                 "mediawiki/popups": "1.35.0",
                 "mediawiki/related-articles": "1.35.0",
-                "mediawiki/revision-slider": "1.35.0",
                 "mediawiki/sandbox-link": "1.35.0",
                 "mediawiki/semantic-media-wiki": "~3.2",
                 "mediawiki/semantic-scribunto": "~2.1",
@@ -31,7 +29,6 @@
                 "mediawiki/template-styles-extender": "1.35.0",
                 "mediawiki/thanks": "1.35.0",
                 "mediawiki/upload-wizard": "1.35.0",
-                "mediawiki/variables": "1.35.0",
                 "mediawiki/webp": "1.35.0.1",
 
                 "christian-riesen/base32": "1.4.0",
@@ -137,23 +134,6 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/octfx/mediawiki-extensions-TemplateStylesExtender.git",
-                                        "reference": "REL1_35"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "mediawiki/variables",
-                                "type": "mediawiki-extension",
-                                "version": "1.35.0",
-                                "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-Variables/archive/REL1_35.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-Variables.git",
                                         "reference": "REL1_35"
                                 }
                         }
@@ -501,23 +481,6 @@
                 {
                         "type": "package",
                         "package": {
-                                "name": "mediawiki/cloud-flare",
-                                "type": "mediawiki-extension",
-                                "version": "1.35.0",
-                                "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extensions-CloudFlare/archive/master.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/octfx/mediawiki-extensions-CloudFlare.git",
-                                        "reference": "master"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
                                 "name": "mediawiki/webp",
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0.1",
@@ -529,23 +492,6 @@
                                         "type": "git",
                                         "url": "https://github.com/octfx/mediawiki-extension-WebP.git",
                                         "reference": "develop"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "mediawiki/revision-slider",
-                                "type": "mediawiki-extension",
-                                "version": "1.35.0",
-                                "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-RevisionSlider/archive/REL1_35.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-RevisionSlider.git",
-                                        "reference": "REL1_35"
                                 }
                         }
                 },
