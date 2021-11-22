@@ -2,7 +2,7 @@
         "require": {
                 "mediawiki/advanced-search": "1.35.0",
                 "mediawiki/apiunto": "1.35.0",
-                "mediawiki/approved-revs": "1.35.0.5",
+                "mediawiki/approved-revs": "1.35.0.6",
                 "mediawiki/disambiguator": "1.35.0",
                 "mediawiki/discussion-tools": "1.35.0",
                 "mediawiki/capiunto": "1.35.0",
@@ -161,15 +161,15 @@
                         "package": {
                                 "name": "mediawiki/approved-revs",
                                 "type": "mediawiki-extension",
-                                "version": "1.35.0.5",
+                                "version": "1.35.0.6",
                                 "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/archive/REL1_35.zip",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/archive/5daa77e6d4c1983c2beedb172eb6a0441f6f9c41.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs.git",
-                                        "reference": "REL1_35"
+                                        "reference": "5daa77e6d4c1983c2beedb172eb6a0441f6f9c41"
                                 }
                         }
                 },
