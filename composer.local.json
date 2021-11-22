@@ -49,7 +49,7 @@
                                 "extensions/OAuth/composer.json",
                                 "extensions/SwiftMailer/composer.json",
                                 "extensions/TemplateStyles/composer.json",
-                                "extensions/WsSearch/composer.json"
+                                "extensions/WSSearch/composer.json"
                         ]
                 }
         },
