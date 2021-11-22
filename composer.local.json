@@ -526,7 +526,7 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://gitlab.wikibase.nl/community/wssearch.git",
-                                        "reference": "main"
+                                        "reference": "stable"
                                 }
                         }
                 },
@@ -535,15 +535,15 @@
                         "package": {
                                 "name": "wikibase/ws-search-front",
                                 "type": "mediawiki-extension",
-                                "version": "1.0.0",
+                                "version": "1.0.25",
                                 "dist": {
-                                        "url": "https://gitlab.wikibase.nl/community/wssearch/-/archive/stable/wssearch-stable.zip",
+                                        "url": "https://gitlab.wikibase.nl/community/wssearchfront/-/archive/master/wssearchfront-master.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
-                                        "url": "https://gitlab.wikibase.nl/community/wssearch.git",
-                                        "reference": "main"
+                                        "url": "https://gitlab.wikibase.nl/community/wssearchfront.git",
+                                        "reference": "master"
                                 }
                         }
                 },
@@ -560,7 +560,7 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://bitbucket.org/wikibasesolutions/wssemanticparsedtext.git",
-                                        "reference": "main"
+                                        "reference": "master"
                                 }
                         }
                 }
