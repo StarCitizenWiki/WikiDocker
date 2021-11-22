@@ -78,7 +78,7 @@ RUN set -eux; \
         rm -rf /var/lib/apt/lists/* ;\
         rm -rf /usr/src/*
 
-COPY --from=composer:1 /usr/bin/composer /usr/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 COPY composer.local.json /var/www/html
 
