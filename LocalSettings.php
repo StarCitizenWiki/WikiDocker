@@ -349,5 +349,8 @@ require_once "$wgWikiConfigPath/extensions/config/visualeditor.php";
 # WikiSEO
 require_once "$wgWikiConfigPath/extensions/config/wikiseo.php";
 
+# WikiSEO
+require_once "$wgWikiConfigPath/extensions/config/ws_search.php";
+
 # Skin Citizen
 require_once "$wgWikiConfigPath/skins/citizen.php";
