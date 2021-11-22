@@ -93,8 +93,11 @@ RUN set -eux; \
      --no-scripts; \
    \
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
-   mv /var/www/html/extensions/Webp /var/www/html/extensions/WebP; \
    mv /var/www/html/skins/citizen /var/www/html/skins/Citizen ;\
+   mv /var/www/html/extensions/WsSearch /var/www/html/extensions/WSSearch ;\
+   mv /var/www/html/extensions/WsSearchFront /var/www/html/extensions/WSSearchFront ;\
+   mv /var/www/html/extensions/WsSemanticParsedText /var/www/html/extensions/WSSemanticParsedText ;\
+   mv /var/www/html/extensions/Webp /var/www/html/extensions/WebP; \
    rm -f composer.lock.json ;\
    /usr/bin/composer update --no-dev \
                             --no-ansi \
