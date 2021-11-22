@@ -95,8 +95,13 @@ RUN set -eux; \
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
    mv /var/www/html/extensions/Webp /var/www/html/extensions/WebP; \
    mv /var/www/html/skins/citizen /var/www/html/skins/Citizen ;\
+   rm -f composer.lock.json ;\
+   /usr/bin/composer update --no-dev \
+                            --no-ansi \
+                            --no-interaction \
+                            --no-cache \
+                            --no-scripts; \
    chown -R www-data:www-data /var/www
-
 USER www-data
 
 VOLUME /var/www/html/sitemap
