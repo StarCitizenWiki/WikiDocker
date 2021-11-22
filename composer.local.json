@@ -23,9 +23,9 @@
                 "mediawiki/related-articles": "1.35.0",
                 "mediawiki/revision-slider": "1.35.0",
                 "mediawiki/sandbox-link": "1.35.0",
-                "mediawiki/semantic-media-wiki": "^3.2.0",
-                "mediawiki/semantic-scribunto": "^2.1.0",
-                "mediawiki/semantic-result-formats": "^3.2.0",
+                "mediawiki/semantic-media-wiki": "~3.2",
+                "mediawiki/semantic-scribunto": "~2.1",
+                "mediawiki/semantic-result-formats": "~3.1.0",
                 "mediawiki/swift-mailer": "1.35.0",
                 "mediawiki/template-styles": "1.35.0",
                 "mediawiki/template-styles-extender": "1.35.0",
@@ -48,13 +48,6 @@
                 "wikimedia/css-sanitizer": "~3.0.0",
                 "wikimedia/textcat": "1.3.0",
                 "wikimedia/lucene-explain-parser": "1.0.0"
-        },
-        "extra": {
-                "merge-plugin": {
-                        "include": [
-                                "skins/*/composer.json"
-                        ]
-                }
         },
         "repositories": [
                 {
