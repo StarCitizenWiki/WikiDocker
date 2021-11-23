@@ -35,8 +35,6 @@
                 "jakobo/hotp-php": "2.0.0",
                 "octfx/wiki-seo": "2.6.5",
                 "pimple/pimple": "3.3.1",
-                "wikimedia/css-sanitizer": "~3.0.0",
-                "ongr/elasticsearch-dsl": "~6.0",
 
                 "wikibase/ws-search": "~3.6",
                 "wikibase/ws-search-front": "~1.0",
@@ -47,10 +45,10 @@
                         "include": [
                                 "extensions/CirrusSearch/composer.json",
                                 "extensions/Elastica/composer.json",
-                                "extensions/OAuth/composer.json",
+                                "extensions/Oauth/composer.json",
                                 "extensions/SwiftMailer/composer.json",
                                 "extensions/TemplateStyles/composer.json",
-                                "extensions/WSSearch/composer.json"
+                                "extensions/WsSearch/composer.json"
                         ]
                 }
         },
