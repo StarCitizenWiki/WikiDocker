@@ -17,7 +17,7 @@
                 "mediawiki/labeled-section-transclusion": "1.35.0.1",
                 "mediawiki/linter": "1.35.0",
                 "mediawiki/oauth": "1.35.0",
-                "mediawiki/plausible": "1.35.1",
+                "mediawiki/plausible": "1.35.0",
                 "mediawiki/popups": "1.35.0",
                 "mediawiki/related-articles": "1.35.0",
                 "mediawiki/sandbox-link": "1.35.0",
@@ -466,7 +466,7 @@
                         "package": {
                                 "name": "mediawiki/plausible",
                                 "type": "mediawiki-extension",
-                                "version": "1.35.1",
+                                "version": "1.35.0",
                                 "dist": {
                                         "url": "https://github.com/octfx/mediawiki-extension-Plausible/archive/develop.zip",
                                         "type": "zip"
