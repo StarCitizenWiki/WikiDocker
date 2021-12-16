@@ -29,6 +29,7 @@ wfLoadExtension( 'SandboxLink' );
 wfLoadExtension( 'Scribunto' );
 wfLoadExtension( 'SwiftMailer' );
 wfLoadExtension( 'SyntaxHighlight_GeSHi' );
+wfLoadExtension( 'TabberNeue' );
 wfLoadExtension( 'TemplateData' );
 wfLoadExtension( 'TemplateStyles' );
 wfLoadExtension( 'TemplateStylesExtender' );
