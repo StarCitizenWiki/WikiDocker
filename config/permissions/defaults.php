@@ -50,7 +50,7 @@ $wgImplicitGroups = [
     'smwadministrator',
     'suppress',
     'upwizcampeditors',
-#	'user',
+	'user',
     'widgeteditor',
     'SMW-Administratoren',
     'SMW-Kuratoren',
