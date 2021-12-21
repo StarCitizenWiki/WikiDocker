@@ -30,7 +30,7 @@
                 "mediawiki/template-styles-extender": "1.35.0",
                 "mediawiki/thanks": "1.35.0",
                 "mediawiki/upload-wizard": "1.35.0",
-                "mediawiki/webp": "1.35.0.2",
+                "mediawiki/webp": "1.35.0",
 
                 "christian-riesen/base32": "1.4.0",
                 "jakobo/hotp-php": "2.0.0",
@@ -501,7 +501,7 @@
                         "package": {
                                 "name": "mediawiki/webp",
                                 "type": "mediawiki-extension",
-                                "version": "1.35.0.2",
+                                "version": "1.35.0",
                                 "dist": {
                                         "url": "https://github.com/octfx/mediawiki-extension-WebP/archive/develop.zip",
                                         "type": "zip"
