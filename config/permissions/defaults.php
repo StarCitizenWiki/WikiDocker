@@ -23,6 +23,9 @@ $wgDefaultUserOptions['wikieditor-publish'] = true;
 $wgDefaultUserOptions['srf-prefs-datatables-options-update-default'] = false;
 $wgDefaultUserOptions['srf-prefs-datatables-options-cache-default'] = true;
 
+# Cirrus Search
+$wgDefaultUserOptions['cirrussearch-pref-completion-profile'] = 'fuzzy-subphrases';
+
 # Auto Groups
 $wgAutoConfirmCount = 250;
 $wgAutoConfirmAge = 86400 * 30;
