@@ -5,6 +5,7 @@ require_once "/var/www/html/extensions/CirrusSearch/tests/jenkins/FullyFeaturedC
 
 wfLoadExtension( 'CirrusSearch' );
 
+$wgCirrusSearchCompletionSettings = 'fuzzy-subphrases';
 $wgCirrusSearchServers = [ 'elasticsearch' ];
 
 $wgNamespacesToBeSearchedDefault = [
