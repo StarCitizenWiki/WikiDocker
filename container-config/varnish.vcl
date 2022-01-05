@@ -54,7 +54,7 @@ sub vcl_recv {
   set req.backend_hint = vdir.backend(); # send all traffic to the vdir director
 
   # Pass mw-config
-  if (req.url ~ "^/mw-config/") {
+  if (req.url ~ "^/mw-config/" || req.url ~ "^/thumb.php") {
     return (pass);
   }
 
