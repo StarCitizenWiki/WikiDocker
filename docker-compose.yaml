@@ -130,7 +130,7 @@ services:
 
   # Elasticsearch container providing search functionality to the wiki
   elasticsearch:
-    image: docker-registry.wikimedia.org/dev/stretch-elasticsearch:0.0.1
+    image: docker-registry.wikimedia.org/dev/stretch-elasticsearch:0.1.0
     restart: unless-stopped
     init: true
     user: "${UID}:0"
