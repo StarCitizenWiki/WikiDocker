@@ -316,6 +316,23 @@
                 {
                         "type": "package",
                         "package": {
+                                "name": "mediawiki/json-config",
+                                "type": "mediawiki-extension",
+                                "version": "1.35.0",
+                                "dist": {
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-JsonConfig/archive/REL1_35.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-JsonConfig",
+                                        "reference": "REL1_35"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
                                 "name": "mediawiki/oauth",
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0",
