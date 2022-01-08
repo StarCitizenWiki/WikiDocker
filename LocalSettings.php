@@ -297,7 +297,7 @@ require_once "$wgWikiConfigPath/extensions/config/embedvideo.php";
 # Flow - Unknown Content Handler as the Extension is removed
 $wgContentHandlers['flow-board'] = 'UnknownContentHandler';
 
-# Json COnfig
+# Json Config
 require_once "$wgWikiConfigPath/extensions/config/json_config.php";
 
 # MultimediaViewer
@@ -336,9 +336,6 @@ $wgTemplateDataUseGUI = true;
 
 # TextExtracts
 $wgExtractsExtendOpenSearchXml = true;
-
-# TimedMediaHandler
-require_once "$wgWikiConfigPath/extensions/config/timedmediahandler.php";
 
 # TitleBlacklist
 require_once "$wgWikiConfigPath/extensions/config/titleblacklist.php";
