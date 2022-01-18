@@ -23,7 +23,7 @@
                 "mediawiki/popups": "1.35.0",
                 "mediawiki/related-articles": "1.35.0",
                 "mediawiki/sandbox-link": "1.35.0",
-                "mediawiki/semantic-media-wiki": "~3.2",
+                "mediawiki/semantic-media-wiki": "~4.0",
                 "mediawiki/semantic-result-formats": "~3.1.0",
                 "mediawiki/semantic-scribunto": "~2.1",
                 "mediawiki/swift-mailer": "1.35.0",

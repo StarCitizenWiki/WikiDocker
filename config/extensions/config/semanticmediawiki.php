@@ -2,6 +2,7 @@
 
 use CirrusSearch\CirrusSearch;
 
+wfLoadExtension( 'SemanticMediaWiki' );
 enableSemantics( 'star-citizen.wiki' );
 wfLoadExtension( 'SemanticResultFormats' );
 wfLoadExtension( 'SemanticScribunto' );
