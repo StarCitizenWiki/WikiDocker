@@ -2,7 +2,7 @@
         "require": {
                 "mediawiki/advanced-search": "1.35.0",
                 "mediawiki/apiunto": "1.35.0",
-                "mediawiki/approved-revs": "1.35.0.6",
+                "mediawiki/approved-revs": "1.35.0",
                 "mediawiki/capiunto": "1.35.0",
                 "mediawiki/cirrus-search": "1.35.0",
                 "mediawiki/citizen-skin": "1.35.0.3",
@@ -165,15 +165,15 @@
                         "package": {
                                 "name": "mediawiki/approved-revs",
                                 "type": "mediawiki-extension",
-                                "version": "1.35.0.6",
+                                "version": "1.35.0",
                                 "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/archive/5daa77e6d4c1983c2beedb172eb6a0441f6f9c41.zip",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs/archive/master.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-ApprovedRevs.git",
-                                        "reference": "5daa77e6d4c1983c2beedb172eb6a0441f6f9c41"
+                                        "reference": "master"
                                 }
                         }
                 },
