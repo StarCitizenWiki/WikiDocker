@@ -23,7 +23,7 @@
                 "mediawiki/related-articles": "1.35.0",
                 "mediawiki/sandbox-link": "1.35.0",
                 "mediawiki/semantic-media-wiki": "~4.0",
-                "mediawiki/semantic-result-formats": "dev-smw4.0",
+                "mediawiki/semantic-result-formats": "~4.0",
                 "mediawiki/semantic-scribunto": "~2.2.0",
                 "mediawiki/swift-mailer": "1.35.0",
                 "mediawiki/tabber-neue": "1.35.0",
