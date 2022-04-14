@@ -85,6 +85,7 @@ COPY composer.local.json /var/www/html
 WORKDIR /var/www/html
 
 RUN set -eux; \
+   /usr/bin/composer config --no-plugins allow-plugins.composer/installers true; \
    /usr/bin/composer install --no-dev \
      --ignore-platform-reqs \
      --no-ansi \
