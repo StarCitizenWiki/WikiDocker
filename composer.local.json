@@ -41,8 +41,8 @@
                 "octfx/wiki-seo": "2.6.6",
                 "pimple/pimple": "3.3.1",
 
-                "wikibase/ws-search": "~3.6",
-                "wikibase/ws-search-front": "~1.0",
+                "open-csp/wiki-search": "~v4.0",
+                "wikibase-solutions/wiki-search-front": "2.0.1",
                 "wikibase/ws-semantic-parsed-text": "~2.1"
         },
         "extra": {
@@ -537,26 +537,9 @@
                 {
                         "type": "package",
                         "package": {
-                                "name": "wikibase/ws-search",
+                                "name": "wikibase-solutions/wiki-search-front",
                                 "type": "mediawiki-extension",
-                                "version": "3.6.0",
-                                "dist": {
-                                        "url": "https://gitlab.wikibase.nl/community/wssearch/-/archive/stable/wssearch-stable.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://gitlab.wikibase.nl/community/wssearch.git",
-                                        "reference": "stable"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "wikibase/ws-search-front",
-                                "type": "mediawiki-extension",
-                                "version": "1.0.25",
+                                "version": "2.0.1",
                                 "dist": {
                                         "url": "https://gitlab.wikibase.nl/community/wssearchfront/-/archive/master/wssearchfront-master.zip",
                                         "type": "zip"
