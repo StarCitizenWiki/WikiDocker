@@ -16,6 +16,7 @@ wfLoadExtension( 'DiscordNotifications' );
 wfLoadExtension( 'Echo' );
 wfLoadExtension( 'EmbedVideo' );
 wfLoadExtension( 'InputBox' );
+wfLoadExtension( 'Interwiki' );
 wfLoadExtension( 'JsonConfig' );
 wfLoadExtension( 'LabeledSectionTransclusion' );
 wfLoadExtension( 'Linter' );
