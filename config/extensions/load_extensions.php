@@ -22,6 +22,7 @@ wfLoadExtension( 'LabeledSectionTransclusion' );
 wfLoadExtension( 'Linter' );
 wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'MultimediaViewer' );
+wfLoadExtension( 'MultiPurge' );
 wfLoadExtension( 'OATHAuth' );
 wfLoadExtension( 'OAuth' );
 wfLoadExtension( 'ParserFunctions' );
