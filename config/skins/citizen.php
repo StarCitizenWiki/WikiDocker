@@ -2,6 +2,6 @@
 
 $wgCitizenThumbnailSize = 120;
 $wgCitizenEnableLazyload = false;
-$wgCitizenPortalAttach = 'Meta';
+$wgCitizenSiteToolsPortlet = 'p-Meta';
 $wgCitizenEnableDrawerSubSearch = true;
 
