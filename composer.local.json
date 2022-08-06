@@ -34,7 +34,7 @@
                 "mediawiki/upload-wizard": "1.35.0",
                 "mediawiki/universal-language-selector": "2021.12",
 
-                "starcitizenwiki/embedvideo": "~3.0.7",
+                "starcitizenwiki/embedvideo": "dev-develop",
                 "christian-riesen/base32": "1.4.0",
                 "jakobo/hotp-php": "2.0.0",
                 "octfx/wiki-seo": "2.6.6",
@@ -47,8 +47,7 @@
                                 "extensions/Elastica/composer.json",
                                 "extensions/Oauth/composer.json",
                                 "extensions/SwiftMailer/composer.json",
-                                "extensions/TemplateStyles/composer.json",
-                                "extensions/WsSearch/composer.json"
+                                "extensions/TemplateStyles/composer.json"
                         ]
                 }
         },
