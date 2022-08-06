@@ -17,7 +17,7 @@
                 "mediawiki/json-config": "1.35.0",
                 "mediawiki/labeled-section-transclusion": "1.35.0.1",
                 "mediawiki/linter": "1.35.0",
-                "mediawiki/multi-purge": "1.35.0",
+                "mediawiki/multi-purge": "1.35.2",
                 "mediawiki/oauth": "1.35.0",
                 "mediawiki/plausible": "1.35.0",
                 "mediawiki/popups": "1.35.0",
@@ -353,7 +353,7 @@
                         "package": {
                                 "name": "mediawiki/multi-purge",
                                 "type": "mediawiki-extension",
-                                "version": "1.35.0",
+                                "version": "1.35.2",
                                 "dist": {
                                         "url": "https://github.com/octfx/mediawiki-extensions-MultiPurge/archive/refs/heads/master.zip",
                                         "type": "zip"
