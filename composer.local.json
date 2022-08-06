@@ -2,7 +2,6 @@
         "require": {
                 "mediawiki/advanced-search": "1.35.0",
                 "mediawiki/apiunto": "1.35.0",
-                "mediawiki/approved-revs": "1.35.0",
                 "mediawiki/capiunto": "1.35.0",
                 "mediawiki/cirrus-search": "1.35.0",
                 "mediawiki/citizen-skin": "1.35.0.3",
@@ -34,17 +33,12 @@
                 "mediawiki/translate": "2021.12",
                 "mediawiki/upload-wizard": "1.35.0",
                 "mediawiki/universal-language-selector": "2021.12",
-                "mediawiki/webp": "1.35.0",
 
                 "starcitizenwiki/embedvideo": "~3.0.7",
                 "christian-riesen/base32": "1.4.0",
                 "jakobo/hotp-php": "2.0.0",
                 "octfx/wiki-seo": "2.6.6",
-                "pimple/pimple": "3.3.1",
-
-                "open-csp/wiki-search": "~v4.0",
-                "wikibase-solutions/wiki-search-front": "2.0.1",
-                "wikibase/ws-semantic-parsed-text": "~2.1"
+                "pimple/pimple": "3.3.1"
         },
         "extra": {
                 "merge-plugin": {
