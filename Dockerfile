@@ -101,7 +101,10 @@ RUN set -eux; \
    \
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
    mv /var/www/html/skins/citizen /var/www/html/skins/Citizen ;\
-   chown -R www-data:www-data /var/www
+   chown -R www-data:www-data /var/www ;\
+   sed -i "s/LogFormat \"%h/LogFormat \"%a/" "$APACHE_CONFDIR/apache2.conf" ;\
+   sed -i "s/<\/VirtualHost>/\tRemoteIPHeader X-Forwarded-For\n\tRemoteIPInternalProxy 172.16.0.4\n<\/VirtualHost>/" "$APACHE_CONFDIR/sites-available/000-default.conf" ;\
+   a2enmod remoteip
 USER www-data
 
 VOLUME /var/www/html/sitemap
