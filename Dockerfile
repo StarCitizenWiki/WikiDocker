@@ -1,4 +1,4 @@
-FROM mediawiki:lts
+FROM mediawiki:legacylts
 
 LABEL maintainer="foxftw@star-citizen.wiki"
 
