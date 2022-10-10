@@ -32,7 +32,11 @@ backend server1 { # Define one backend
 acl purge {
   # ACL we'll use later to allow purges
   "star-citizen.wiki-live";
+  "172.16.0.0/18";
   "172.16.0.3";
+  "localhost";
+  "127.0.0.1";
+  "::1";
 }
 
 sub vcl_init {
@@ -79,6 +83,7 @@ sub vcl_recv {
         return (synth(405, "This IP is not allowed to send PURGE requests."));
       }
       # If you got this stage (and didn't error out above), purge the cached result
+      ban("req.url == " + req.url);
       return (purge);
     }
   } else {
