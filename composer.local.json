@@ -33,6 +33,7 @@
                 "mediawiki/translate": "2021.12",
                 "mediawiki/upload-wizard": "1.35.0",
                 "mediawiki/universal-language-selector": "2021.12",
+                "mediawiki/webp": "1.35.0",
 
                 "starcitizenwiki/embedvideo": "dev-develop",
                 "christian-riesen/base32": "1.4.0",
