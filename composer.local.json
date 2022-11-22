@@ -574,13 +574,13 @@
                                 "type": "mediawiki-skin",
                                 "version": "1.35.0.3",
                                 "dist": {
-                                        "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen/archive/main.zip",
+                                        "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen/archive/refs/heads/REL1_35.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen.git",
-                                        "reference": "main"
+                                        "reference": "REL1_35"
                                 }
                         }
                 },
