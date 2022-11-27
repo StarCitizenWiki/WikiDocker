@@ -5,5 +5,5 @@ $wgEmbedVideoEnabledServices = [
 ];
 
 $wgEmbedVideoDefaultWidth = '528px';
-$wgEmbedVideoLazyLoadLocalVideos = true;
+#$wgEmbedVideoLazyLoadLocalVideos = true;
 $wgEmbedVideoUseEmbedStyleForLocalVideos = true;
