@@ -38,9 +38,9 @@
                 "mediawiki/upload-wizard": "1.39.0",
                 "mediawiki/universal-language-selector": "2022.10",
                 "mediawiki/webp": "1.39.0",
+                "mediawiki/wiki-seo": "1.39.0",
 
-                "starcitizenwiki/embedvideo": "dev-develop",
-                "octfx/wiki-seo": "dev-master"
+                "starcitizenwiki/embedvideo": "dev-develop"
         },
         "extra": {
                 "merge-plugin": {
@@ -560,6 +560,23 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/octfx/mediawiki-extension-WebP.git",
+                                        "reference": "develop"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/wiki-seo",
+                                "type": "mediawiki-extension",
+                                "version": "1.39.0",
+                                "dist": {
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-WikiSEO/archive/master.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-WikiSEO.git",
                                         "reference": "develop"
                                 }
                         }
