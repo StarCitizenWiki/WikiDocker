@@ -142,15 +142,17 @@ Also when not using the Star Citizen Wiki Traefik config you need to remove the 
 ## Stack
 The Wiki stack consists of the following services:
 * star-citizen.wiki
-  * MediaWiki 1.35.2
+  * MediaWiki 1.39.0
   * Including
     * ffmpeg
     * ghostscript / poppler-utils
     * luasandbox
     * webp
+    * zip / unzip
   * PHP Extensions
     * CURL
     * DOM
+    * IMAGICK
     * JSON
     * REDIS
     * SOCKETS
@@ -199,6 +201,8 @@ The Wiki stack consists of the following services:
   * MariaDB Server
 * elasticsearch
   * ElasticSearch 6.5.4 (MW Version including Plugins)
+* elasticsearch-smw
+  * ElasticSearch 6.8.15 ("Official" Version)
 * ofelia
   * Cron Container
   * [Semantic MediaWiki Jobs](container-config/ofelia.ini)
@@ -206,7 +210,7 @@ The Wiki stack consists of the following services:
     * Runs every 10 seconds
   * Sitemap generation
     * Runs daily
-* redis
+* redis (keydb)
   * JobQueue
   * Caching
 * Varnish
