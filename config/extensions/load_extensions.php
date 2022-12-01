@@ -45,7 +45,7 @@ wfLoadExtension( 'UploadWizard' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'Webp' );
 wfLoadExtension( 'WikiEditor' );
-wfLoadExtension( 'WikiSEO' );
+wfLoadExtension( 'WikiSeo' );
 
 wfLoadExtension( 'TextExtracts' );
 wfLoadExtension( 'PageImages' );

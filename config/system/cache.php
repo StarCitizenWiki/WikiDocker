@@ -31,5 +31,12 @@ $wgObjectCacheSessionExpiry = 3600 * 3;
 
 $wgUseCdn = true;
 
+$wgCdnServersNoPurge = [
+    '127.0.0.1',
+    '172.16.0.4',
+];
+
 $wgUseFileCache = false;
 $wgFileCacheDirectory = '/var/www/cache';
+
+$wgCacheDirectory  = "/var/www/cache/$wgDBname";

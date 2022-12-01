@@ -49,7 +49,7 @@ $wgGenerateThumbnailOnParse = false;
 ## The URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
 $wgLogos = [
-    'icon' => "$wgUploadPath/favicon.png",
+    'icon' => "https://cdn.star-citizen.wiki/icon.png",
     '1x' => "$wgUploadPath/thumb/e/ef/Star_Citizen_Wiki_Logo.png/320px-Star_Citizen_Wiki_Logo.png",
     '2x' => "$wgUploadPath/thumb/e/ef/Star_Citizen_Wiki_Logo.png",
     'svg' => "$wgUploadPath/c/c6/Star_Citizen_Wiki_Logo_Stern.svg",
@@ -227,7 +227,7 @@ date_default_timezone_set($wgLocaltimezone);
 # Upload / Images
 $wgMaxUploadSize = [
     '*' => 1024 * 1024 * 1000 * 2, // 100 MB
-    'url' => 1024 * 1024 * 50, // 20 MB
+    'url' => 1024 * 1024 * 50, // 50 MB
 ];
 $wgMaxImageArea = 3.6e7;
 $wgThumbnailEpoch = '20191118000000';
@@ -256,7 +256,7 @@ $wgDefaultRobotPolicy = 'index,follow';
 # Add more configuration options below.
 
 # WebP - Needs to be loaded pre include
-#require_once "$wgWikiConfigPath/extensions/config/webp.php";
+require_once "$wgWikiConfigPath/extensions/config/webp.php";
 
 # Extensions
 require_once "$wgWikiConfigPath/extensions/load_extensions.php";
@@ -290,9 +290,6 @@ require_once "$wgWikiConfigPath/extensions/config/discord_notifications.php";
 
 # EmbedVideo
 require_once "$wgWikiConfigPath/extensions/config/embedvideo.php";
-
-# Flow - Unknown Content Handler as the Extension is removed
-$wgContentHandlers['flow-board'] = 'UnknownContentHandler';
 
 # Json Config
 require_once "$wgWikiConfigPath/extensions/config/json_config.php";
