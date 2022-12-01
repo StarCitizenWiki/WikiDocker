@@ -11,7 +11,7 @@ version: '3.7'
 services:
   # This is the entrypoint for all requests
   star-citizen.wiki-varnish:
-    image: varnish:6.5
+    image: varnish:latest
     container_name: star-citizen.wiki-varnish
     restart: unless-stopped
     init: true
@@ -182,7 +182,7 @@ services:
 
   # Redis as the main cache
   redis:
-    image: redis:alpine
+    image: eqalpha/keydb:latest
     restart: unless-stopped
     init: true
     user: "${UID}:${GID}"

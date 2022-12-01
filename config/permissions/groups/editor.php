@@ -4,6 +4,5 @@
 $wgGroupPermissions['Bearbeiter'] = [];
 $wgGroupPermissions['Bearbeiter']['approverevisions'] = true;
 $wgGroupPermissions['Bearbeiter']['autopatrol'] = true;
-$wgGroupPermissions['Bearbeiter']['skipcaptcha'] = true;
 $wgGroupPermissions['Bearbeiter']['translate'] = true;
-
+$wgGroupPermissions['Bearbeiter']['skipcaptcha'] = true;

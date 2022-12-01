@@ -6,10 +6,7 @@ wfLoadExtension( 'SemanticMediaWiki' );
 enableSemantics( 'star-citizen.wiki' );
 wfLoadExtension( 'SemanticResultFormats' );
 wfLoadExtension( 'SemanticScribunto' );
-
-$smwgFallbackSearchType = static function() {
-    return new CirrusSearch();
-};
+wfLoadExtension( 'SemanticDrilldown' );
 
 $smwgSearchByPropertyFuzzy = false;
 
@@ -31,3 +28,12 @@ $smwgQFilterDuplicates = true;
 
 $smwgDefaultStore = 'SMWElasticStore';
 $smwgElasticsearchEndpoints = [ 'smw-elasticsearch:9200' ];
+
+$wgSearchType = 'SMWSearch';
+
+$smwgFallbackSearchType = static function() {
+    return new CirrusSearch();
+};
+
+$smwgConfigFileDir = '/var/www/smw-config';
+

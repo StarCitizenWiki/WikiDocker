@@ -5,10 +5,6 @@ $wgVerifyMimeType = true;
 $wgAllowCopyUploads = true;
 
 $wgFileExtensions = ['png', 'gif', 'jpg', 'jpeg', 'ppt', 'pptx', 'pdf', 'psd', 'mp3', 'xls', 'xlsx', 'swf', 'doc', 'docx', 'odt', 'odc', 'odp', 'odg', 'mpp', 'mp4', 'webm', 'zip', 'dae', 'svg', 'ctm', 'ogg', 'acc', 'opus', 'm4a'];
-$wgFileBlacklist = array_diff(
-    $wgFileBlacklist,
-    ['html', 'htm', 'js', 'jsb', 'mhtml', 'mht', 'php', 'phtml', 'php3', 'php4', 'php5', 'phps', 'shtml', 'jhtml', 'pl', 'py', 'cgi', 'exe', 'scr', 'dll', 'msi', 'vbs', 'bat', 'com', 'pif', 'cmd', 'vxd', 'cpl']
-);
 
 $wgUploadWizardConfig = [
     'debug' => false,

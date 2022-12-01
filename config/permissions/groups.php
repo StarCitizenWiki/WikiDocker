@@ -9,7 +9,7 @@ require_once __DIR__ . '/groups/emailconfirmed.php';
 
 require_once __DIR__ . '/groups/bot.php';
 
-require_once __DIR__ . '/groups/trusted.php';
+require_once __DIR__ . '/groups/editor.php';
 
 require_once __DIR__ . '/groups/sysop.php';
 require_once __DIR__ . '/groups/bureaucrat.php';

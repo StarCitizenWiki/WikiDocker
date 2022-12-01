@@ -21,7 +21,6 @@ wfLoadExtension( 'Interwiki' );
 wfLoadExtension( 'JsonConfig' );
 wfLoadExtension( 'LabeledSectionTransclusion' );
 wfLoadExtension( 'Linter' );
-wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'MultimediaViewer' );
 wfLoadExtension( 'MultiPurge' );
 wfLoadExtension( 'OATHAuth' );
@@ -46,7 +45,7 @@ wfLoadExtension( 'UploadWizard' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'Webp' );
 wfLoadExtension( 'WikiEditor' );
-wfLoadExtension( 'WikiSEO' );
+wfLoadExtension( 'WikiSeo' );
 
 wfLoadExtension( 'TextExtracts' );
 wfLoadExtension( 'PageImages' );

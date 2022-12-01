@@ -3,7 +3,7 @@ name: docker
 on:
   push:
     branches:
-      - develop
+      - feature/REL1_39
   workflow_dispatch:
 
 jobs:
@@ -27,5 +27,5 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v3
         with:
-          tags: scwiki/wiki:dev
+          tags: scwiki/wiki:dev-139
           push: true
