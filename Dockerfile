@@ -14,6 +14,12 @@ RUN set -eux; \
 		git \
 		librsvg2-bin \
 		imagemagick \
+        ffmpeg \
+        ghostscript \
+        poppler-utils \
+        unzip \
+        webp \
+        zip \
 		# Required for SyntaxHighlighting
 		python3 \
 	; \
@@ -28,30 +34,20 @@ RUN set -eux; \
 	apt-get install -y --no-install-recommends \
 		libicu-dev \
 		libonig-dev \
-        ffmpeg \
-        ghostscript \
         libcurl4-gnutls-dev \
         libmagickwand-dev \
         libwebp6 \
         libxml2-dev \
         libzip-dev \
         liblua5.1-0-dev \
-        poppler-utils \
-        unzip \
-        webp \
-        zip \
 	; \
 	\
 	docker-php-ext-install -j "$(nproc)" \
 		calendar \
 		intl \
-		mbstring \
 		mysqli \
 		opcache \
-        curl \
-        dom \
         sockets \
-        json \
         zip \
 	; \
 	\
@@ -99,8 +95,8 @@ RUN set -eux; \
 
 # Enable AllowEncodedSlashes for VisualEditor
 RUN sed -i "s/<\/VirtualHost>/\tAllowEncodedSlashes NoDecode\n<\/VirtualHost>/" "$APACHE_CONFDIR/sites-available/000-default.conf"; \
-    sed -i "s/LogFormat \"%h/LogFormat \"%a/" "$APACHE_CONFDIR/apache2.conf" ;\
-    sed -i "s/<\/VirtualHost>/\tRemoteIPHeader X-Forwarded-For\n\tRemoteIPInternalProxy 172.16.0.4\n<\/VirtualHost>/" "$APACHE_CONFDIR/sites-available/000-default.conf" ;\
+    sed -i "s/LogFormat \"%h/LogFormat \"%a/" "$APACHE_CONFDIR/apache2.conf"; \
+    sed -i "s/<\/VirtualHost>/\tRemoteIPHeader X-Forwarded-For\n\tRemoteIPInternalProxy 172.16.0.4\n<\/VirtualHost>/" "$APACHE_CONFDIR/sites-available/000-default.conf";
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
@@ -180,8 +176,8 @@ RUN set -eux; \
                             --no-scripts; \
    \
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
-   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen ;\
-   chown -R www-data:www-data /var/www ;\
+   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen; \
+   chown -R www-data:www-data /var/www; \
    a2enmod remoteip
 
 USER www-data

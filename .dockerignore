@@ -1,9 +1,9 @@
 .git
 .github
 .env
-config
-container-config
-includes
+#config
+#container-config
+#includes
 docker-build.sh
 docker-compose.yaml
 LocalSettings.php
