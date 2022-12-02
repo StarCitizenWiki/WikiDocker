@@ -125,14 +125,6 @@ $wgRightsIcon = "$wgScriptPath/resources/assets/licenses/cc-by-nc-sa.png";
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = '/usr/bin/diff3';
 
-## Default skin: you can change the default skin. Use the internal symbolic
-## names, ie 'vector', 'monobook':
-$wgDefaultSkin = 'citizen';
-
-# Enabled skins.
-# The following skins were automatically enabled:
-wfLoadSkin( 'Citizen' );
-
 # Seiten
 $wgWantedPagesThreshold = 2;
 
@@ -351,3 +343,11 @@ require_once "$wgWikiConfigPath/extensions/config/ws_search.php";
 
 # Skin Citizen
 require_once "$wgWikiConfigPath/skins/citizen.php";
+
+## Default skin: you can change the default skin. Use the internal symbolic
+## names, ie 'vector', 'monobook':
+$wgDefaultSkin = 'citizen';
+
+# Enabled skins.
+# The following skins were automatically enabled:
+wfLoadSkin( 'Citizen' );
