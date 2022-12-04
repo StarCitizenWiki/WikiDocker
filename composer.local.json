@@ -29,7 +29,7 @@
                 "mediawiki/semantic-result-formats": "~4.0",
                 "mediawiki/semantic-scribunto": "~2.2.0",
                 "mediawiki/semantic-drilldown": "1.39.0",
-                "mediawiki/swift-mailer": "1.39.0",
+                "mediawiki/symfony-mailer": "1.39.0",
                 "mediawiki/tabber-neue": "1.39.0",
                 "mediawiki/template-styles": "1.39.0",
                 "mediawiki/template-styles-extender": "1.39.0",
@@ -448,16 +448,16 @@
                 {
                         "type": "package",
                         "package": {
-                                "name": "mediawiki/swift-mailer",
+                                "name": "mediawiki/symfony-mailer",
                                 "type": "mediawiki-extension",
                                 "version": "1.39.0",
                                 "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-SwiftMailer/archive/REL1_39.zip",
+                                        "url": "https://github.com/StarCitizenWiki/mediawiki-extensions-SymfonyMailer/archive/master.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-SwiftMailer.git",
+                                        "url": "https://github.com/StarCitizenWiki/mediawiki-extensions-SymfonyMailer.git",
                                         "reference": "REL1_39"
                                 }
                         }
