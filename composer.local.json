@@ -49,8 +49,9 @@
                                 "extensions/CirrusSearch/composer.json",
                                 "extensions/Elastica/composer.json",
                                 "extensions/Oauth/composer.json",
+                                "extensions/SymfonyMailer/composer.json",
                                 "extensions/TemplateStyles/composer.json",
-                                "extensions/SymfonyMailer/composer.json"
+                                "extensions/Webauthn/composer.json"
                         ]
                 }
         },
