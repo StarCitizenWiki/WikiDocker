@@ -35,6 +35,7 @@ RUN set -eux; \
         libicu-dev \
         libonig-dev \
         libcurl4-gnutls-dev \
+        libgmp-dev \
         libmagickwand-dev \
         libwebp6 \
         libxml2-dev \
@@ -44,6 +45,7 @@ RUN set -eux; \
     \
     docker-php-ext-install -j "$(nproc)" \
         calendar \
+        gmp \
         intl \
         mysqli \
         opcache \

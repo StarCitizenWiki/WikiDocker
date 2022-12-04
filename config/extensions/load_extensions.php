@@ -43,6 +43,7 @@ wfLoadExtension( 'Translate' );
 wfLoadExtension( 'UniversalLanguageSelector' );
 wfLoadExtension( 'UploadWizard' );
 wfLoadExtension( 'VisualEditor' );
+wfLoadExtension( 'WebAuthn' );
 wfLoadExtension( 'Webp' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'WikiSeo' );
