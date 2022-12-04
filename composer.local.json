@@ -5,7 +5,7 @@
                 "mediawiki/apiunto": "1.39.0",
                 "mediawiki/capiunto": "1.39.0",
                 "mediawiki/cirrus-search": "1.39.0",
-                "mediawiki/citizen-skin": "1.39.0",
+                "mediawiki/citizen-skin": "2.1.0",
                 "mediawiki/cldr": "2022.10",
                 "mediawiki/code-mirror": "1.39.0",
                 "mediawiki/commons-metadata": "1.39.0",
@@ -586,7 +586,7 @@
                         "package": {
                                 "name": "mediawiki/citizen-skin",
                                 "type": "mediawiki-skin",
-                                "version": "1.39.0",
+                                "version": "2.1.0",
                                 "dist": {
                                         "url": "https://github.com/StarCitizenTools/mediawiki-skins-Citizen/archive/refs/heads/main.zip",
                                         "type": "zip"
