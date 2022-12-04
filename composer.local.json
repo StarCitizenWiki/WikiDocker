@@ -48,8 +48,8 @@
                                 "extensions/CirrusSearch/composer.json",
                                 "extensions/Elastica/composer.json",
                                 "extensions/Oauth/composer.json",
-                                "extensions/SwiftMailer/composer.json",
-                                "extensions/TemplateStyles/composer.json"
+                                "extensions/TemplateStyles/composer.json",
+                                "extensions/SymfonyMailer/composer.json"
                         ]
                 }
         },
