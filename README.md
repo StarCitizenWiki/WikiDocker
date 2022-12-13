@@ -160,6 +160,7 @@ The Wiki stack consists of the following services:
   * Extensions and Skins bundled in the container
     * [mediawiki/admin-links](https://www.mediawiki.org/wiki/Extension:AdminLinks)
     * [mediawiki/advanced-search](https://www.mediawiki.org/wiki/Extension:AdvancedSearch)
+    * [mediawiki/approved-revs](https://www.mediawiki.org/wiki/Extension:Approved_Revs)
     * [mediawiki/apiunto](https://github.com/StarCitizenWiki/Apiunto)
     * [mediawiki/capiunto](https://www.mediawiki.org/wiki/Extension:Capiunto)
     * [mediawiki/cirrus-search](https://www.mediawiki.org/wiki/Extension:CirrusSearch)
@@ -176,6 +177,7 @@ The Wiki stack consists of the following services:
     * [mediawiki/json-config](https://www.mediawiki.org/wiki/Extension:JsonConfig)
     * [mediawiki/labeled-section-transclusion](https://www.mediawiki.org/wiki/Extension:Labeled_Section_Transclusion)
     * [mediawiki/linter](https://www.mediawiki.org/wiki/Extension:Linter)
+    * [mediawiki/media-search](https://www.mediawiki.org/wiki/Extension:MediaSearch)
     * [mediawiki/multi-purge](https://www.mediawiki.org/wiki/Extension:MultiPurge)
     * [mediawiki/oauth](https://www.mediawiki.org/wiki/Extension:OAuth)
     * [mediawiki/page-forms](https://www.mediawiki.org/wiki/Extension:Page_Forms)
@@ -200,9 +202,9 @@ The Wiki stack consists of the following services:
 * db
   * MariaDB Server
 * elasticsearch
-  * ElasticSearch 6.5.4 (MW Version including Plugins)
+  * ElasticSearch 7.10.2 ("Official" Version)
 * elasticsearch-smw
-  * ElasticSearch 6.8.15 ("Official" Version)
+  * ElasticSearch 7.10.2 ("Official" Version)
 * ofelia
   * Cron Container
   * [Semantic MediaWiki Jobs](container-config/ofelia.ini)

@@ -21,6 +21,7 @@ wfLoadExtension( 'Interwiki' );
 wfLoadExtension( 'JsonConfig' );
 wfLoadExtension( 'LabeledSectionTransclusion' );
 wfLoadExtension( 'Linter' );
+wfLoadExtension( 'MediaSearch' );
 wfLoadExtension( 'MultimediaViewer' );
 wfLoadExtension( 'MultiPurge' );
 wfLoadExtension( 'OATHAuth' );

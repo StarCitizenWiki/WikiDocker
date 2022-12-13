@@ -18,6 +18,7 @@
                 "mediawiki/json-config": "1.39.0",
                 "mediawiki/labeled-section-transclusion": "1.39.0",
                 "mediawiki/linter": "1.39.0",
+                "mediawiki/media-search": "1.39.0",
                 "mediawiki/multi-purge": "1.39.0",
                 "mediawiki/oauth": "1.39.0",
                 "mediawiki/page-forms": "5.5",
@@ -376,6 +377,23 @@
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-Linter.git",
                                         "reference": "REL1_39"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/media-search",
+                                "type": "mediawiki-extension",
+                                "version": "1.39.0",
+                                "dist": {
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-MediaSearch/archive/REL1_39.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-MediaSearch.git",
+                                        "reference": "master"
                                 }
                         }
                 },
