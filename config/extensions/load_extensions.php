@@ -25,7 +25,7 @@ wfLoadExtension( 'MediaSearch' );
 wfLoadExtension( 'MultimediaViewer' );
 wfLoadExtension( 'MultiPurge' );
 wfLoadExtension( 'OATHAuth' );
-wfLoadExtension( 'OAuth' );
+wfLoadExtension( 'Oauth' );
 wfLoadExtension( 'PageForms' );
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'PdfHandler' );

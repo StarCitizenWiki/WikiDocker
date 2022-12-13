@@ -350,4 +350,4 @@ $wgDefaultSkin = 'citizen';
 
 # Enabled skins.
 # The following skins were automatically enabled:
-wfLoadSkin( 'Citizen' );
+wfLoadSkin( 'citizen' );

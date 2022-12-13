@@ -162,7 +162,13 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 COPY composer.local.json /var/www/html
 
+RUN set -eux; \
+   a2enmod remoteip; \
+   chown -R www-data:www-data /var/www
+
 WORKDIR /var/www/html
+
+USER www-data
 
 RUN set -eux; \
    /usr/bin/composer config --no-plugins allow-plugins.composer/installers true; \
@@ -175,14 +181,7 @@ RUN set -eux; \
    /usr/bin/composer update --no-dev \
                             --no-ansi \
                             --no-interaction \
-                            --no-scripts; \
-   \
-   mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
-   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen; \
-   chown -R www-data:www-data /var/www; \
-   a2enmod remoteip
-
-USER www-data
+                            --no-scripts
 
 VOLUME /var/www/html/sitemap
 VOLUME /var/www/html/images
