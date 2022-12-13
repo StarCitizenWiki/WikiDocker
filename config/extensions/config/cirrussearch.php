@@ -42,3 +42,6 @@ $wgCirrusSearchLanguageWeight = [
     'user' => 5.0,
     'wiki' => 2.5,
 ];
+
+$wgCirrusSearchUseExperimentalHighlighter = false;
+$wgCirrusSearchOptimizeIndexForExperimentalHighlighter = false;
