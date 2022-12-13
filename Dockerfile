@@ -181,7 +181,12 @@ RUN set -eux; \
    /usr/bin/composer update --no-dev \
                             --no-ansi \
                             --no-interaction \
-                            --no-scripts
+                            --no-scripts; \
+   \
+   mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
+   mv /var/www/html/extensions/Webp /var/www/html/extensions/WebP; \
+   mv /var/www/html/extensions/WikiSeo /var/www/html/extensions/WikiSEO; \
+   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen; \
 
 VOLUME /var/www/html/sitemap
 VOLUME /var/www/html/images
