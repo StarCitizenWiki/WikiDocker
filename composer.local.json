@@ -233,7 +233,7 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.39.0",
                                 "dist": {
-                                        "url": "https://github.com/wikimedia/mediawiki-extensions-CirrusSearch/archive/23d5a9150ae2e873865b9144dee090882d0f5d6e.zip",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-CirrusSearch/archive/REL1_39.zip",
                                         "type": "zip"
                                 },
                                 "source": {
@@ -386,7 +386,7 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.39.0",
                                 "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extensions-MultiPurge/archive/refs/heads/develop.zip",
+                                        "url": "https://github.com/octfx/mediawiki-extensions-MultiPurge/archive/develop.zip",
                                         "type": "zip"
                                 },
                                 "source": {
