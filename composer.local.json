@@ -523,13 +523,13 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.35.0",
                                 "dist": {
-                                        "url": "https://github.com/StarCitizenWiki/Apiunto/archive/develop.zip",
+                                        "url": "https://github.com/StarCitizenWiki/Apiunto/archive/59d23e3f8a11eac20c3554c2da7007e6e6db906a.zip",
                                         "type": "zip"
                                 },
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/StarCitizenWiki/Apiunto.git",
-                                        "reference": "develop"
+                                        "reference": "59d23e3f8a11eac20c3554c2da7007e6e6db906a"
                                 }
                         }
                 },
