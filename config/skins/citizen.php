@@ -1,13 +1,10 @@
 <?php
 
-$wgCitizenThumbnailSize = 120;
-$wgCitizenEnableLazyload = false;
-$wgCitizenSiteToolsPortlet = 'p-Meta';
-$wgCitizenEnableDrawerSubSearch = false;
+$wgCitizenGlobalToolsPortlet = 'p-Meta';
 $wgCitizenEnableCollapsibleSections = false;
 
-$wgNativeImageLazyLoading = true;
-$wgCitizenSearchGateway = 'mwRestApi';
+$wgCitizenSearchGateway = 'mwActionApi';
+$wgCitizenSearchDescriptionSource = 'pagedescription';
 
 $wgCitizenEnablePreconnect = true;
 $wgCitizenPreconnectURL = 'https://analytics.star-citizen.wiki';
