@@ -38,6 +38,7 @@
                 "mediawiki/thanks": "1.39.0",
                 "mediawiki/translate": "2022.10",
                 "mediawiki/upload-wizard": "1.39.0",
+                "mediawiki/user-merge": "1.39.0",
                 "mediawiki/universal-language-selector": "2022.10",
                 "mediawiki/webp": "1.39.0",
                 "mediawiki/webauthn": "1.39.0",
@@ -531,6 +532,23 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-UploadWizard.git",
+                                        "reference": "REL1_39"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/user-merge",
+                                "type": "mediawiki-extension",
+                                "version": "1.39.0",
+                                "dist": {
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-UserMerge/archive/REL1_39.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-UserMerge.git",
                                         "reference": "REL1_39"
                                 }
                         }
