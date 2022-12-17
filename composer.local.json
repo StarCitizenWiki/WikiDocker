@@ -2,6 +2,7 @@
         "require": {
                 "mediawiki/admin-links": "1.39.0",
                 "mediawiki/advanced-search": "1.39.0",
+                "mediawiki/approved-revs": "1.39.0",
                 "mediawiki/apiunto": "1.39.0",
                 "mediawiki/capiunto": "1.39.0",
                 "mediawiki/cirrus-search": "1.39.0",
@@ -50,6 +51,7 @@
                                 "extensions/CirrusSearch/composer.json",
                                 "extensions/Elastica/composer.json",
                                 "extensions/Oauth/composer.json",
+                                "extensions/OATHAuth/composer.json",
                                 "extensions/SymfonyMailer/composer.json",
                                 "extensions/TemplateStyles/composer.json",
                                 "extensions/Webauthn/composer.json"
