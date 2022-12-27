@@ -4,24 +4,24 @@ LABEL maintainer="foxftw@star-citizen.wiki"
 
 # Version
 ENV MEDIAWIKI_MAJOR_VERSION 1.39
-ENV MEDIAWIKI_VERSION 1.39.0
+ENV MEDIAWIKI_VERSION 1.39.1
 
 # System dependencies
 RUN set -eux; \
     \
     apt-get update; \
     apt-get install -y --no-install-recommends \
-        git \
-        librsvg2-bin \
-        imagemagick \
         ffmpeg \
         ghostscript \
+        git \
+        imagemagick \
+        librsvg2-bin \
         poppler-utils \
+        # Required for SyntaxHighlighting
+        python3 \
         unzip \
         webp \
         zip \
-        # Required for SyntaxHighlighting
-        python3 \
     ; \
     rm -rf /var/lib/apt/lists/*
 
@@ -82,8 +82,9 @@ RUN set -eux; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*
 
-# Enable Short URLs
+# Enable RemoteIP Short URLs
 RUN set -eux; \
+    a2enmod remoteip; \
     a2enmod rewrite; \
     { \
         echo "<Directory /var/www/html>"; \
@@ -98,7 +99,7 @@ RUN set -eux; \
 # Enable AllowEncodedSlashes for VisualEditor
 RUN sed -i "s/<\/VirtualHost>/\tAllowEncodedSlashes NoDecode\n<\/VirtualHost>/" "$APACHE_CONFDIR/sites-available/000-default.conf"; \
     sed -i "s/LogFormat \"%h/LogFormat \"%a/" "$APACHE_CONFDIR/apache2.conf"; \
-    sed -i "s/<\/VirtualHost>/\tRemoteIPHeader X-Forwarded-For\n\tRemoteIPInternalProxy 172.16.0.4\n<\/VirtualHost>/" "$APACHE_CONFDIR/sites-available/000-default.conf";
+    sed -i "s/<\/VirtualHost>/\tRemoteIPHeader X-Forwarded-For\n\tRemoteIPInternalProxy 172.16.0.4\n<\/VirtualHost>/" "$APACHE_CONFDIR/sites-available/000-default.conf"
 
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
@@ -108,6 +109,10 @@ RUN { \
         echo 'opcache.max_accelerated_files=4000'; \
         echo 'opcache.revalidate_freq=60'; \
     } > /usr/local/etc/php/conf.d/opcache-recommended.ini
+
+# Raise PHP Mem limit and execution time
+RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini; \
+    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini
 
 # SQLite Directory Setup
 RUN set -eux; \
@@ -126,7 +131,7 @@ RUN set -eux; \
     curl -fSL "https://releases.wikimedia.org/mediawiki/${MEDIAWIKI_MAJOR_VERSION}/mediawiki-${MEDIAWIKI_VERSION}.tar.gz" -o mediawiki.tar.gz; \
     curl -fSL "https://releases.wikimedia.org/mediawiki/${MEDIAWIKI_MAJOR_VERSION}/mediawiki-${MEDIAWIKI_VERSION}.tar.gz.sig" -o mediawiki.tar.gz.sig; \
     export GNUPGHOME="$(mktemp -d)"; \
-# gpg key from https://www.mediawiki.org/keys/keys.txt
+    # gpg key from https://www.mediawiki.org/keys/keys.txt
     gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \
         D7D6767D135A514BEB86E9BA75682B08E8A3FEC4 \
         441276E9CCD15F44F6D97D18C119E1A64D70938E \
@@ -144,7 +149,7 @@ RUN set -eux; \
 
 # Post MediaWiki Setup
 
-COPY ./queue.sh /usr/local/bin/queue
+COPY --chown=www-data:www-data --chmod=770 ./queue.sh /usr/local/bin/queue
 COPY ./config /var/www/
 COPY ./includes/libs/mime/MimeMap.php /var/www/html/includes/libs/mime/MimeMap.php
 COPY ./includes/page/Article.php /var/www/html/includes/page/Article.php
@@ -153,18 +158,11 @@ COPY ./container-config/php-config.ini /usr/local/etc/php/conf.d/php-config.ini
 COPY ./container-config/robots.txt /var/www/html/robots.txt
 COPY ./container-config/favicon.ico /var/www/html/favicon.ico
 
-RUN echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini; \
-    echo 'max_execution_time = 60' >> /usr/local/etc/php/conf.d/docker-php-executiontime.ini; \
-    chown www-data:www-data /usr/local/bin/queue; \
-    chmod +x /usr/local/bin/queue
-
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-COPY composer.local.json /var/www/html
+COPY ./composer.local.json /var/www/html
 
-RUN set -eux; \
-   a2enmod remoteip; \
-   chown -R www-data:www-data /var/www
+RUN set -eux; chown -R www-data:www-data /var/www
 
 WORKDIR /var/www/html
 
@@ -183,6 +181,7 @@ RUN set -eux; \
                             --no-interaction \
                             --no-scripts; \
    \
+   # Move extension folders to match their name
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
    mv /var/www/html/extensions/Webp /var/www/html/extensions/WebP; \
    mv /var/www/html/extensions/WikiSeo /var/www/html/extensions/WikiSEO; \
