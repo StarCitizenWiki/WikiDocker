@@ -4,7 +4,7 @@ $wgCheckFileExtensions = true;
 $wgVerifyMimeType = true;
 $wgAllowCopyUploads = true;
 
-$wgFileExtensions = ['png', 'gif', 'jpg', 'jpeg', 'ppt', 'pptx', 'pdf', 'psd', 'mp3', 'xls', 'xlsx', 'swf', 'doc', 'docx', 'odt', 'odc', 'odp', 'odg', 'mpp', 'mp4', 'webm', 'zip', 'dae', 'svg', 'ctm', 'ogg', 'acc', 'opus', 'm4a'];
+$wgFileExtensions = ['png', 'gif', 'jpg', 'jpeg', 'ppt', 'pptx', 'pdf', 'psd', 'mp3', 'xls', 'xlsx', 'swf', 'doc', 'docx', 'odt', 'odc', 'odp', 'odg', 'mpp', 'mp4', 'webm', 'zip', 'dae', 'svg', 'ctm', 'ogg', 'acc', 'opus', 'm4a', 'webp'];
 
 $wgUploadWizardConfig = [
     'debug' => false,
