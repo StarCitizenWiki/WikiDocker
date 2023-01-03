@@ -1,4 +1,4 @@
-name: docker
+name: docker-image-latest
 
 on:
   push:
@@ -27,5 +27,5 @@ jobs:
         with:
           tags: |
             scwiki/wiki:latest
-            scwiki/wiki:1.35.1
+            scwiki/wiki:1.39.0
           push: true
