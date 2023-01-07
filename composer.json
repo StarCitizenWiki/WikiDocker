@@ -407,7 +407,7 @@
                                 "type": "mediawiki-extension",
                                 "version": "1.39.0",
                                 "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extensions-MultiPurge/archive/develop.zip",
+                                        "url": "https://github.com/octfx/mediawiki-extensions-MultiPurge/archive/master.zip",
                                         "type": "zip"
                                 },
                                 "source": {
