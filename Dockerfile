@@ -160,7 +160,7 @@ COPY ./container-config/favicon.ico /var/www/html/favicon.ico
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
-COPY ./composer.local.json /var/www/html
+COPY ./composer.json /var/www/html/composer.local.json
 
 RUN set -eux; chown -R www-data:www-data /var/www
 
