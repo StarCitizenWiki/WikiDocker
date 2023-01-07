@@ -4,6 +4,6 @@ $wgMultiPurgeCloudFlareZoneId = null;
 $wgMultiPurgeCloudFlareApiToken = null;
 $wgMultiPurgeCloudFlareAccountId = null;
 
-$wgMultiPurgeVarnishServers = ['star-citizen.wiki-varnish:80'];
+$wgMultiPurgeVarnishServers = ['http://star-citizen.wiki-varnish'];
 $wgMultiPurgeEnabledServices = ['cloudflare', 'varnish'];
 $wgMultiPurgeServiceOrder= ['varnish', 'cloudflare'];

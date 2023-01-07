@@ -289,6 +289,9 @@ require_once "$wgWikiConfigPath/extensions/config/json_config.php";
 # MultimediaViewer
 require_once "$wgWikiConfigPath/extensions/config/multimediaviewer.php";
 
+# MultiPurge
+require_once "$wgWikiConfigPath/extensions/config/multipurge.php";
+
 # OAuth
 require_once "$wgWikiConfigPath/extensions/config/oauth.php";
 
