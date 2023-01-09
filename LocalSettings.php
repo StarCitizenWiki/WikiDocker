@@ -302,6 +302,9 @@ require_once "$wgWikiConfigPath/extensions/config/pageimages.php";
 $wgPFEnableStringFunctions = false;
 $wgPFStringLengthLimit = 1500;
 
+# Parsoid
+require_once "$wgWikiConfigPath/extensions/config/parsoid.php";
+
 # PDF Handler
 require_once "$wgWikiConfigPath/extensions/config/pdfhandler.php";
 
