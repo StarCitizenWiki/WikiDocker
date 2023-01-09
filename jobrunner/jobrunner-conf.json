@@ -1,0 +1,41 @@
+{
+  "groups": {
+    "basic": {
+      "runners": 3,
+      "include": [
+        "*"
+      ],
+      "low-priority": [
+        "cirrusSearchLinksUpdate",
+        "htmlCacheUpdate",
+        "refreshLinks"
+      ]
+    }
+  },
+
+  "limits": {
+    "attempts": {
+      "*": 3
+    },
+    "claimTTL": {
+      "*": 3600
+    },
+    "real": {
+      "*": 300
+    },
+    "memory": {
+      "*": "300M"
+    }
+  },
+
+  "redis": {
+    "aggregators": [
+      "redis:6379"
+    ],
+    "queues": [
+      "redis:6379"
+    ]
+  },
+
+  "dispatcher": "php /var/www/html/maintenance/runJobs.php --type=%(type)x --maxtime=%(maxtime)x --memory-limit=%(maxmem)x --result=json"
+}

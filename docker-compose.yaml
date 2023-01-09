@@ -195,6 +195,28 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/lib/star-citizen.wiki/redis:/data
 
+  # JobRunner
+  jobrunner:
+    image: scwiki/jobrunner:dev
+    restart: unless-stopped
+    init: true
+    user: "www-data:www-data"
+    security_opt:
+      - no-new-privileges:true
+    depends_on:
+      - star-citizen.wiki-live
+      - db
+      - redis
+      - elasticsearch
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      #- /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php
+      - /etc/star-citizen.wiki/config:/var/www/config
+      - /etc/star-citizen.wiki/.smw.json:/var/www/html/extensions/SemanticMediaWiki/.smw.json
+    networks:
+      star-citizen.wiki-internal:
+
+
 networks:
   star-citizen.wiki:
     external: true

@@ -23,9 +23,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push
-        id: docker_build
+        name: Build and push Wiki
+        id: docker_build_wiki
         uses: docker/build-push-action@v3
         with:
           tags: scwiki/wiki:dev
+          push: true
+      -
+        name: Build and push Jobrunner
+        id: docker_build_jobrunner
+        uses: docker/build-push-action@v3
+        with:
+          context: "{{defaultContext}}:jobrunner"
+          tags: scwiki/jobrunner:dev
           push: true

@@ -2,6 +2,7 @@
 # Search
 ## This loads Elastica and sets wgSearchType
 require_once "/var/www/html/extensions/CirrusSearch/tests/jenkins/FullyFeaturedConfig.php";
+$wgCirrusSearchWikimediaExtraPlugin = [];
 
 wfLoadExtension( 'CirrusSearch' );
 
