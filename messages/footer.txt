@@ -1,0 +1,20 @@
+cookiestatement
+Cookies
+
+cookiestatementpage
+Star Citizen Wiki:Cookies
+
+footer-analytics
+Analytics
+
+footer-statuspage
+System Status
+
+footer-github
+GitHub
+
+footer-api
+API
+
+footer-discord
+Discord
