@@ -247,6 +247,8 @@ $wgDefaultRobotPolicy = 'index,follow';
 # End of automatically generated settings.
 # Add more configuration options below.
 
+$wgAllowUserCss = true;
+
 # WebP - Needs to be loaded pre include
 require_once "$wgWikiConfigPath/extensions/config/webp.php";
 
@@ -331,9 +333,6 @@ $wgExtractsExtendOpenSearchXml = true;
 
 # TitleBlacklist
 require_once "$wgWikiConfigPath/extensions/config/titleblacklist.php";
-
-# Translate
-require_once "$wgWikiConfigPath/extensions/config/translate.php";
 
 # Upload Wizard
 require_once "$wgWikiConfigPath/extensions/config/uploadwizard.php";

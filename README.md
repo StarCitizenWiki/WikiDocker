@@ -194,7 +194,6 @@ The Wiki stack consists of the following services:
     * [mediawiki/template-styles](https://www.mediawiki.org/wiki/Extension:TemplateStyles)
     * [mediawiki/template-styles-extender](https://www.mediawiki.org/wiki/Extension:TemplateStylesExtender)
     * [mediawiki/thanks](https://www.mediawiki.org/wiki/Extension:Thanks)
-    * [mediawiki/translate](https://www.mediawiki.org/wiki/Extension:Translate)
     * [mediawiki/upload-wizard](https://www.mediawiki.org/wiki/Extension:UploadWizard)
     * [mediawiki/universal-language-selector](https://www.mediawiki.org/wiki/Extension:UniversalLanguageSelector)
     * [mediawiki/webp](https://www.mediawiki.org/wiki/Extension:WebP)

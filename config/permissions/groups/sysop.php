@@ -6,13 +6,6 @@ $wgGroupPermissions['sysop']['deletelogentry'] = true;
 $wgGroupPermissions['sysop']['deleterevision'] = true;
 $wgGroupPermissions['sysop']['upload_by_url'] = true;
 
-$wgGroupPermissions['sysop']['translate'] = true;
-$wgGroupPermissions['sysop']['translate-messagereview'] = true;
-$wgGroupPermissions['sysop']['translate-groupreview'] = true;
-$wgGroupPermissions['sysop']['translate-import'] = true;
-$wgGroupPermissions['sysop']['pagetranslation'] = true;
-$wgGroupPermissions['sysop']['translate-manage'] = true;
-
 $wgGroupPermissions['sysop']['interwiki'] = true;
 
 $wgAddGroups['sysop'] = ['sysop', 'bot', 'Mitarbeiter', 'Vertraut'];

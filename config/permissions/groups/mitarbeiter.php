@@ -12,10 +12,6 @@ $wgGroupPermissions['Mitarbeiter']['delete'] = true;
 $wgGroupPermissions['Mitarbeiter']['undelete'] = true;
 $wgGroupPermissions['Mitarbeiter']['upload_by_url'] = true;
 
-$wgGroupPermissions['Mitarbeiter']['pagetranslation'] = true;
-$wgGroupPermissions['Mitarbeiter']['translate'] = true;
-$wgGroupPermissions['Mitarbeiter']['translate-messagereview'] = true;
-
 $wgGroupPermissions['Mitarbeiter']['adminlinks'] = true;
 
 $wgGroupPermissions['Mitarbeiter']['editrestrictedfields'] = true;
