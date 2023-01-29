@@ -3,7 +3,6 @@
                 "mediawiki/admin-links": "1.39.0",
                 "mediawiki/advanced-search": "1.39.0",
                 "mediawiki/approved-revs": "1.39.0",
-                "mediawiki/apiunto": "1.39.0",
                 "mediawiki/capiunto": "1.39.0",
                 "mediawiki/cirrus-search": "1.39.0",
                 "mediawiki/citizen-skin": "2.1.0",
@@ -20,10 +19,8 @@
                 "mediawiki/labeled-section-transclusion": "1.39.0",
                 "mediawiki/linter": "1.39.0",
                 "mediawiki/media-search": "1.39.0",
-                "mediawiki/multi-purge": "1.39.0",
                 "mediawiki/oauth": "1.39.0",
                 "mediawiki/page-forms": "5.5.1",
-                "mediawiki/plausible": "1.39.0",
                 "mediawiki/popups": "1.39.0",
                 "mediawiki/related-articles": "1.39.0",
                 "mediawiki/sandbox-link": "1.39.0",
@@ -34,7 +31,6 @@
                 "mediawiki/symfony-mailer": "1.39.0",
                 "mediawiki/tabber-neue": "1.39.0",
                 "mediawiki/template-styles": "1.39.0",
-                "mediawiki/template-styles-extender": "1.39.0",
                 "mediawiki/thanks": "1.39.0",
                 "mediawiki/upload-wizard": "1.39.0",
                 "mediawiki/user-merge": "1.39.0",
@@ -43,7 +39,11 @@
                 "mediawiki/webauthn": "1.39.0",
                 "mediawiki/wiki-seo": "1.39.0",
 
-                "starcitizenwiki/embedvideo": "dev-develop"
+                "starcitizenwiki/embedvideo": "3.2.1",
+                "starcitizenwiki/apiunto": "1.3.0",
+                "octfx/plausible": "1.1.0",
+                "octfx/multipurge": "1.1.1",
+                "octfx/template-styles-extender": "1.1.2"
         },
         "extra": {
                 "merge-plugin": {
@@ -158,23 +158,6 @@
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-TemplateStyles.git",
                                         "reference": "REL1_39"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "mediawiki/template-styles-extender",
-                                "type": "mediawiki-extension",
-                                "version": "1.39.0",
-                                "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extensions-TemplateStylesExtender/archive/develop.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/octfx/mediawiki-extensions-TemplateStylesExtender.git",
-                                        "reference": "develop"
                                 }
                         }
                 },
@@ -402,23 +385,6 @@
                 {
                         "type": "package",
                         "package": {
-                                "name": "mediawiki/multi-purge",
-                                "type": "mediawiki-extension",
-                                "version": "1.39.0",
-                                "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extensions-MultiPurge/archive/master.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/octfx/mediawiki-extensions-MultiPurge.git",
-                                        "reference": "master"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
                                 "name": "mediawiki/popups",
                                 "type": "mediawiki-extension",
                                 "version": "1.39.0",
@@ -549,40 +515,6 @@
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-UserMerge.git",
                                         "reference": "REL1_39"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "mediawiki/apiunto",
-                                "type": "mediawiki-extension",
-                                "version": "1.39.0",
-                                "dist": {
-                                        "url": "https://github.com/StarCitizenWiki/Apiunto/archive/develop.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/StarCitizenWiki/Apiunto.git",
-                                        "reference": "develop"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "mediawiki/plausible",
-                                "type": "mediawiki-extension",
-                                "version": "1.39.0",
-                                "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extension-Plausible/archive/develop.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/octfx/mediawiki-extension-Plausible.git",
-                                        "reference": "develop"
                                 }
                         }
                 },
