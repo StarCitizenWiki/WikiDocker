@@ -39,7 +39,7 @@
                 "mediawiki/webauthn": "1.39.0",
                 "mediawiki/wiki-seo": "1.39.0",
 
-                "starcitizenwiki/embedvideo": "3.2.1",
+                "starcitizenwiki/embedvideo": "3.2.2",
                 "starcitizenwiki/apiunto": "1.3.0",
                 "octfx/plausible": "1.1.0",
                 "octfx/multipurge": "1.1.1",
