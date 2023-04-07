@@ -4,6 +4,8 @@ LABEL maintainer="foxftw@star-citizen.wiki"
 
 USER root
 
+COPY ./php-config.ini /usr/local/etc/php/conf.d/php-config.ini
+
 RUN docker-php-ext-configure pcntl --enable-pcntl \
   && docker-php-ext-install pcntl
 
