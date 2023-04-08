@@ -7,6 +7,7 @@ enableSemantics( 'star-citizen.wiki' );
 wfLoadExtension( 'SemanticResultFormats' );
 wfLoadExtension( 'SemanticScribunto' );
 wfLoadExtension( 'SemanticDrilldown' );
+wfLoadExtension( 'SemanticExtraSpecialProperties' );
 
 $smwgSearchByPropertyFuzzy = false;
 
@@ -37,3 +38,12 @@ $smwgFallbackSearchType = static function() {
 
 $smwgConfigFileDir = '/var/www/smw-config';
 
+$sespgEnabledPropertyList = [
+    '_PAGELGTH',
+    '_SUBP',
+    '_USEREDITCNT',
+    '_PAGEIMG',
+];
+
+$sespgExcludeBotEdits = true;
+$sespgUseFixedTables = true;
