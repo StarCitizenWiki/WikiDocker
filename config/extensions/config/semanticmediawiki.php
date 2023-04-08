@@ -47,3 +47,4 @@ $sespgEnabledPropertyList = [
 
 $sespgExcludeBotEdits = true;
 $sespgUseFixedTables = true;
+$sespgDefinitionsFile = '/var/www/config/extensions/sesp-definitions.json';

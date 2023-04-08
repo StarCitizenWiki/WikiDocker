@@ -1,0 +1,184 @@
+{
+	"_REVID": {
+		"id": "___REVID",
+		"type": "_num",
+		"show": false,
+		"alias": "sesp-property-revision-id",
+		"label": "Revision ID"
+	},
+	"_PAGEID": {
+		"id": "___PAGEID",
+		"type": "_num",
+		"show": false,
+		"alias": "sesp-property-page-id",
+		"label": "Page ID",
+		"desc": "sesp-property-page-id-desc"
+	},
+	"_PAGEIMG": {
+		"id": "___PAGEIMG",
+		"type": "_wpg",
+		"show": false,
+		"alias": "sesp-property-page-img",
+		"label": "Page Image",
+		"desc": "sesp-property-page-img-desc"
+	},
+	"_PAGELGTH": {
+		"id": "___PAGELGTH",
+		"type": "_num",
+		"show": false,
+		"alias": "sesp-property-page-len",
+		"label": "Page length",
+		"desc": "sesp-property-page-len-desc"
+	},
+	"_EUSER": {
+		"id": "___EUSER",
+		"type": "_wpg",
+		"show": false,
+		"alias": "sesp-property-author",
+		"label": "Page author"
+	},
+	"_CUSER": {
+		"id": "___CUSER",
+		"type": "_wpg",
+		"show": false,
+		"alias": "sesp-property-first-author",
+		"label": "Page creator"
+	},
+	"_VIEWS": {
+		"id": "___VIEWS",
+		"type": "_num",
+		"show": false,
+		"alias": "sesp-property-view-count",
+		"label": "Number of page views"
+	},
+	"_NSID": {
+		"id": "___NSID",
+		"type": "_num",
+		"show": false,
+		"alias": "sesp-property-namespace-id",
+		"label": "Namespace ID",
+		"desc": "sesp-property-namespace-id-desc"
+	},
+	"_NSNAME": {
+		"id": "___NSNAME",
+		"type": "_txt",
+		"show": false,
+		"alias": "sesp-property-namespace-name",
+		"label": "Namespace canonical name",
+		"desc": "sesp-property-namespace-name-desc"
+	},
+	"_APPROVED": {
+		"id": "___APPROVED",
+		"type": "_num",
+		"show": false,
+		"alias": "sesp-property-approved-rev",
+		"label": "Approved revision",
+		"desc": "sesp-property-approved-rev-desc"
+	},
+	"_APPROVEDBY": {
+		"id": "___APPROVEDBY",
+		"type": "_wpg",
+		"show": false,
+		"alias": "sesp-property-approved-by",
+		"label": "Approved by",
+		"desc": "sesp-property-approved-by-desc"
+	},
+	"_APPROVEDDATE": {
+		"id": "___APPROVEDDATE",
+		"type": "_dat",
+		"show": false,
+		"alias": "sesp-property-approved-date",
+		"label": "Approved date",
+		"desc": "sesp-property-approved-date-desc"
+	},
+	"_APPROVEDSTATUS": {
+		"id": "___APPROVEDSTATUS",
+		"type": "_txt",
+		"show": false,
+		"alias": "sesp-property-approved-status",
+		"label": "Approval status",
+		"desc": "sesp-property-approved-status-desc"
+	},
+	"_SUBP": {
+		"id": "___SUBP",
+		"type": "_wpg",
+		"show": false,
+		"alias": "sesp-property-subpages",
+		"label": "Subpage"
+	},
+	"_NREV": {
+		"id": "___NREV",
+		"type": "_num",
+		"show": false,
+		"alias": "sesp-property-revisions",
+		"label": "Number of revisions"
+	},
+	"_NTREV": {
+		"id": "___NTREV",
+		"type": "_num",
+		"show": false,
+		"alias": "sesp-property-talk-revisions",
+		"label": "Number of talk page revisions"
+	},
+	"_SHORTURL": {
+		"id": "___SHORTURL",
+		"type": "_uri",
+		"show": false,
+		"alias": "sesp-property-shorturl",
+		"label": "Short URL"
+	},
+	"_USERREG": {
+		"id": "___USERREG",
+		"type": "_dat",
+		"show": false,
+		"alias": "sesp-property-user-registration-date",
+		"label": "User registration date"
+	},
+	"_USEREDITCNT": {
+		"id": "___USEREDITCNT",
+		"type": "_num",
+		"show": false,
+		"alias": "sesp-property-user-edit-count",
+		"label": "User edit count"
+	},
+	"_USEREDITCNTNS": {
+		"id": "___USEREDITCNTNS",
+		"type": "_wpg",
+		"show": false,
+		"alias": "sesp-property-user-edit-count-per-ns",
+		"label": "User edit count per namespace"
+	},
+	"_USEREDITCNTNS_NS": {
+		"id": "___USEREDITCNTNS_NS",
+		"type": "_num",
+		"alias": "sesp-property-user-edit-count-ns",
+		"label": "User edit count per namespace:Namespace"
+	},
+	"_USEREDITCNTNS_CNT": {
+		"id": "___USEREDITCNTNS_CNT",
+		"type": "_num",
+		"alias": "sesp-property-user-edit-count-cnt",
+		"label": "User edit count per namespace:Edit count"
+	},
+	"_USERBLOCK": {
+		"id": "___USERBLOCK",
+		"type": "_txt",
+		"show": false,
+		"alias": "sesp-property-user-block",
+		"label": "User block"
+	},
+	"_USERRIGHT": {
+		"id": "___USERRIGHT",
+		"type": "_txt",
+		"show": false,
+		"alias": "sesp-property-user-right",
+		"label": "User right"
+	},
+	"_USERGROUP": {
+		"id": "___USERGROUP",
+		"type": "_txt",
+		"show": false,
+		"alias": "sesp-property-user-group",
+		"label": "User group"
+	}
+}
