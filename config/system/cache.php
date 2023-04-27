@@ -18,25 +18,25 @@ $wgJobTypeConf['default'] = [
     'daemonized' => true
 ];
 
-$wgEnableSidebarCache = true;
 
 $wgMainCacheType = 'redis';
+$wgParserCacheType = CACHE_DB;
 $wgSessionCacheType = 'redis';
 $wgMainStash = 'redis';
 
+$wgEnableSidebarCache = true;
 $wgUseLocalMessageCache = true;
-$wgParserCacheExpireTime = 2592000;
+$wgUseFileCache = false;
 
+$wgParserCacheExpireTime = 2592000;
 $wgObjectCacheSessionExpiry = 3600 * 3;
 
 $wgUseCdn = true;
 
 $wgCdnServersNoPurge = [
     '127.0.0.1',
-    '172.16.0.4',
+    '172.16.0.2',
 ];
 
-$wgUseFileCache = false;
 $wgFileCacheDirectory = '/var/www/cache';
-
 $wgCacheDirectory  = "/var/www/cache/$wgDBname";

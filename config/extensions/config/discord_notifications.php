@@ -23,7 +23,7 @@ $wgDiscordIgnoreMinorEdits = false;
 $wgDiscordIncludeDiffSize = true;
 
 // If this is set, actions by users with this permission won't cause alerts
-$wgDiscordExcludedPermission = 'sysop';
+$wgDiscordExcludedPermission = 'apihighlimits';
 
 // New user added into MediaWiki
 $wgDiscordNotificationNewUser = true;

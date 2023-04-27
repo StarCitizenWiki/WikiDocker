@@ -26,3 +26,4 @@ $wgPageImagesExpandOpenSearchXml = true;
 $wgPageImagesAPIDefaultLicense = 'any';
 
 $wgPageImagesLeadSectionOnly = true;
+$wgPageImagesOpenGraph = false;

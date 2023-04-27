@@ -1,7 +1,7 @@
 <?php
 wfLoadExtension( 'AdminLinks' );
 wfLoadExtension( 'Apiunto' );
-wfLoadExtension( 'ApprovedRevs' );
+#wfLoadExtension( 'ApprovedRevs' );
 wfLoadExtension( 'Capiunto' );
 wfLoadExtension( 'CategoryTree' );
 wfLoadExtension( 'Cite' );
@@ -14,6 +14,7 @@ wfLoadExtension( 'ConfirmEdit/QuestyCaptcha' );
 wfLoadExtension( 'CookieWarning' );
 wfLoadExtension( 'Disambiguator' );
 wfLoadExtension( 'DiscordNotifications' );
+wfLoadExtension( 'DiscussionTools' );
 wfLoadExtension( 'Echo' );
 wfLoadExtension( 'EmbedVideo' );
 wfLoadExtension( 'InputBox' );
@@ -34,22 +35,26 @@ wfLoadExtension( 'Plausible' );
 wfLoadExtension( 'RelatedArticles' );
 wfLoadExtension( 'SandboxLink' );
 wfLoadExtension( 'Scribunto' );
-wfLoadExtension( 'SwiftMailer' );
+wfLoadExtension( 'SymfonyMailer' );
 wfLoadExtension( 'SyntaxHighlight_GeSHi' );
 wfLoadExtension( 'TabberNeue' );
 wfLoadExtension( 'TemplateData' );
 wfLoadExtension( 'TemplateStyles' );
 wfLoadExtension( 'TemplateStylesExtender' );
 wfLoadExtension( 'Thanks' );
-wfLoadExtension( 'Translate' );
+#wfLoadExtension( 'Translate' );
 wfLoadExtension( 'UniversalLanguageSelector' );
 wfLoadExtension( 'UploadWizard' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'WebAuthn' );
-wfLoadExtension( 'WebP' );
+#wfLoadExtension( 'WebP' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'WikiSEO' );
 
 wfLoadExtension( 'TextExtracts' );
 wfLoadExtension( 'PageImages' );
 wfLoadExtension( 'Popups' );
+
+#wfLoadExtension( 'UserMerge' );
+wfLoadExtension( 'ReplaceText' );
+wfLoadExtension( 'Renameuser' );

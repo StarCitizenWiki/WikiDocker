@@ -125,7 +125,7 @@ $wgUploadWizardConfig = [
     'maxUploads' => 100
 ];
 
-$wgExtensionFunctions[] = function () {
+$wgExtensionFunctions[] = static function () {
     $GLOBALS['wgUploadNavigationUrl'] = SpecialPage::getTitleFor('UploadWizard')->getLocalURL();
     return true;
 };

@@ -1,30 +1,33 @@
 <?php
 ## Default Werte
-$wgDefaultUserOptions['numberheadings'] = false;
-$wgDefaultUserOptions['minordefault'] = false;
-$wgDefaultUserOptions['multimediaviewer-enable'] = true;
-$wgDefaultUserOptions['forceeditsummary'] = true;
-$wgDefaultUserOptions['uselivepreview'] = true;
+$wgDefaultUserOptions['minordefault'] = 0;
+$wgDefaultUserOptions['multimediaviewer-enable'] = 1;
+$wgDefaultUserOptions['forceeditsummary'] = 1;
+$wgDefaultUserOptions['uselivepreview'] = 1;
 
 # Upload Wizard
 $wgDefaultUserOptions['upwiz_deflicense'] = 'thirdparty-license-rsi';
 
 # VisualEditor
-$wgDefaultUserOptions['visualeditor-enable'] = true;
-$wgDefaultUserOptions['visualeditor-enable-experimental'] = true;
+$wgDefaultUserOptions['visualeditor-enable'] = 1;
+$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;
+$wgDefaultUserOptions['visualeditor-tabs'] = 'multi-tab';
 
 # WikiEditor
-$wgDefaultUserOptions['usebetatoolbar'] = true;
-$wgDefaultUserOptions['usebetatoolbar-cgd'] = true;
-$wgDefaultUserOptions['wikieditor-preview'] = true;
-$wgDefaultUserOptions['wikieditor-publish'] = true;
+$wgDefaultUserOptions['usebetatoolbar'] = 1;
+$wgDefaultUserOptions['usebetatoolbar-cgd'] = 1;
+$wgDefaultUserOptions['wikieditor-preview'] = 1;
+$wgDefaultUserOptions['wikieditor-publish'] = 1;
 
 # Semantic Results Format
-$wgDefaultUserOptions['srf-prefs-datatables-options-update-default'] = false;
-$wgDefaultUserOptions['srf-prefs-datatables-options-cache-default'] = true;
+$wgDefaultUserOptions['srf-prefs-datatables-options-update-default'] = 0;
+$wgDefaultUserOptions['srf-prefs-datatables-options-cache-default'] = 1;
 
 # Cirrus Search
 $wgDefaultUserOptions['cirrussearch-pref-completion-profile'] = 'fuzzy-subphrases';
+
+# CodeMirror
+$wgDefaultUserOptions['usecodemirror'] = 1;
 
 # Auto Groups
 $wgAutoConfirmCount = 250;
@@ -49,8 +52,11 @@ $wgImplicitGroups = [
 #       'notification',
     'oversight',
     'smwcurator',
+#    'smwadministrator',
     'suppress',
     'upwizcampeditors',
     'user',
     'widgeteditor',
+#    'SMW-Administratoren',
+    'SMW-Kuratoren',
 ]; //, 'oversight', 'suppress'

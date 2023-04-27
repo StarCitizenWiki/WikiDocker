@@ -46,3 +46,4 @@ $wgCirrusSearchLanguageWeight = [
 
 $wgCirrusSearchUseExperimentalHighlighter = false;
 $wgCirrusSearchOptimizeIndexForExperimentalHighlighter = false;
+$wgCirrusSearchTextcatLanguages = ['de'];

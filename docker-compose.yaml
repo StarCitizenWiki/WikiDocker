@@ -26,7 +26,7 @@ services:
       - /etc/star-citizen.wiki/container-config/varnish.vcl:/etc/varnish/default.vcl:ro
     networks:
       star-citizen.wiki:
-        ipv4_address: 172.16.0.4
+        ipv4_address: 172.16.0.2
     environment:
       VARNISH_SIZE: "${VARNISH_SIZE}"
     # Find the traefik config at https://github.com/StarCitizenWiki/WikiTraefik
@@ -59,7 +59,6 @@ services:
     security_opt:
       - no-new-privileges:true
     depends_on:
-      - star-citizen.wiki-varnish
       - db
       - redis
       - elasticsearch
@@ -155,30 +154,30 @@ services:
         ipv4_address: 10.16.0.7
 
   # Elasticsearch container for Semantic Media Wiki
-  smw-elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
-    restart: unless-stopped
-    init: true
-    user: "${UID}:0"
-    security_opt:
-      - no-new-privileges:true
-    environment:
-      - bootstrap.memory_lock=true
-      - discovery.type=single-node
-      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/lib/star-citizen.wiki/esdata-smw:/usr/share/elasticsearch/data
-    expose:
-      - 9200
-      - 9300
-    networks:
-      star-citizen.wiki-internal:
-        ipv4_address: 10.16.0.9
+#  smw-elasticsearch:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
+#    restart: unless-stopped
+#    init: true
+#    user: "${UID}:0"
+#    security_opt:
+#      - no-new-privileges:true
+#    environment:
+#      - bootstrap.memory_lock=true
+#      - discovery.type=single-node
+#      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+#    ulimits:
+#      memlock:
+#        soft: -1
+#        hard: -1
+#    volumes:
+#      - /etc/localtime:/etc/localtime:ro
+#      - /var/lib/star-citizen.wiki/esdata-smw:/usr/share/elasticsearch/data
+#    expose:
+#      - 9200
+#      - 9300
+#    networks:
+#      star-citizen.wiki-internal:
+#        ipv4_address: 10.16.0.9
 
   # Redis as the main cache
   redis:

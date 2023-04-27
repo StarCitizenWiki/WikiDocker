@@ -20,3 +20,5 @@ $wgWikiSeoNoindexPageTitles = [
     'Spezial:Benutzerkonto_anlegen',
 ];
 $wgWikiSeoEnableAutoDescription = true;
+$wgWikiSeoEnableSocialImages = true;
+$wgWikiSeoSocialImageIcon = 'Star Citizen Wiki Stern.png';

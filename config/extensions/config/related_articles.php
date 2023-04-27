@@ -2,5 +2,5 @@
 
 $wgRelatedArticlesUseCirrusSearchApiUrl = '/api.php';
 $wgRelatedArticlesDescriptionSource = 'pagedescription';
-$wgRelatedArticlesFooterWhitelistedSkins = ['timeless', 'citizen'];
+$wgRelatedArticlesFooterWhitelistedSkins = ['citizen', 'Citizen'];
 $wgRelatedArticlesUseCirrusSearch = true;

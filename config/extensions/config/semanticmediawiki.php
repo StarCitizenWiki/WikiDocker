@@ -1,6 +1,6 @@
 <?php
 
-use CirrusSearch\CirrusSearch;
+//use CirrusSearch\CirrusSearch;
 
 wfLoadExtension( 'SemanticMediaWiki' );
 enableSemantics( 'star-citizen.wiki' );
@@ -27,14 +27,14 @@ $smwgEnabledQueryDependencyLinksStore = true;
 
 $smwgQFilterDuplicates = true;
 
-$smwgDefaultStore = 'SMWElasticStore';
-$smwgElasticsearchEndpoints = [ 'smw-elasticsearch:9200' ];
-
-$wgSearchType = 'SMWSearch';
-
-$smwgFallbackSearchType = static function() {
-    return new CirrusSearch();
-};
+//$smwgDefaultStore = 'SMWElasticStore';
+//$smwgElasticsearchEndpoints = [ 'smw-elasticsearch:9200' ];
+//
+//$wgSearchType = 'SMWSearch';
+//
+//$smwgFallbackSearchType = static function() {
+//   return new CirrusSearch();
+//};
 
 $smwgConfigFileDir = '/var/www/smw-config';
 
