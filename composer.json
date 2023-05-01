@@ -29,6 +29,7 @@
                 "mediawiki/semantic-result-formats": "dev-master",
                 "mediawiki/semantic-scribunto": "~2.2.0",
                 "mediawiki/semantic-drilldown": "1.39.0",
+                "mediawiki/short-description": "1.39.0",
                 "mediawiki/symfony-mailer": "1.39.0",
                 "mediawiki/tabber-neue": "1.39.0",
                 "mediawiki/template-styles": "1.39.0",
@@ -600,6 +601,23 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://github.com/SemanticMediaWiki/SemanticDrilldown.git",
+                                        "reference": "master"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/short-description",
+                                "type": "mediawiki-extension",
+                                "version": "1.39.0",
+                                "dist": {
+                                        "url": "https://github.com/StarCitizenTools/mediawiki-extensions-ShortDescription/archive/master.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/StarCitizenTools/mediawiki-extensions-ShortDescription.git",
                                         "reference": "master"
                                 }
                         }
