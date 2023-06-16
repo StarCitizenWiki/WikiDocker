@@ -53,18 +53,18 @@ RUN set -eux; \
         zip \
     ; \
     \
-    pecl install APCu-5.1.21; \
+    pecl install APCu-5.1.21 \
+                 luasandbox \
+    ; \
     docker-php-ext-enable \
         apcu \
+        luasandbox  \
     ; \
     git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis --depth=1; \
-    docker-php-ext-install redis; \
-    \
     git clone https://github.com/Imagick/imagick /usr/src/php/ext/imagick --depth=1; \
-    docker-php-ext-install imagick; \
-    \
-    git clone https://gerrit.wikimedia.org/r/mediawiki/php/luasandbox.git /usr/src/php/ext/luasandbox --depth=1; \
-    docker-php-ext-install luasandbox; \
+    docker-php-ext-install -j "$(nproc)" redis \
+                           imagick \
+    ; \
     \
     rm -r /tmp/pear && docker-php-source delete; \
     \
