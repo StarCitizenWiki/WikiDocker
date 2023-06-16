@@ -66,7 +66,7 @@ RUN set -eux; \
     git clone https://gerrit.wikimedia.org/r/mediawiki/php/luasandbox.git /usr/src/php/ext/luasandbox --depth=1; \
     docker-php-ext-install luasandbox; \
     \
-    rm -r /tmp/pear; \
+    rm -r /tmp/pear && docker-php-source delete; \
     \
     # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
     apt-mark auto '.*' > /dev/null; \
