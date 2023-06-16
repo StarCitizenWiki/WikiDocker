@@ -19,9 +19,12 @@ RUN set -eux; \
         poppler-utils \
         # Required for SyntaxHighlighting
         python3 \
+		python3-pygments \
         unzip \
         webp \
         zip \
+        liblua5.1-0 \
+        libzip4 \        
     ; \
     rm -rf /var/lib/apt/lists/*
 
@@ -53,20 +56,19 @@ RUN set -eux; \
         zip \
     ; \
     \
-    pecl install APCu-5.1.21 \
-                 luasandbox \
-    ; \
-    docker-php-ext-enable \
-        apcu \
-        luasandbox  \
-    ; \
-    git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis --depth=1; \
-    git clone https://github.com/Imagick/imagick /usr/src/php/ext/imagick --depth=1; \
-    docker-php-ext-install -j "$(nproc)" redis \
-                           imagick \
-    ; \
-    \
-    rm -r /tmp/pear && docker-php-source delete; \
+	pecl install \ 
+		APCu-5.1.21 \
+		luasandbox \
+		imagick \
+		redis \
+	; \
+	docker-php-ext-enable \
+		apcu \
+		luasandbox \
+		imagick  \
+		redis \
+	; \
+	rm -r /tmp/pear; \
     \
     # reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
     apt-mark auto '.*' > /dev/null; \
