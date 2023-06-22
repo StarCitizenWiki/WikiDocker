@@ -258,3 +258,10 @@ If both names are equal, and the wiki is running on https, VisualEditor will fai
 
 ## Upload Wizard Messages
 To use the custom licenses in UW you need to create the following system [messages](messages/uploadwizard-custom-messages.txt)
+
+## MariaDB Healthchecks
+MariaDB moved to a new healthcheck syntax. For databases that already exist, a local user must be added:
+```sql
+CREATE USER 'mysql'@'127.0.0.1';
+GRANT USAGE ON *.* to 'mysql'@'127.0.0.1';
+```
