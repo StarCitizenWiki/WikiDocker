@@ -37,5 +37,5 @@
     ]
   },
 
-  "dispatcher": "php /var/www/html/maintenance/runJobs.php --type=%(type)x --maxtime=%(maxtime)x --memory-limit=%(maxmem)x --result=json"
+  "dispatcher": "/usr/local/bin/php /var/www/html/maintenance/runJobs.php --type=%(type)x --maxtime=%(maxtime)x --memory-limit=%(maxmem)x --result=json"
 }
