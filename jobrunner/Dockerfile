@@ -7,9 +7,7 @@ USER root
 COPY ./php-config.ini /usr/local/etc/php/conf.d/php-config.ini
 
 RUN docker-php-ext-configure pcntl --enable-pcntl \
-  && docker-php-ext-install pcntl \
-  && docker-php-ext-install posix \
-  && docker-php-ext-install sockets
+  && docker-php-ext-install pcntl
 
 WORKDIR /var/www/html
 
