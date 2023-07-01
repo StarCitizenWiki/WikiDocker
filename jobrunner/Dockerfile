@@ -15,6 +15,16 @@ USER www-data
 
 RUN git clone https://github.com/wikimedia/mediawiki-services-jobrunner.git
 
+WORKDIR /var/www/html/mediawiki-services-jobrunner
+
+RUN set -eux; \
+   /usr/bin/composer config --no-plugins allow-plugins.composer/installers true; \
+   /usr/bin/composer install --no-dev \
+     --ignore-platform-reqs \
+     --no-ansi \
+     --no-interaction \
+     --no-scripts
+
 COPY --chown=www-data:www-data ./jobrunner-conf.json /var/www/html/mediawiki-services-jobrunner
 COPY --chown=www-data:www-data --chmod=770 ./entrypoint.sh /var/www/html/mediawiki-services-jobrunner
 
