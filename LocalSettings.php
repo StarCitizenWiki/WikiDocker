@@ -249,11 +249,11 @@ $wgDefaultRobotPolicy = 'index,follow';
 
 $wgAllowUserCss = true;
 
-# AWS
-require_once "$wgWikiConfigPath/extensions/config/aws.php";
-
 # Extensions
 require_once "$wgWikiConfigPath/extensions/load_extensions.php";
+
+# AWS
+require_once "$wgWikiConfigPath/extensions/config/aws.php";
 
 # Apiunto
 require_once "$wgWikiConfigPath/extensions/config/apiunto.php";
