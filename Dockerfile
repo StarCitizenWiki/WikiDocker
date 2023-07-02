@@ -24,7 +24,7 @@ RUN set -eux; \
         webp \
         zip \
         liblua5.1-0 \
-        libzip4 \        
+        libzip4 \
     ; \
     rm -rf /var/lib/apt/lists/*
 
@@ -56,7 +56,7 @@ RUN set -eux; \
         zip \
     ; \
     \
-	pecl install \ 
+	pecl install \
 		APCu-5.1.21 \
 		luasandbox \
 		imagick \
@@ -185,7 +185,6 @@ RUN set -eux; \
    \
    # Move extension folders to match their name
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
-   mv /var/www/html/extensions/Webp /var/www/html/extensions/WebP; \
    mv /var/www/html/extensions/WikiSeo /var/www/html/extensions/WikiSEO; \
    mv /var/www/html/extensions/Webauthn /var/www/html/extensions/WebAuthn; \
    mv /var/www/html/skins/citizen /var/www/html/skins/Citizen

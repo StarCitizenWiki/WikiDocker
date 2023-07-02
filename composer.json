@@ -37,10 +37,10 @@
                 "mediawiki/upload-wizard": "1.39.0",
                 "mediawiki/user-merge": "1.39.0",
                 "mediawiki/universal-language-selector": "2023.04",
-                "mediawiki/webp": "1.39.0",
                 "mediawiki/webauthn": "1.39.0",
                 "mediawiki/wiki-seo": "1.39.0",
 
+                "edwardspec/mediawiki-aws-s3": "v0.12.0",
                 "starcitizenwiki/embedvideo": "dev-develop",
                 "starcitizenwiki/apiunto": "dev-develop",
                 "octfx/plausible": "1.1.0",
@@ -50,6 +50,7 @@
         "extra": {
                 "merge-plugin": {
                         "include": [
+                                "extensions/AWS/composer.json",
                                 "extensions/CirrusSearch/composer.json",
                                 "extensions/Elastica/composer.json",
                                 "extensions/Oauth/composer.json",
@@ -517,23 +518,6 @@
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-UserMerge.git",
                                         "reference": "REL1_39"
-                                }
-                        }
-                },
-                {
-                        "type": "package",
-                        "package": {
-                                "name": "mediawiki/webp",
-                                "type": "mediawiki-extension",
-                                "version": "1.39.0",
-                                "dist": {
-                                        "url": "https://github.com/octfx/mediawiki-extension-WebP/archive/develop.zip",
-                                        "type": "zip"
-                                },
-                                "source": {
-                                        "type": "git",
-                                        "url": "https://github.com/octfx/mediawiki-extension-WebP.git",
-                                        "reference": "develop"
                                 }
                         }
                 },

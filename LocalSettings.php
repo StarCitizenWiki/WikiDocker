@@ -249,8 +249,8 @@ $wgDefaultRobotPolicy = 'index,follow';
 
 $wgAllowUserCss = true;
 
-# WebP - Needs to be loaded pre include
-require_once "$wgWikiConfigPath/extensions/config/webp.php";
+# AWS
+require_once "$wgWikiConfigPath/extensions/config/aws.php";
 
 # Extensions
 require_once "$wgWikiConfigPath/extensions/load_extensions.php";

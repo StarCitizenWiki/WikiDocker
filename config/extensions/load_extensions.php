@@ -1,7 +1,7 @@
 <?php
 wfLoadExtension( 'AdminLinks' );
 wfLoadExtension( 'Apiunto' );
-#wfLoadExtension( 'ApprovedRevs' );
+wfLoadExtension( 'AWS' );
 wfLoadExtension( 'Capiunto' );
 wfLoadExtension( 'CategoryTree' );
 wfLoadExtension( 'Cite' );
