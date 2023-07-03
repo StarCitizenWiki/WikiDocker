@@ -33,8 +33,7 @@ $wgObjectCacheSessionExpiry = 3600 * 3;
 
 $wgUseCdn = true;
 
-$wgCdnServersNoPurge = [
-    '127.0.0.1',
+$wgCdnServers = [
     '172.16.0.2',
 ];
 

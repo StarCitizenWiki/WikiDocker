@@ -33,7 +33,7 @@ $wgScriptPath = '';
 $wgUploadPath = 'https://cdn.star-citizen.wiki/images';
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = '//star-citizen.wiki';
+$wgServer = 'https://star-citizen.wiki';
 $wgCanonicalServer = 'https://star-citizen.wiki';
 $wgEnableCanonicalServerLink = true;
 $wgSecureLogin = true;
