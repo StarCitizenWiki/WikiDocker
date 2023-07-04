@@ -40,7 +40,7 @@
                 "mediawiki/webauthn": "1.39.0",
                 "mediawiki/wiki-seo": "1.39.0",
 
-                "edwardspec/mediawiki-aws-s3": "v0.12.0",
+                "mediawiki/aws": "1.39.0",
                 "starcitizenwiki/embedvideo": "dev-develop",
                 "starcitizenwiki/apiunto": "dev-develop",
                 "octfx/plausible": "1.1.0",
@@ -636,6 +636,23 @@
                                 "source": {
                                         "type": "git",
                                         "url": "https://bitbucket.org/wikibasesolutions/wssemanticparsedtext.git",
+                                        "reference": "master"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/aws",
+                                "type": "mediawiki-extension",
+                                "version": "1.39.0",
+                                "dist": {
+                                        "url": "https://github.com/octfx/mediawiki-aws-s3/archive/master.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/octfx/mediawiki-aws-s3.git",
                                         "reference": "master"
                                 }
                         }
