@@ -43,8 +43,18 @@ $wgResourceBasePath = $wgScriptPath;
 
 ## Thumb stuff
 $wgShowArchiveThumbnails = false;
-$wgThumbnailScriptPath = "{$wgScriptPath}/thumb.php";
-$wgGenerateThumbnailOnParse = false;
+#$wgThumbnailScriptPath = "{$wgScriptPath}/thumb.php";
+$wgGenerateThumbnailOnParse = true;
+$wgImagePreconnect = true;
+$wgUploadThumbnailRenderMap = [
+    180,
+    320,
+    640,
+    800,
+    1024,
+    1280,
+    2560,
+];
 
 ## The URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
@@ -105,7 +115,7 @@ $wgShellLocale = "C.UTF-8";
 # Site language code, should be one of the list in ./languages/data/Names.php
 $wgLanguageCode = "de";
 
-$wgSecretKey = "";
+$wgSecretKey = getenv( 'SECRET_KEY' );
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = "1";
@@ -129,9 +139,15 @@ $wgDiff3 = '/usr/bin/diff3';
 $wgWantedPagesThreshold = 2;
 
 # Debug
-$wgShowExceptionDetails = false;
-$wgShowDBErrorBacktrace = false;
+#$wgShowExceptionDetails = true;
+#$wgShowDBErrorBacktrace = true;
 #$wgDebugLogFile = "/tmp/debug-{$wgDBname}.log";
+
+$wgDebugLogGroups = [
+#'FileOperation' =>  "/var/www/html/images/aws.log",
+#'MultiPurge' => "/var/www/html/images/multipurge.log",
+#'Apiunto' => "/var/www/html/images/temp/apiunto.log",
+];
 
 # Footer
 unset($wgFooterIcons['poweredby']);
@@ -175,7 +191,6 @@ $wgArticleCountMethod = 'any';
 # Notifications
 $wgUsersNotifiedOnAllChanges = [
 	'FoXFTW',
-	'Michael Corleone'
 ];
 
 # Sitemap
@@ -197,8 +212,6 @@ $wgSitemapNamespaces = [
 $wgArticlePath = "/$1";
 $wgUsePathInfo = true;
 
-require_once "$wgWikiConfigPath/system/action_paths.php";
-
 $wgRawHtml = false;
 
 # Shell Config
@@ -210,6 +223,7 @@ $wgMaxShellTime = 180; // 3 Minutes
 $wgNamespacesWithSubpages[NS_MAIN] = true;
 $wgNamespacesWithSubpages[NS_TEMPLATE] = true;
 $wgNamespacesWithSubpages[NS_USER] = true;
+$wgNamespacesWithSubpages[NS_COMMLINK] = true;
 $wgRestrictDisplayTitle = false;
 
 # Timezone
@@ -328,6 +342,9 @@ require_once "$wgWikiConfigPath/extensions/config/semanticmediawiki.php";
 # TemplateData
 $wgTemplateDataUseGUI = true;
 
+# TemplateStyles
+$wgTemplateStylesExtenderEnableUnscopingSupport = true;
+
 # TextExtracts
 $wgExtractsExtendOpenSearchXml = true;
 
@@ -340,11 +357,11 @@ require_once "$wgWikiConfigPath/extensions/config/uploadwizard.php";
 # Visual Editor
 require_once "$wgWikiConfigPath/extensions/config/visualeditor.php";
 
-# WikiSEO
-require_once "$wgWikiConfigPath/extensions/config/wikiseo.php";
+# WikiEditor
+$wgWikiEditorRealtimePreview = true;
 
 # WikiSEO
-require_once "$wgWikiConfigPath/extensions/config/ws_search.php";
+require_once "$wgWikiConfigPath/extensions/config/wikiseo.php";
 
 # Skin Citizen
 require_once "$wgWikiConfigPath/skins/citizen.php";

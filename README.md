@@ -41,15 +41,7 @@ echo "$(openssl rand -hex 8)"
 php -r "echo(bin2hex(openssl_random_pseudo_bytes(8)))";
 ```
 
-Set a database user and password in `.env` and `config/system/db.php`.  
-
-Add the Star Citizen Wiki API key to `config/extensions/config/apiunto.php`.
-
-Change the site verification key in `config/extensions/config/wikiseo.php`.
-
-Add Plausible settings to `config/extensions/config/plausible.php` or disable the extension in `config/extensions/config/load_extensions.php`.
-
-Set the `smtp` password in `config/system/mail.php`.
+Copy `.env-example` to `.env` and populate the available fields.
 
 Update `$wgServer` and `$wgCanonicalServer` in `LocalSettings.php`
 
@@ -118,19 +110,6 @@ php maintenance/update.php --quick
 ```
 
 ## Configuration
-### Database
-Configuration file: [`config/system/db.php`](config/system/db.php)
-
-### Mails
-Configuration file: [`config/system/mail.php`](config/system/mail.php)  
-Used for sending mails from the wiki.
-
-### SEO and Site verification
-Configuration file: [`config/extensions/config/wikiseo.php`](config/extensions/config/wikiseo.php)
-
-### Wiki API Config
-Configuration file: [`config/extensions/config/apiunto.php`](config/extensions/config/apiunto.php)
-Settings for the [Star Citizen Wiki API](https://api.star-citizen.wiki).
 
 ### Traefik
 If you are running traefik remove the `ports` portion from the varnish container and uncomment the `expose` part.
@@ -142,7 +121,7 @@ Also when not using the Star Citizen Wiki Traefik config you need to remove the 
 ## Stack
 The Wiki stack consists of the following services:
 * star-citizen.wiki
-  * MediaWiki 1.39.0
+  * MediaWiki 1.39.x
   * Including
     * ffmpeg
     * ghostscript / poppler-utils
@@ -160,7 +139,6 @@ The Wiki stack consists of the following services:
   * Extensions and Skins bundled in the container
     * [mediawiki/admin-links](https://www.mediawiki.org/wiki/Extension:AdminLinks)
     * [mediawiki/advanced-search](https://www.mediawiki.org/wiki/Extension:AdvancedSearch)
-    * [mediawiki/approved-revs](https://www.mediawiki.org/wiki/Extension:Approved_Revs)
     * [mediawiki/apiunto](https://github.com/StarCitizenWiki/Apiunto)
     * [mediawiki/capiunto](https://www.mediawiki.org/wiki/Extension:Capiunto)
     * [mediawiki/cirrus-search](https://www.mediawiki.org/wiki/Extension:CirrusSearch)
@@ -197,7 +175,6 @@ The Wiki stack consists of the following services:
     * [mediawiki/thanks](https://www.mediawiki.org/wiki/Extension:Thanks)
     * [mediawiki/upload-wizard](https://www.mediawiki.org/wiki/Extension:UploadWizard)
     * [mediawiki/universal-language-selector](https://www.mediawiki.org/wiki/Extension:UniversalLanguageSelector)
-    * [mediawiki/webp](https://www.mediawiki.org/wiki/Extension:WebP)
     * [octfx/wikiseo](https://www.mediawiki.org/wiki/Extension:WikiSEO)
 * db
   * MariaDB Server

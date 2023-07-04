@@ -33,15 +33,6 @@ $wgDefaultUserOptions['usecodemirror'] = 1;
 $wgAutoConfirmCount = 250;
 $wgAutoConfirmAge = 86400 * 30;
 
-/*$wgAutopromote = [
-    "Mitarbeiter" => ["&",
-        APCOND_EMAILCONFIRMED,
-        [APCOND_EDITCOUNT, &$wgAutoConfirmCount],
-        [APCOND_AGE, &$wgAutoConfirmAge],
-        ['!', APCOND_BLOCKED]
-    ]
-];*/
-
 # Hidden Groups
 $wgImplicitGroups = [
     '*',

@@ -1,18 +1,17 @@
 <?php
-
 $wgAWSCredentials = [
-    'key' => '',
-    'secret' => '',
+    'key' => getenv( 'EXT_AWS_KEY' ),
+    'secret' => getenv( 'EXT_AWS_SECRET' ),
     'token' => false
 ];
 
-$wgAWSBucketName = 'star-citizen-wiki-images';
-$wgAWSBucketDomain = 'cdn.star-citizen.wiki';
+$wgAWSBucketName = getenv( 'EXT_AWS_BUCKET_NAME' );
+$wgAWSBucketDomain = getenv( 'EXT_AWS_BUCKET_DOMAIN' );
 
-$wgAWSBucketTopSubdirectory='/images';
+$wgAWSBucketTopSubdirectory = '/images';
 
 $wgAWSRepoHashLevels = '2';
 $wgAWSRepoDeletedHashLevels = '3';
 
-$wgFileBackends['s3']['endpoint'] = 'https://s3.eu-central-003.backblazeb2.com';
-$wgAWSRegion = 'eu-central-003';
+$wgFileBackends['s3']['endpoint'] = getenv( 'EXT_AWS_ENDPOINT' );
+$wgAWSRegion = getenv( 'EXT_AWS_REGION' );

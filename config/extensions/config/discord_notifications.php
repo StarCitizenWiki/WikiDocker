@@ -1,19 +1,15 @@
 <?php
 
-$wgDiscordIncomingWebhookUrl = "";
+$wgDiscordIncomingWebhookUrl = getenv( 'EXT_DISCORD_WEBHOOK_URL' );
 
 $wgDiscordFromName = 'Wiki Changelog Bot';
-$wgDiscordAvatarUrl = 'https://cdn.star-citizen.wiki/images/favicon.png';
+$wgDiscordAvatarUrl = 'https://robertsspaceindustries.com/i/3f771270776497cb8f82de39f879bbbfa4838985/ADdPNihJzmPbNuTnFsH1DqUeqBRpXdSXVVtgJTyDDgscGKrzJuoFjResf1QAVQVPZcf7JSUPP7hqmjyJoZCD9LbT4/insidestarcitizen-mesh1-notext.webp';
 
 $wgDiscordNotificationWikiUrl = 'https://star-citizen.wiki/';
 
 $wgDiscordExcludeNotificationsFrom = [
     'User:',
     'Benutzer:',
-    'Modul:',
-    'Module:',
-    'Vorlage:',
-    'Template:',
 ];
 
 $wgDiscordIncludePageUrls = true;
@@ -23,7 +19,7 @@ $wgDiscordIgnoreMinorEdits = false;
 $wgDiscordIncludeDiffSize = true;
 
 // If this is set, actions by users with this permission won't cause alerts
-$wgDiscordExcludedPermission = 'apihighlimits';
+$wgDiscordExcludedPermission = 'bot';
 
 // New user added into MediaWiki
 $wgDiscordNotificationNewUser = true;
@@ -51,7 +47,7 @@ $wgDiscordNotificationEditedArticle = true;
 $wgDiscordNotificationFileUpload = true;
 
 // Article protection settings changed
-$wgDiscordNotificationProtectedArticle = false;
+$wgDiscordNotificationProtectedArticle = true;
 
 // Article has been imported
 $wgDiscordNotificationAfterImportPage = false;

@@ -6,12 +6,9 @@ $wgCitizenEnableCollapsibleSections = true;
 $wgCitizenSearchGateway = 'mwActionApi';
 $wgCitizenSearchDescriptionSource = 'pagedescription';
 
-$wgCitizenEnablePreconnect = true;
-$wgCitizenPreconnectURL = 'https://analytics.star-citizen.wiki';
-
 
 # Add links to footer
-$wgHooks['SkinAddFooterLinks'][] = static function( $sk, $key, &$footerlinks ) {
+$wgHooks['SkinAddFooterLinks'][] = static function ( $sk, $key, &$footerlinks ) {
     $rel = 'nofollow noreferrer noopener';
 
     if ( $key === 'places' ) {

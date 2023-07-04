@@ -339,9 +339,9 @@ sub vcl_backend_response {
   # This may need finetuning on your setup.
   #
   # To prevent accidental replace, we only filter the 301/302 redirects for now.
-  if (beresp.status == 301 || beresp.status == 302) {
-    set beresp.http.Location = regsub(beresp.http.Location, ":[0-9]+", "");
-  }
+#  if (beresp.status == 301 || beresp.status == 302) {
+#    set beresp.http.Location = regsub(beresp.http.Location, ":[0-9]+", "");
+#  }
 
   # Set 2min cache if unset for static files
   if (beresp.ttl <= 0s || beresp.http.Set-Cookie || beresp.http.Vary == "*") {
@@ -352,7 +352,7 @@ sub vcl_backend_response {
 
   # Don't cache 50x responses
   if (beresp.status == 500 || beresp.status == 502 || beresp.status == 503 || beresp.status == 504) {
-    return (abandon);
+    return (pass);
   }
 
   # Allow stale content, in case the backend goes down.

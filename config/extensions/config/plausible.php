@@ -1,15 +1,17 @@
 <?php
 
-$wgPlausibleDomain = null;
-$wgPlausibleDomainKey = null;
-$wgPlausibleTrackOutboundLinks = false;
+$wgPlausibleDomain = 'https://analytics.star-citizen.wiki';
+$wgPlausibleDomainKey = 'star-citizen.wiki';
+$wgPlausibleTrackOutboundLinks = true;
 $wgPlausibleTrackLoggedIn = false;
 $wgPlausibleEnableCustomEvents = true;
-$wgPlausibleHonorDNT = true;
+$wgPlausibleHonorDNT = false;
 $wgPlausibleIgnoredTitles = [];
 
 $wgPlausibleTrack404 = true;
+$wgPlausibleTrackEditButtonClicks = true;
 $wgPlausibleTrackSearchInput = true;
-$wgPlausibleTrackEditButtonClicks = false;
-$wgPlausibleTrackCitizenSearchLinks = false;
-$wgPlausibleTrackCitizenMenuLinks = false;
+$wgPlausibleTrackCitizenSearchLinks = true;
+$wgPlausibleTrackCitizenMenuLinks = true;
+$wgPlausibleTrackNavplateClicks = true;
+$wgPlausibleTrackInfoboxClicks = true;

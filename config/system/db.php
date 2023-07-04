@@ -2,9 +2,9 @@
 
 $wgMiserMode = true;
 
-$wgDBtype = "mysql";
-$wgDBserver = "db";
-// Provided defaults, should be changed
-$wgDBname = "scw";
-$wgDBuser = "scw";
-$wgDBpassword = "scw";
+$wgDBtype = 'mysql';
+$wgDBserver = 'db';
+$wgDBname = getenv( 'MYSQL_DATABASE' );
+$wgDBuser = getenv( 'MYSQL_USER' );
+$wgDBpassword = getenv( 'MYSQL_PASSWORD' );
+

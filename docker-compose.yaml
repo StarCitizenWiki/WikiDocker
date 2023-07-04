@@ -64,6 +64,8 @@ services:
       - elasticsearch
     expose:
       - 80
+    env_file:
+      - .env
     volumes:
       - /etc/localtime:/etc/localtime:ro
       #- /etc/star-citizen.wiki/LocalSettings.php:/var/www/html/LocalSettings.php

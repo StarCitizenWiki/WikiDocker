@@ -1,7 +1,7 @@
 <?php
+wfLoadExtension( 'AWS' );
 wfLoadExtension( 'AdminLinks' );
 wfLoadExtension( 'Apiunto' );
-wfLoadExtension( 'AWS' );
 wfLoadExtension( 'Capiunto' );
 wfLoadExtension( 'CategoryTree' );
 wfLoadExtension( 'Cite' );
@@ -35,20 +35,18 @@ wfLoadExtension( 'Plausible' );
 wfLoadExtension( 'RelatedArticles' );
 wfLoadExtension( 'SandboxLink' );
 wfLoadExtension( 'Scribunto' );
-wfLoadExtension( 'ShortDescription' );
 wfLoadExtension( 'SymfonyMailer' );
 wfLoadExtension( 'SyntaxHighlight_GeSHi' );
+wfLoadExtension( 'ShortDescription' );
 wfLoadExtension( 'TabberNeue' );
 wfLoadExtension( 'TemplateData' );
 wfLoadExtension( 'TemplateStyles' );
 wfLoadExtension( 'TemplateStylesExtender' );
 wfLoadExtension( 'Thanks' );
-#wfLoadExtension( 'Translate' );
 wfLoadExtension( 'UniversalLanguageSelector' );
 wfLoadExtension( 'UploadWizard' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'WebAuthn' );
-#wfLoadExtension( 'WebP' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'WikiSEO' );
 

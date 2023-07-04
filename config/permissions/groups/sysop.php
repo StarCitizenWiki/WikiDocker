@@ -7,6 +7,7 @@ $wgGroupPermissions['sysop']['deleterevision'] = true;
 $wgGroupPermissions['sysop']['upload_by_url'] = true;
 
 $wgGroupPermissions['sysop']['interwiki'] = true;
+$wgGroupPermissions['sysop']['editinterface'] = true;
 
 $wgAddGroups['sysop'] = ['sysop', 'bot', 'Mitarbeiter', 'Vertraut'];
 $wgRemoveGroups['sysop'] = ['sysop', 'bot', 'Mitarbeiter', 'Vertraut'];

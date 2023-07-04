@@ -3,4 +3,3 @@
 ### Ohne Account
 $wgGroupPermissions['*']['createpage'] = false;
 $wgGroupPermissions['*']['edit'] = false;
-$wgGroupPermissions['*']['viewlinktolatest'] = false;

@@ -4,6 +4,6 @@ $wgEmbedVideoEnabledServices = [
     'youtube',
 ];
 
-$wgEmbedVideoDefaultWidth = '528px';
+$wgEmbedVideoDefaultWidth = 528;
 #$wgEmbedVideoLazyLoadLocalVideos = true;
 $wgEmbedVideoUseEmbedStyleForLocalVideos = true;
