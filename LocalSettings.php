@@ -272,9 +272,6 @@ require_once "$wgWikiConfigPath/extensions/config/aws.php";
 # Apiunto
 require_once "$wgWikiConfigPath/extensions/config/apiunto.php";
 
-# Approved Revs
-require_once "$wgWikiConfigPath/extensions/config/approvedrevs.php";
-
 # Captcha
 require_once "$wgWikiConfigPath/extensions/config/captcha.php";
 
