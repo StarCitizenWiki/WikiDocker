@@ -13,7 +13,7 @@ WORKDIR /var/www/html
 
 USER www-data
 
-RUN git clone https://github.com/wikimedia/mediawiki-services-jobrunner.git
+RUN git clone https://github.com/miraheze/jobrunner-service.git
 
 RUN set -eux; \
    cd mediawiki-services-jobrunner; \
