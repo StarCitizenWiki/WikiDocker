@@ -13,11 +13,10 @@ WORKDIR /var/www/html
 
 USER www-data
 
-RUN git clone https://github.com/miraheze/jobrunner-service.git
+RUN git clone https://github.com/miraheze/jobrunner-service.git mediawiki-services-jobrunner
 
 RUN set -eux; \
    cd mediawiki-services-jobrunner; \
-   git checkout 2762e0c208eb592adf4759849afa61e0589b9fa6; \
    /usr/bin/composer config --no-plugins allow-plugins.composer/installers true; \
    /usr/bin/composer install --no-dev \
      --ignore-platform-reqs \
