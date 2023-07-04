@@ -177,17 +177,18 @@ RUN set -eux; \
      --no-ansi \
      --no-interaction \
      --no-scripts; \
-   # Move extension folders to match their name
-   mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
-   mv /var/www/html/extensions/WikiSeo /var/www/html/extensions/WikiSEO; \
-   mv /var/www/html/extensions/Webauthn /var/www/html/extensions/WebAuthn; \
-   mv /var/www/html/extensions/Aws /var/www/html/extensions/AWS; \
-   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen; \
    rm -f composer.lock.json ;\
    /usr/bin/composer update --no-dev \
                             --no-ansi \
                             --no-interaction \
-                            --no-scripts
+                            --no-scripts; \
+   \
+   # Move extension folders to match their name
+   mv /var/www/html/extensions/Aws /var/www/html/extensions/AWS; \
+   mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
+   mv /var/www/html/extensions/WikiSeo /var/www/html/extensions/WikiSEO; \
+   mv /var/www/html/extensions/Webauthn /var/www/html/extensions/WebAuthn; \
+   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen
 
 VOLUME /var/www/html/sitemap
 VOLUME /var/www/html/images

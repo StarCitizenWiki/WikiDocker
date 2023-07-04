@@ -50,7 +50,7 @@
         "extra": {
                 "merge-plugin": {
                         "include": [
-                                "extensions/AWS/composer.json",
+                                "extensions/Aws/composer.json",
                                 "extensions/CirrusSearch/composer.json",
                                 "extensions/Elastica/composer.json",
                                 "extensions/Oauth/composer.json",
