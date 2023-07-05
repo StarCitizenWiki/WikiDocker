@@ -184,7 +184,6 @@ RUN set -eux; \
 							--no-scripts; \
    \
    # Move extension folders to match their name
-   mv /var/www/html/extensions/Aws /var/www/html/extensions/AWS; \
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
    mv /var/www/html/extensions/WikiSeo /var/www/html/extensions/WikiSEO; \
    mv /var/www/html/extensions/Webauthn /var/www/html/extensions/WebAuthn; \
