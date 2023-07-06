@@ -1,5 +1,7 @@
 <?php
-## Default Werte
+$wgHiddenPrefs[] = 'realname';
+
+## Default Values
 $wgDefaultUserOptions['minordefault'] = 0;
 $wgDefaultUserOptions['multimediaviewer-enable'] = 1;
 $wgDefaultUserOptions['forceeditsummary'] = 1;

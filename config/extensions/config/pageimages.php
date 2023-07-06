@@ -27,3 +27,5 @@ $wgPageImagesAPIDefaultLicense = 'any';
 
 $wgPageImagesLeadSectionOnly = true;
 $wgPageImagesOpenGraph = false;
+
+$wgPageImagesNamespaces = [ NS_MAIN, NS_UPDATE, NS_COMMLINK, NS_ORGANISATION ];

@@ -6,6 +6,7 @@ $wgCitizenEnableCollapsibleSections = true;
 $wgCitizenSearchGateway = 'mwActionApi';
 $wgCitizenSearchDescriptionSource = 'pagedescription';
 
+$wgCitizenMaxSearchResults = 10;
 
 # Add links to footer
 $wgHooks['SkinAddFooterLinks'][] = static function ( $sk, $key, &$footerlinks ) {

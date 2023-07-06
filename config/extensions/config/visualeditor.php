@@ -8,6 +8,7 @@ $wgVisualEditorAvailableNamespaces = [
     NS_PROJECT => true,
     NS_ORGANISATION => true,
     NS_COMMUNITY_CONTENT => true,
+    NS_UPDATE => true,
     '_merge_strategy' => 'array_plus'
 ];
 

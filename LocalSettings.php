@@ -44,7 +44,7 @@ $wgResourceBasePath = $wgScriptPath;
 ## Thumb stuff
 $wgShowArchiveThumbnails = false;
 #$wgThumbnailScriptPath = "{$wgScriptPath}/thumb.php";
-$wgGenerateThumbnailOnParse = true;
+$wgGenerateThumbnailOnParse = false;
 $wgImagePreconnect = true;
 $wgUploadThumbnailRenderMap = [
     180,
@@ -102,11 +102,6 @@ $wgUseInstantCommons = false;
 # with MediaWiki developers to help guide future development efforts.
 $wgPingback = false;
 
-## If you use ImageMagick (or any other shell command) on a
-## Linux server, this will need to be set to the name of an
-## available UTF-8 locale
-$wgShellLocale = "C.UTF-8";
-
 ## Set $wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publically accessible from the web.
@@ -119,6 +114,7 @@ $wgSecretKey = getenv( 'SECRET_KEY' );
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = "1";
+$wgPasswordDefault = 'argon2';
 
 # Site upgrade key. Must be set to a string (default provided) to turn on the
 # web installer while LocalSettings.php is in place
@@ -135,7 +131,7 @@ $wgRightsIcon = "$wgScriptPath/resources/assets/licenses/cc-by-nc-sa.png";
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = '/usr/bin/diff3';
 
-# Seiten
+# Pages
 $wgWantedPagesThreshold = 2;
 
 # Debug
@@ -162,29 +158,47 @@ $wgJobRunRate = 0;
 $wgExternalLinkTarget = '_blank';
 $wgUrlProtocols[] = "ts3server://";
 
-# Namespaces
-define('NS_COMMLINK', 3100);
-define('NS_COMMLINK_TALK', 3101);
-define('NS_TRANSCRIPT', 3110);
-define('NS_TRANSCRIPT_TALK', 3111);
-define('NS_ORGANISATION', 3120);
-define('NS_ORGANISATION_TALK', 3121);
-define('NS_COMMUNITY_CONTENT', 3130);
-define('NS_COMMUNITY_CONTENT_TALK', 3131);
+## Cookies policy
+## Strict - Cookies for me and not for thee
+$wgCookieSameSite = 'Strict';
+## Only send over HTTPS
+$wgCookieSecure = true;
 
-$wgExtraNamespaces[NS_COMMLINK] = "Comm-Link";
-$wgExtraNamespaces[NS_COMMLINK_TALK] = "Comm-Link_Diskussion";
-$wgExtraNamespaces[NS_TRANSCRIPT] = "Transkript";
-$wgExtraNamespaces[NS_TRANSCRIPT_TALK] = "Transkript_Diskussion";
-$wgExtraNamespaces[NS_ORGANISATION] = "Organisation";
-$wgExtraNamespaces[NS_ORGANISATION_TALK] = "Organisation_Diskussion";
-$wgExtraNamespaces[NS_COMMUNITY_CONTENT] = "Community_Content";
-$wgExtraNamespaces[NS_COMMUNITY_CONTENT_TALK] = "Community_Content_Diskussion";
+# Namespaces
+define( 'NS_COMMLINK', 3100 );
+define( 'NS_COMMLINK_TALK', 3101 );
+define( 'NS_TRANSCRIPT', 3110 );
+define( 'NS_TRANSCRIPT_TALK', 3111 );
+define( 'NS_ORGANISATION', 3120 );
+define( 'NS_ORGANISATION_TALK', 3121 );
+define( 'NS_COMMUNITY_CONTENT', 3130 );
+define( 'NS_COMMUNITY_CONTENT_TALK', 3131 );
+define( 'NS_UPDATE', 3140 );
+define( 'NS_UPDATE_TALK', 3141 );
+
+$wgExtraNamespaces[ NS_COMMLINK ] = "Comm-Link";
+$wgExtraNamespaces[ NS_COMMLINK_TALK ] = "Comm-Link_Diskussion";
+$wgExtraNamespaces[ NS_TRANSCRIPT ] = "Transkript";
+$wgExtraNamespaces[ NS_TRANSCRIPT_TALK ] = "Transkript_Diskussion";
+$wgExtraNamespaces[ NS_ORGANISATION ] = "Organisation";
+$wgExtraNamespaces[ NS_ORGANISATION_TALK ] = "Organisation_Diskussion";
+$wgExtraNamespaces[ NS_UPDATE ] = "Update";
+$wgExtraNamespaces[ NS_UPDATE_TALK ] = "Update_Diskussion";
 
 $wgContentNamespaces[] = NS_COMMLINK;
 $wgContentNamespaces[] = NS_TRANSCRIPT;
 $wgContentNamespaces[] = NS_ORGANISATION;
 $wgContentNamespaces[] = NS_COMMUNITY_CONTENT;
+$wgContentNamespaces[] = NS_UPDATE;
+
+# Namespace alias
+$wgNamespaceAliases['SC'] = NS_PROJECT;
+$wgNamespaceAliases['ST'] = NS_PROJECT_TALK;
+$wgNamespaceAliases['H'] = NS_HELP;
+$wgNamespaceAliases['T'] = NS_TEMPLATE;
+$wgNamespaceAliases['CAT'] = NS_CATEGORY;
+$wgNamespaceAliases['CL'] = NS_COMMLINK;
+$wgNamespaceAliases['U'] = NS_UPDATE;
 
 $wgArticleCountMethod = 'any';
 
@@ -231,6 +245,7 @@ $wgLocaltimezone = "Europe/Berlin";
 date_default_timezone_set($wgLocaltimezone);
 
 # Upload / Images
+$wgNativeImageLazyLoading  = true;
 $wgMaxUploadSize = [
     '*' => 1024 * 1024 * 1000 * 2, // 100 MB
     'url' => 1024 * 1024 * 50, // 50 MB
@@ -239,14 +254,7 @@ $wgMaxImageArea = 3.6e7;
 $wgThumbnailEpoch = '20191118000000';
 # Gallery settings
 $wgGalleryOptions = [
-  'imagesPerRow' => 0, // Default number of images per-row in the gallery. 0: Adapt to screensize
-  'imageWidth' => 180, // Width of the cells containing images in galleries (in "px")
-  'imageHeight' => 180, // Height of the cells containing images in galleries (in "px")
-  'captionLength' => true, // Length of caption to truncate (in characters) in special pages or when the showfilename parameter is used
-                           // A value of 'true' will truncate the filename to one line using CSS.
-                           // Deprecated since 1.28. Default value of 25 before 1.28.
-  'showBytes' => true, // Show the filesize in bytes in categories
-  'mode' => 'packed', // One of "traditional", "nolines", "packed", "packed-hover", "packed-overlay", "slideshow" (1.28+)
+    'mode' => 'packed-overlay',
 ];
 
 # Locations
@@ -257,6 +265,25 @@ $wgPdftoText = '/usr/bin/pdftotext';
 
 # robots
 $wgDefaultRobotPolicy = 'index,follow';
+
+## Content Security Policy
+$wgCSPHeader = [
+    'useNonces' => true,
+    'unsafeFallback' => false,
+    'script-src' => [
+        "'self'",
+        'https://analytics.star-citizen.wiki'
+    ],
+    'default-src' => [
+        "'self'",
+        'https://analytics.star-citizen.wiki'
+    ],
+    'style-src' => [ "'self'" ],
+    'object-src' => [ "'none'" ],
+];
+
+## Referrer policy
+$wgReferrerPolicy = [ 'strict-origin-when-cross-origin', 'strict-origin' ];
 
 # End of automatically generated settings.
 # Add more configuration options below.
@@ -344,9 +371,14 @@ $wgTemplateStylesExtenderEnableUnscopingSupport = true;
 
 # TextExtracts
 $wgExtractsExtendOpenSearchXml = true;
+$wgExtractsRemoveClasses = [ 'dd','dablink', 'translate', 'figcaption', 'li' ];
 
 # TitleBlacklist
 require_once "$wgWikiConfigPath/extensions/config/titleblacklist.php";
+
+# Universal Language Selector
+$wgULSLanguageDetection = false;
+$wgULSIMEEnabled = false;
 
 # Upload Wizard
 require_once "$wgWikiConfigPath/extensions/config/uploadwizard.php";
