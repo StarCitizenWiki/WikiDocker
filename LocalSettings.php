@@ -59,7 +59,7 @@ $wgUploadThumbnailRenderMap = [
 ## The URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
 $wgLogos = [
-    'icon' => "https://cdn.star-citizen.wiki/icon.png",
+    'icon' => "$wgUploadPath/icon.png",
     '1x' => "$wgUploadPath/thumb/e/ef/Star_Citizen_Wiki_Logo.png/320px-Star_Citizen_Wiki_Logo.png",
     '2x' => "$wgUploadPath/thumb/e/ef/Star_Citizen_Wiki_Logo.png",
     'svg' => "$wgUploadPath/c/c6/Star_Citizen_Wiki_Logo_Stern.svg",
