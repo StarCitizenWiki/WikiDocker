@@ -206,6 +206,8 @@ services:
     user: "www-data:www-data"
     security_opt:
       - no-new-privileges:true
+    env_file:
+      - .env
     depends_on:
       - star-citizen.wiki-live
       - db
@@ -227,6 +229,8 @@ services:
     user: "www-data:www-data"
     security_opt:
       - no-new-privileges:true
+    env_file:
+      - .env
     depends_on:
       - star-citizen.wiki-live
       - db

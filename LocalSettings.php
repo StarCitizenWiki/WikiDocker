@@ -367,7 +367,7 @@ require_once "$wgWikiConfigPath/extensions/config/semanticmediawiki.php";
 $wgTemplateDataUseGUI = true;
 
 # TemplateStyles
-$wgTemplateStylesExtenderEnableUnscopingSupport = true;
+require_once "$wgWikiConfigPath/extensions/config/templatestyles.php";
 
 # TextExtracts
 $wgExtractsExtendOpenSearchXml = true;
