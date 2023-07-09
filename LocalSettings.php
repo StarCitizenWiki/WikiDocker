@@ -293,11 +293,14 @@ $wgAllowUserCss = true;
 # Extensions
 require_once "$wgWikiConfigPath/extensions/load_extensions.php";
 
-# AWS
-require_once "$wgWikiConfigPath/extensions/config/aws.php";
+# AbuseFilter
+require_once "$wgWikiConfigPath/extensions/config/abuse_filter.php";
 
 # Apiunto
 require_once "$wgWikiConfigPath/extensions/config/apiunto.php";
+
+# AWS
+require_once "$wgWikiConfigPath/extensions/config/aws.php";
 
 # Captcha
 require_once "$wgWikiConfigPath/extensions/config/captcha.php";
@@ -373,8 +376,6 @@ require_once "$wgWikiConfigPath/extensions/config/templatestyles.php";
 $wgExtractsExtendOpenSearchXml = true;
 $wgExtractsRemoveClasses = [ 'dd','dablink', 'translate', 'figcaption', 'li' ];
 
-# TitleBlacklist
-require_once "$wgWikiConfigPath/extensions/config/titleblacklist.php";
 
 # Universal Language Selector
 $wgULSLanguageDetection = false;
