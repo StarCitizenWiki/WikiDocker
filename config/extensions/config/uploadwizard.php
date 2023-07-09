@@ -152,3 +152,27 @@ function myUploadWizardResourcesLoader(&$out)
 
 // Register the hook
 $wgHooks['BeforePageDisplay'][] = 'myUploadWizardResourcesLoader';
+
+
+$wgUploadDialog = [
+    'fields' => [
+        'description' => true,
+        'date' => false,
+        'categories' => true,
+    ],
+    'licensemessages' => [
+        'local' => 'generic-local',
+        'foreign' => 'generic-foreign',
+    ],
+    'comment' => [
+        'local' => '',
+        'foreign' => '',
+    ],
+    'format' => [
+        'filepage' => '$DESCRIPTION',
+        'description' => '$TEXT',
+        'ownwork' => '',
+        'license' => '{{self}}',
+        'uncategorized' => '',
+    ],
+];
