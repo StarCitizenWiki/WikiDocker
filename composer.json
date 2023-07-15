@@ -2,7 +2,6 @@
         "require": {
                 "mediawiki/admin-links": "1.39.0",
                 "mediawiki/advanced-search": "1.39.0",
-                "mediawiki/approved-revs": "1.39.0",
                 "mediawiki/capiunto": "1.39.0",
                 "mediawiki/cirrus-search": "1.39.0",
                 "mediawiki/citizen-skin": "2.1.0",
