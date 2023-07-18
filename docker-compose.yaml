@@ -185,7 +185,7 @@ services:
 
   # Redis as the main cache
   redis:
-    image: eqalpha/keydb:latest
+    image: redis:alpine
     restart: unless-stopped
     init: true
     user: "${UID}:${GID}"
