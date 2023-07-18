@@ -58,16 +58,12 @@ $sespgLocalDefinitions['_LINKSTO'] = [
         /** @var \Wikimedia\Rdbms\DBConnRef $con */
         $con = $appFactory->getConnection();
 
-        $where = sprintf(
-            'pl.pl_from = %s AND pl.pl_title != %s',
-            $page->getArticleID(),
-            $con->addQuotes( $page->getDBkey() )
-        );
-
-        $where = [ $where ];
+        $where = [];
+        $where[] = sprintf('pl.pl_from = %s', $page->getArticleID() );
+        $where[] = sprintf('pl.pl_title != %s', $con->addQuotes( $page->getDBkey() ) );
 
         if ( !empty( $targetNS ) ) {
-            $where[] = [ 'pl.pl_namespace' => $targetNS ];
+            $where[] = sprintf( 'pl.pl_namespace IN (%s)', implode(',', $targetNS ) );
         }
 
         $res = $con->select(
