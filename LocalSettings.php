@@ -357,6 +357,9 @@ require_once "$wgWikiConfigPath/extensions/config/popups.php";
 # Plausible
 require_once "$wgWikiConfigPath/extensions/config/plausible.php";
 
+# QuickInstantCommons
+require_once "$wgWikiConfigPath/extensions/config/quickinstantcommons.php";
+
 # RelatedArticles
 require_once "$wgWikiConfigPath/extensions/config/related_articles.php";
 
