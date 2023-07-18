@@ -5,7 +5,8 @@ import std;
 import directors;
 
 backend server1 { # Define one backend
-  .host = "star-citizen.wiki-live";    # IP or Hostname of backend
+  #.host = "star-citizen.wiki-live";    # IP or Hostname of backend
+  .host = "172.16.0.3";    # IP or Hostname of backend
   .port = "80";                        # Port Apache or whatever is listening
   .max_connections = 500;              # That's it
 
@@ -14,7 +15,7 @@ backend server1 { # Define one backend
     # We prefer to only do a HEAD /
     .request =
       "HEAD /Spezial:Version HTTP/1.1"
-      "Host: star-citizen.wiki-live"
+      "Host: 172.16.0.3"
       "Connection: close"
       "User-Agent: Varnish Health Probe";
 
@@ -31,7 +32,7 @@ backend server1 { # Define one backend
 
 acl purge {
   # ACL we'll use later to allow purges
-  "star-citizen.wiki-live";
+  #"star-citizen.wiki-live";
   "172.16.0.0/18";
   "172.16.0.3";
   "localhost";
