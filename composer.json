@@ -45,7 +45,7 @@
                 "starcitizenwiki/apiunto": "dev-develop",
                 "octfx/plausible": "1.1.0",
                 "octfx/multipurge": "dev-develop",
-                "octfx/template-styles-extender": "1.1.7"
+                "octfx/template-styles-extender": "1.1.8"
         },
         "extra": {
                 "merge-plugin": {
