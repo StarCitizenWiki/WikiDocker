@@ -42,7 +42,7 @@
                 "edwardspec/mediawiki-aws-s3": "v0.12.0",
                 "starcitizenwiki/apiunto": "dev-develop",
                 "starcitizenwiki/embedvideo": "dev-develop",
-                "starcitizenwiki/picture-html-support": "dev-master#9818ff0937eae58963c7cd425005170fe6081562",
+                "starcitizenwiki/picture-html-support": "dev-master",
                 "octfx/multipurge": "dev-develop",
                 "octfx/plausible": "1.1.0",
                 "octfx/template-styles-extender": "1.1.8",
@@ -60,8 +60,7 @@
                                 "extensions/OATHAuth/composer.json",
                                 "extensions/SymfonyMailer/composer.json",
                                 "extensions/TemplateStyles/composer.json",
-                                "extensions/Webauthn/composer.json",
-                                "extensions/PictureHtmlSupport/composer.json"
+                                "extensions/Webauthn/composer.json"
                         ]
                 }
         },

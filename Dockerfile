@@ -187,7 +187,8 @@ RUN set -eux; \
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
    mv /var/www/html/extensions/Webauthn /var/www/html/extensions/WebAuthn; \
    mv /var/www/html/extensions/Quickinstantcommons /var/www/html/extensions/QuickInstantCommons; \
-   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen
+   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen; \
+   cp /var/www/html/extensions/PictureHtmlSupport/includes/ThumbnailImage.php /var/www/html/includes/media
 
 VOLUME /var/www/html/sitemap
 VOLUME /var/www/html/images
