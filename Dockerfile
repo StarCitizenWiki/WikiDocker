@@ -185,7 +185,6 @@ RUN set -eux; \
    \
    # Move extension folders to match their name
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
-   mv /var/www/html/extensions/WikiSeo /var/www/html/extensions/WikiSEO; \
    mv /var/www/html/extensions/Webauthn /var/www/html/extensions/WebAuthn; \
    mv /var/www/html/extensions/Quickinstantcommons /var/www/html/extensions/QuickInstantCommons; \
    mv /var/www/html/skins/citizen /var/www/html/skins/Citizen

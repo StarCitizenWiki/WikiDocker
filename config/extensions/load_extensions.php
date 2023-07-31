@@ -32,6 +32,7 @@ wfLoadExtension( 'PageForms' );
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json" );
 wfLoadExtension( 'PdfHandler' );
+wfLoadExtension( 'PictureHtmlSupport' );
 wfLoadExtension( 'Plausible' );
 wfLoadExtension( 'QuickInstantCommons' );
 wfLoadExtension( 'RelatedArticles' );
@@ -49,6 +50,7 @@ wfLoadExtension( 'UniversalLanguageSelector' );
 wfLoadExtension( 'UploadWizard' );
 wfLoadExtension( 'VisualEditor' );
 wfLoadExtension( 'WebAuthn' );
+wfLoadExtension( 'WebP' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'WikiSEO' );
 
