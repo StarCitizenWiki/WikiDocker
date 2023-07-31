@@ -177,6 +177,11 @@ RUN set -eux; \
 	 --no-ansi \
 	 --no-interaction \
 	 --no-scripts; \
+   rm -f composer.lock.json ;\
+   /usr/bin/composer update --no-dev \
+							--no-ansi \
+							--no-interaction \
+							--no-scripts; \
    \
    # Move extension folders to match their name
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
