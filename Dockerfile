@@ -177,18 +177,12 @@ RUN set -eux; \
 	 --no-ansi \
 	 --no-interaction \
 	 --no-scripts; \
-   rm -f composer.lock.json ;\
-   /usr/bin/composer update --no-dev \
-							--no-ansi \
-							--no-interaction \
-							--no-scripts; \
    \
    # Move extension folders to match their name
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
    mv /var/www/html/extensions/Webauthn /var/www/html/extensions/WebAuthn; \
    mv /var/www/html/extensions/Quickinstantcommons /var/www/html/extensions/QuickInstantCommons; \
-   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen; \
-   /usr/bin/composer dump-autoload
+   mv /var/www/html/skins/citizen /var/www/html/skins/Citizen
 
 VOLUME /var/www/html/sitemap
 VOLUME /var/www/html/images
