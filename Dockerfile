@@ -178,6 +178,11 @@ RUN set -eux; \
 	 --no-interaction \
 	 --no-scripts; \
    \
+   /usr/bin/composer update --no-dev \
+	 --no-ansi \
+	 --no-interaction \
+	 --no-scripts; \
+   \
    # Move extension folders to match their name
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
    mv /var/www/html/extensions/Webauthn /var/www/html/extensions/WebAuthn; \
