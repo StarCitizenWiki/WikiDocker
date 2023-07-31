@@ -42,11 +42,11 @@
                 "edwardspec/mediawiki-aws-s3": "v0.12.0",
                 "starcitizenwiki/apiunto": "dev-develop",
                 "starcitizenwiki/embedvideo": "dev-develop",
-
+                "starcitizenwiki/picture-html-support": "dev-master",
                 "octfx/multipurge": "dev-develop",
                 "octfx/plausible": "1.1.0",
                 "octfx/template-styles-extender": "1.1.8",
-
+                "octfx/webp": "dev-develop",
                 "octfx/wiki-seo": "dev-master"
         },
         "extra": {
