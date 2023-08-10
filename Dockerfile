@@ -184,6 +184,7 @@ RUN set -eux; \
 	 --no-scripts; \
    \
    # Move extension folders to match their name
+   mv /var/www/html/extensions/Cirrussearch /var/www/html/extensions/CirrusSearch; \
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
    mv /var/www/html/extensions/Webauthn /var/www/html/extensions/WebAuthn; \
    mv /var/www/html/extensions/Quickinstantcommons /var/www/html/extensions/QuickInstantCommons; \
