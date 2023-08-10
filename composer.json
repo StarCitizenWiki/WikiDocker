@@ -17,6 +17,7 @@
                 "mediawiki/linter": "1.39.0",
                 "mediawiki/media-search": "1.39.0",
                 "mediawiki/oauth": "1.39.0",
+                "mediawiki/pageviewinfo": "1.39.0",
                 "mediawiki/popups": "1.39.0",
                 "mediawiki/quickinstantcommons": "dev-master",
                 "mediawiki/related-articles": "1.39.0",
@@ -352,6 +353,23 @@
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-MediaSearch.git",
                                         "reference": "master"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/pageviewinfo",
+                                "type": "mediawiki-extension",
+                                "version": "1.39.0",
+                                "dist": {
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-PageViewInfo/archive/REL1_39.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/wikimedia/mediawiki-extensions-PageViewInfo.git",
+                                        "reference": "REL1_39"
                                 }
                         }
                 },

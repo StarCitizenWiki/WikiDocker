@@ -15,3 +15,5 @@ $wgPlausibleTrackCitizenSearchLinks = true;
 $wgPlausibleTrackCitizenMenuLinks = true;
 $wgPlausibleTrackNavplateClicks = true;
 $wgPlausibleTrackInfoboxClicks = true;
+
+$wgPlausibleApiKey = getenv( 'EXT_PLAUSIBLE_KEY' );

@@ -29,6 +29,7 @@ wfLoadExtension( 'MultiPurge' );
 wfLoadExtension( 'OATHAuth' );
 wfLoadExtension( 'OAuth' );
 wfLoadExtension( 'PageForms' );
+wfLoadExtension( 'PageViewInfo' );
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json" );
 wfLoadExtension( 'PdfHandler' );
