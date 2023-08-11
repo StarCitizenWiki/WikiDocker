@@ -44,7 +44,7 @@ $wgResourceBasePath = $wgScriptPath;
 ## Thumb stuff
 $wgShowArchiveThumbnails = false;
 #$wgThumbnailScriptPath = "{$wgScriptPath}/thumb.php";
-$wgGenerateThumbnailOnParse = false;
+$wgGenerateThumbnailOnParse = true;
 $wgImagePreconnect = true;
 $wgUploadThumbnailRenderMap = [
     180,
