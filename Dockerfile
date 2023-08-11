@@ -23,6 +23,9 @@ RUN set -eux; \
 		unzip \
 		webp \
 		zip \
+		libavif15 \
+		libheif1 \
+		libwebp7 \
 		liblua5.1-0 \
 		libzip4 \
 	; \
@@ -35,19 +38,21 @@ RUN set -eux; \
 	\
 	apt-get update; \
 	apt-get install -y --no-install-recommends \
+		libavif-dev \
 		libicu-dev \
 		libonig-dev \
 		libcurl4-gnutls-dev \
 		libgmp-dev \
 		libmagickwand-dev \
-		libwebp7 \
 		libxml2-dev \
 		libzip-dev \
 		liblua5.1-0-dev \
 	; \
 	\
+	docker-php-ext-configure gd --enable-gd --with-webp --with-jpeg --with-freetype --with-avif; \
 	docker-php-ext-install -j "$(nproc)" \
 		calendar \
+		gd \
 		gmp \
 		intl \
 		mysqli \
