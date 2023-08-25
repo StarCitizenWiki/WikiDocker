@@ -23,6 +23,7 @@ RUN set -eux; \
 		unzip \
 		webp \
 		zip \
+		libavif-bin \
 		libavif15 \
 		libheif1 \
 		libwebp7 \
