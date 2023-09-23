@@ -25,14 +25,14 @@ jobs:
       -
         name: Build and push Wiki
         id: docker_build_wiki
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           tags: scwiki/wiki:dev
           push: true
       -
         name: Build and push Jobrunner
         id: docker_build_jobrunner
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: "{{defaultContext}}:jobrunner"
           tags: scwiki/jobrunner:dev
