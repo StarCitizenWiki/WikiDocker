@@ -15,6 +15,7 @@ $smwgNamespacesWithSemanticLinks[NS_COMMLINK] = true;
 $smwgNamespacesWithSemanticLinks[NS_TRANSCRIPT] = true;
 $smwgNamespacesWithSemanticLinks[NS_ORGANISATION] = true;
 $smwgNamespacesWithSemanticLinks[NS_TEMPLATE] = true;
+$smwgNamespacesWithSemanticLinks[NS_UPDATE] = true;
 $smwgNamespacesWithSemanticLinks[828] = true;
 
 $smwgQMaxInlineLimit = 2500;
