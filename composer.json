@@ -39,7 +39,7 @@
                 "mediawiki/semantic-extra-special-properties": "~3.0",
                 "mediawiki/semantic-result-formats": "dev-master",
                 "mediawiki/semantic-scribunto": "~2.2.0",
-                "mediawiki/universal-language-selector": "2023.10",
+                "mediawiki/universal-language-selector": "2023.12",
 
                 "edwardspec/mediawiki-aws-s3": "v0.12.0",
                 "starcitizenwiki/apiunto": "dev-develop",
