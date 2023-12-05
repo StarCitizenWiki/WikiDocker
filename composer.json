@@ -33,7 +33,7 @@
                 "mediawiki/webauthn": "1.39.0",
 
                 "mediawiki/cirrussearch": "dev-REL1_39",
-                "mediawiki/cldr": "2023.10",
+                "mediawiki/cldr": "2023.12",
                 "mediawiki/page-forms": "5.6.3",
                 "mediawiki/semantic-media-wiki": "dev-master",
                 "mediawiki/semantic-extra-special-properties": "~3.0",
