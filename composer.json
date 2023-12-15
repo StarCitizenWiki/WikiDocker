@@ -47,7 +47,7 @@
                 "starcitizenwiki/picture-html-support": "dev-master",
                 "octfx/multipurge": "dev-develop",
                 "octfx/plausible": "dev-develop",
-                "octfx/template-styles-extender": "1.1.8",
+                "octfx/template-styles-extender": "1.2.0",
                 "octfx/webp": "dev-develop",
                 "octfx/wiki-seo": "dev-master"
         },
