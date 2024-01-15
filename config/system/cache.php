@@ -33,9 +33,9 @@ $wgObjectCacheSessionExpiry = 3600 * 3;
 
 $wgUseCdn = true;
 
-$wgCdnServers = [
-    '172.16.0.2',
-];
+//$wgCdnServers = [
+//    '172.16.0.2',
+//];
 
 $wgFileCacheDirectory = '/var/www/cache';
 $wgCacheDirectory  = "/var/www/cache/$wgDBname";
@@ -43,6 +43,7 @@ $wgCacheDirectory  = "/var/www/cache/$wgDBname";
 $wgUsePrivateIPs = true;
 $wgCdnServersNoPurge = [
     '10.0.0.0/8',
+    '172.16.0.0/29',
     '173.245.48.0/20',
     '103.21.244.0/22',
     '103.22.200.0/22',
