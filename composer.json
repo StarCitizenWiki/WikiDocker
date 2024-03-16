@@ -34,7 +34,7 @@
 
                 "mediawiki/cirrussearch": "dev-REL1_39",
                 "mediawiki/cldr": "2023.12",
-                "mediawiki/page-forms": "5.7",
+                "mediawiki/page-forms": "5.7.1",
                 "mediawiki/semantic-media-wiki": "dev-master",
                 "mediawiki/semantic-extra-special-properties": "~3.0",
                 "mediawiki/semantic-result-formats": "dev-master",
