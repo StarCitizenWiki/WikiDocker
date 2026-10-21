@@ -34,7 +34,7 @@ wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'Parsoid', "$IP/vendor/wikimedia/parsoid/extension.json" );
 wfLoadExtension( 'PdfHandler' );
 wfLoadExtension( 'PictureHtmlSupport' );
-wfLoadExtension( 'Plausible' );
+#wfLoadExtension( 'Plausible' );
 wfLoadExtension( 'QuickInstantCommons' );
 wfLoadExtension( 'RelatedArticles' );
 wfLoadExtension( 'SandboxLink' );

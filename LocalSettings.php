@@ -305,8 +305,34 @@ require_once "$wgWikiConfigPath/extensions/config/aws.php";
 # Captcha
 require_once "$wgWikiConfigPath/extensions/config/captcha.php";
 
-# CirrusSearch
-require_once "$wgWikiConfigPath/extensions/config/cirrussearch.php";
+# CirrusSearch was removed together with the Elasticsearch containers; search falls back to SearchMySQL
+$wgNamespacesToBeSearchedDefault = [
+    NS_MAIN =>           true,
+    NS_TALK =>           false,
+    NS_USER =>           false,
+    NS_USER_TALK =>      false,
+    NS_PROJECT =>        true,
+    NS_PROJECT_TALK =>   false,
+    NS_FILE =>           true,
+    NS_FILE_TALK =>      false,
+    NS_MEDIAWIKI =>      false,
+    NS_MEDIAWIKI_TALK => false,
+    NS_TEMPLATE =>       true,
+    NS_TEMPLATE_TALK =>  false,
+    NS_HELP =>           true,
+    NS_HELP_TALK =>      false,
+    NS_CATEGORY =>       true,
+    NS_CATEGORY_TALK =>  false,
+
+    NS_COMMLINK =>       true,
+    NS_COMMLINK_TALK =>  false,
+
+    NS_TRANSCRIPT =>     true,
+
+    NS_ORGANISATION =>   true,
+
+    NS_COMMUNITY_CONTENT =>   true,
+];
 
 # CodeEditor
 require_once "$wgWikiConfigPath/extensions/config/code_editor.php";
@@ -353,9 +379,6 @@ require_once "$wgWikiConfigPath/extensions/config/pdfhandler.php";
 
 # Popups
 require_once "$wgWikiConfigPath/extensions/config/popups.php";
-
-# Plausible
-require_once "$wgWikiConfigPath/extensions/config/plausible.php";
 
 # QuickInstantCommons
 require_once "$wgWikiConfigPath/extensions/config/quickinstantcommons.php";

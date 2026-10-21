@@ -18,6 +18,7 @@ RUN git clone https://github.com/miraheze/jobrunner-service.git mediawiki-servic
 RUN set -eux; \
    cd mediawiki-services-jobrunner; \
    /usr/bin/composer config --no-plugins allow-plugins.composer/installers true; \
+   /usr/bin/composer config policy.advisories.block false; \
    /usr/bin/composer install --no-dev \
      --ignore-platform-reqs \
      --no-ansi \

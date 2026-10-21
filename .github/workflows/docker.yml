@@ -27,5 +27,5 @@ jobs:
         with:
           tags: |
             scwiki/wiki:latest
-            scwiki/wiki:1.39.0
+            scwiki/wiki:1.43.0
           push: true

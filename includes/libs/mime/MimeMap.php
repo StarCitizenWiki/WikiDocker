@@ -21,16 +21,18 @@
 namespace Wikimedia\Mime;
 
 /**
- * MimeMap defines the mapping of MIME types to file extensions and media
- * types.
+ * Map of MIME types to file extensions and media types.
  *
  * @internal
+ * @ingroup Mime
  */
 class MimeMap {
 	/** @var array Map of MIME types to an array of file extensions */
 	public const MIME_EXTENSIONS = [
 		'application/ogg' => [ 'ogx', 'ogg', 'ogm', 'ogv', 'oga', 'spx', 'opus' ],
 		'application/pdf' => [ 'pdf' ],
+		'application/vnd.apple.mpegurl' => [ 'm3u8', 'm3u' ],
+		'application/vnd.ms-opentype' => [ 'otf' ],
 		'application/vnd.oasis.opendocument.chart' => [ 'odc' ],
 		'application/vnd.oasis.opendocument.chart-template' => [ 'otc' ],
 		'application/vnd.oasis.opendocument.database' => [ 'odb' ],
@@ -49,6 +51,7 @@ class MimeMap {
 		'application/vnd.oasis.opendocument.text-template' => [ 'ott' ],
 		'application/vnd.oasis.opendocument.text-web' => [ 'oth' ],
 		'application/javascript' => [ 'js' ],
+		'application/x-mpegurl' => [ 'm3u', 'm3u8' ],
 		'application/x-shockwave-flash' => [ 'swf' ],
 		'audio/midi' => [ 'mid', 'midi', 'kar' ],
 		'audio/mpeg' => [ 'mpga', 'mpa', 'mp2', 'mp3' ],
@@ -58,7 +61,7 @@ class MimeMap {
 		'audio/opus' => [ 'opus', 'ogg', 'oga', 'spx' ],
 		'image/x-bmp' => [ 'bmp' ],
 		'image/gif' => [ 'gif' ],
-		'image/jpeg' => [ 'jpeg', 'jpg', 'jpe' ],
+		'image/jpeg' => [ 'jpeg', 'jpg', 'jpe', 'jps' ],
 		'image/png' => [ 'png', 'apng' ],
 		'image/svg+xml' => [ 'svg' ],
 		'image/svg' => [ 'svg' ],
@@ -81,7 +84,7 @@ class MimeMap {
 		'application/octet-stream' => [ 'bin', 'dms', 'lha', 'lzh', 'exe', 'class', 'so', 'dll' ],
 		'application/oda' => [ 'oda' ],
 		'application/postscript' => [ 'ai', 'eps', 'ps' ],
-		'application/rdf+xml' => [ 'rdf' ],
+		'application/rdf+xml' => [ 'rdf', 'owl' ],
 		'application/smil' => [ 'smi', 'smil' ],
 		'application/srgs' => [ 'gram' ],
 		'application/srgs+xml' => [ 'grxml' ],
@@ -136,8 +139,14 @@ class MimeMap {
 		'application/zip' =>
 			[ 'zip', 'jar', 'xpi', 'sxc', 'stc', 'sxd', 'std', 'sxi', 'sti', 'sxm', 'stm', 'sxw', 'stw' ],
 		'application/x-rar' => [ 'rar' ],
+		'font/collection' => [ 'ttc' ],
+		'font/otf' => [ 'ttf', 'otf' ],
+		'font/sfnt' => [ 'ttf', 'otf' ],
+		'font/ttf' => [ 'ttf', 'otf' ],
 		'application/font-sfnt' => [ 'ttf' ],
+		'font/woff' => [ 'woff' ],
 		'application/font-woff' => [ 'woff' ],
+		'font/woff2' => [ 'woff2' ],
 		'application/font-woff2' => [ 'woff2' ],
 		'application/vnd.ms-fontobject' => [ 'eot' ],
 		'application/x-font-ttf' => [ 'ttf' ],
@@ -158,12 +167,14 @@ class MimeMap {
 		'image/bmp' => [ 'bmp' ],
 		'image/cgm' => [ 'cgm' ],
 		'image/ief' => [ 'ief' ],
-		'image/jp2' => [ 'j2k', 'jp2', 'jpg2' ],
+		'image/jp2' => [ 'jp2', 'j2k', 'jpg2' ],
+		'image/jpx' => [ 'jpf', 'jpx' ],
 		'image/vnd.microsoft.icon' => [ 'ico' ],
 		'image/vnd.wap.wbmp' => [ 'wbmp' ],
 		'image/webp' => [ 'webp' ],
 		'image/x-cmu-raster' => [ 'ras' ],
 		'image/x-icon' => [ 'ico' ],
+		'image/x-jps' => [ 'jps' ],
 		'image/x-ms-bmp' => [ 'bmp' ],
 		'image/x-portable-anymap' => [ 'pnm' ],
 		'image/x-portable-bitmap' => [ 'pbm' ],
@@ -217,9 +228,6 @@ class MimeMap {
 		'application/vnd.ms-excel.sheet.binary.macroenabled.12' => [ 'xlsb' ],
 		'model/vnd.dwfx+xps' => [ 'dwfx' ],
 		'application/vnd.ms-xpsdocument' => [ 'xps' ],
-		'application/x-opc+zip' => [
-			'docx', 'dotx', 'docm', 'dotm', 'potx', 'ppsx', 'pptx', 'ppam', 'pptm', 'potm', 'ppsm',
-			'xlsx', 'xltx', 'xlsm', 'xltm', 'xlam', 'xlsb', 'dwfx', 'xps' ],
 		'chemical/x-mdl-molfile' => [ 'mol' ],
 		'chemical/x-mdl-sdfile' => [ 'sdf' ],
 		'chemical/x-mdl-rxnfile' => [ 'rxn' ],
@@ -228,6 +236,17 @@ class MimeMap {
 		'application/x-amf' => [ 'amf' ],
 		'application/sla' => [ 'stl' ],
 		'application/wasm' => [ 'wasm' ],
+
+		// Vague pseudo-types should be at the end so that they don't take
+		// precedence over the more specific types above in getMimeTypesFromExtension()
+		'application/x-opc+zip' => [
+			'docx', 'dotx', 'docm', 'dotm', 'potx', 'ppsx', 'pptx', 'ppam', 'pptm', 'potm', 'ppsm',
+			'xlsx', 'xltx', 'xlsm', 'xltm', 'xlam', 'xlsb', 'dwfx', 'xps'
+		],
+		'application/vnd.oasis.opendocument' => [
+			'odt', 'ott', 'odg', 'otg', 'odp', 'otp', 'ods', 'ots', 'odc', 'otc',
+			'odi', 'oti', 'odf', 'otf', 'odm', 'oth',
+		]
 	];
 
 	/** @var array Map of built-in media types and their associated MIME types */
@@ -300,6 +319,8 @@ class MimeMap {
 		MEDIATYPE_MULTIMEDIA => [
 			'application/x-shockwave-flash',
 			'application/ogg',
+			'application/vnd.apple.mpegurl',
+			'application/x-mpegurl',
 			'audio/ogg',
 			'video/ogg',
 			'application/ogg',
@@ -358,8 +379,10 @@ class MimeMap {
 			'image/x-png',
 			'image/ief',
 			'image/jpeg',
+			'image/x-jps',
 			'image/pjpeg',
 			'image/jp2',
+			'image/jpx',
 			'image/xbm',
 			'image/tiff',
 			'image/x-icon',
@@ -503,5 +526,13 @@ class MimeMap {
 		'application/x-autocad' => 'application/acad',
 		'image/vnd.dwg' => 'application/acad',
 		'drawing/dwg' => 'application/acad',
+		'image/jpeg2000' => 'image/jp2',
+		'image/jpeg2000-image' => 'image/jp2',
+		'image/x-jpeg2000-image' => 'image/jp2',
+		'application/csv' => 'text/csv',
+		'application/x-csv' => 'text/csv',
+		'text/x-csv' => 'text/csv',
+		'text/comma-separated-values' => 'text/csv',
+		'text/x-comma-separated-values' => 'text/csv',
 	];
 }

@@ -1,10 +1,10 @@
-FROM php:8.1-apache
+FROM php:8.2-apache
 
 LABEL maintainer="foxftw@star-citizen.wiki"
 
 # Version
-ENV MEDIAWIKI_MAJOR_VERSION 1.39
-ENV MEDIAWIKI_VERSION 1.39.10
+ENV MEDIAWIKI_MAJOR_VERSION=1.43
+ENV MEDIAWIKI_VERSION=1.43.9
 
 # System dependencies
 RUN set -eux; \
@@ -24,11 +24,12 @@ RUN set -eux; \
 		webp \
 		zip \
 		libavif-bin \
-		libavif15 \
+		libavif16 \
 		libheif1 \
+		libicu76 \
 		libwebp7 \
 		liblua5.1-0 \
-		libzip4 \
+		libzip5 \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -63,7 +64,7 @@ RUN set -eux; \
 	; \
 	\
 	pecl install \
-		APCu-5.1.21 \
+		APCu-5.1.24 \
 		luasandbox \
 		imagick \
 		redis \
@@ -71,9 +72,12 @@ RUN set -eux; \
 	docker-php-ext-enable \
 		apcu \
 		luasandbox \
-		imagick  \
+		imagick \
 		redis \
 	; \
+	# A multi-package pecl install can skip failed packages while still exiting 0, so assert the .so files
+	extDir="$(php -r 'echo ini_get("extension_dir");')"; \
+	for mod in apcu luasandbox imagick redis; do test -f "$extDir/$mod.so"; done; \
 	rm -r /tmp/pear; \
 	\
 	# reset apt-mark's "manual" list so that "purge --auto-remove" will remove all build dependencies
@@ -82,6 +86,7 @@ RUN set -eux; \
 	ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
 		| awk '/=>/ { print $3 }' \
 		| sort -u \
+		| xargs -r readlink -f \
 		| xargs -r dpkg-query -S \
 		| cut -d: -f1 \
 		| sort -u \
@@ -160,7 +165,6 @@ RUN set -eux; \
 COPY --chown=www-data:www-data --chmod=770 ./queue.sh /usr/local/bin/queue
 COPY ./config /var/www/
 COPY ./includes/libs/mime/MimeMap.php /var/www/html/includes/libs/mime/MimeMap.php
-COPY ./includes/page/Article.php /var/www/html/includes/page/Article.php
 
 COPY ./container-config/php-config.ini /usr/local/etc/php/conf.d/php-config.ini
 COPY ./container-config/robots.txt /var/www/html/robots.txt
@@ -190,7 +194,6 @@ RUN set -eux; \
 	 --no-scripts; \
    \
    # Move extension folders to match their name
-   mv /var/www/html/extensions/Cirrussearch /var/www/html/extensions/CirrusSearch; \
    mv /var/www/html/extensions/Oauth /var/www/html/extensions/OAuth; \
    mv /var/www/html/extensions/Webauthn /var/www/html/extensions/WebAuthn; \
    mv /var/www/html/extensions/Quickinstantcommons /var/www/html/extensions/QuickInstantCommons; \

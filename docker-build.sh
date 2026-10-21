@@ -2,4 +2,4 @@
 
 set -e
 
-docker build -t scw-wiki:1.39.0 .
+docker build -t scw-wiki:1.43.0 .
