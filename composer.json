@@ -6,6 +6,7 @@
                 "mediawiki/code-mirror": "1.43.0",
                 "mediawiki/commons-metadata": "1.43.0",
                 "mediawiki/cookie-warning": "1.43.0",
+                "mediawiki/details": "1.3.0",
                 "mediawiki/disambiguator": "1.43.0",
                 "mediawiki/discord-notifications": "1.43.0",
                 "mediawiki/discussion-tools": "1.43.0",
@@ -547,6 +548,23 @@
                                         "type": "git",
                                         "url": "https://github.com/wikimedia/mediawiki-extensions-Renameuser.git",
                                         "reference": "REL1_43"
+                                }
+                        }
+                },
+                {
+                        "type": "package",
+                        "package": {
+                                "name": "mediawiki/details",
+                                "type": "mediawiki-extension",
+                                "version": "1.3.0",
+                                "dist": {
+                                        "url": "https://github.com/theapplewiki/mediawiki-extensions-Details/archive/1.3.zip",
+                                        "type": "zip"
+                                },
+                                "source": {
+                                        "type": "git",
+                                        "url": "https://github.com/theapplewiki/mediawiki-extensions-Details.git",
+                                        "reference": "1.3"
                                 }
                         }
                 }

@@ -13,6 +13,7 @@ wfLoadExtension( 'CommonsMetadata' );
 wfLoadExtension( 'ConfirmEdit' );
 wfLoadExtension( 'ConfirmEdit/QuestyCaptcha' );
 wfLoadExtension( 'CookieWarning' );
+wfLoadExtension( 'Details' );
 wfLoadExtension( 'Disambiguator' );
 wfLoadExtension( 'DiscordNotifications' );
 wfLoadExtension( 'DiscussionTools' );
