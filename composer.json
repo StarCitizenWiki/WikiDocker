@@ -35,7 +35,7 @@
                 "mediawiki/semantic-scribunto": "~3.0",
                 "mediawiki/universal-language-selector": "2025.03",
                 "edwardspec/mediawiki-aws-s3": "v0.14.0",
-                "starcitizenwiki/apiunto": "dev-develop",
+                "starcitizentools/apiunto": "^3.0.1",
                 "starcitizenwiki/embedvideo": "dev-develop",
                 "starcitizenwiki/picture-html-support": "dev-master",
                 "octfx/multipurge": "dev-develop",
