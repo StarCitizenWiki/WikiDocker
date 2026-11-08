@@ -2,6 +2,7 @@
 wfLoadExtension( 'AbuseFilter' );
 wfLoadExtension( 'AdminLinks' );
 wfLoadExtension( 'Apiunto' );
+wfLoadExtension( 'AGGrid' );
 wfLoadExtension( 'AWS' );
 wfLoadExtension( 'Capiunto' );
 wfLoadExtension( 'CategoryTree' );
